@@ -4,9 +4,10 @@ import { getTranslations } from "@/lib/i18n";
 export default async function Page({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const t = await getTranslations(params.locale);
+  const { locale } = await params;
+  const t = await getTranslations(locale);
 
   return (
       <CalculatorClient />     

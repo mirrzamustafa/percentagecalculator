@@ -5,11 +5,12 @@ import { supportedLocales } from "@/lib/domainConfig";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const t = await getTranslations(params.locale);
+  const { locale } = await params;
+  const t = await getTranslations(locale);
 
-  const baseUrl = `https://percentagecalculator.${params.locale === "en" ? "us" : params.locale}`;
+  const baseUrl = `https://percentagecalculator.${locale === "en" ? "us" : locale}`;
 
   return {
     title: t.meta.title,
@@ -39,9 +40,10 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const t = await getTranslations(params.locale);
+  const { locale } = await params;
+  const t = await getTranslations(locale);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -65,7 +67,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={params.locale}>
+    <html lang={locale}>
       <body>
         {children}
 

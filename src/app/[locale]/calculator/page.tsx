@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 
-export default function CalculatorPage({
+export default async function CalculatorPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  redirect(`/${params.locale}`);
+  const { locale } = await params;
+  redirect(`/${locale}`);
 }
