@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "Free Percentage Calculator | Fast & Accurate Percent Math",
+    "description": "Easily calculate percentages online. Find percent of a number, convert to percent, and calculate increases or decreases."
+  },
+  "seo": {
+    "h1": "Free Online Percentage Calculator",
+    "intro": "Use our free percentage calculator to solve common percent problems quickly and accurately.",
+    "content": "This percentage calculator helps you compute percentage values, percentage change, increases and decreases. It works instantly and is optimized for speed and accuracy.",
+    "faq": [
+      {
+        "question": "How do you calculate percentage?",
+        "answer": "Divide the value by the total and multiply by 100."
+      },
+      {
+        "question": "How to calculate percentage increase?",
+        "answer": "Subtract old value from new value, divide by old value and multiply by 100."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { domainLocaleMap, defaultLocale } from "@/lib/domainConfig";
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Skip internal paths
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    pathname.includes(".")
+  ) {
+    return;
+  }
+
+  const hostname = request.headers.get("host") || "";
+  const locale = domainLocaleMap[hostname] || defaultLocale;
+
+  if (!pathname.startsWith(`/${locale}`)) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}${pathname}`;
+    return NextResponse.redirect(url);
+  }
+}
