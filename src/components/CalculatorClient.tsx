@@ -1,18 +1,76 @@
 // app/CalculatorClient.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import AdSlot from "@/components/AdSlot";
 import { 
   Percent, 
   Sigma, 
   TrendingUp, 
   Activity, 
-  Calculator, 
-  Copy, 
-  ArrowUp 
+  ArrowUp,
+  Zap 
 } from "lucide-react";
 
-export default function CalculatorClient() {
+type UiHints = {
+  nothingToCopy: string;
+  copied: string;
+  copyFailed: string;
+  enterValueAndTotal: string;
+  totalCannotBeZero: string;
+  done: string;
+  enterBaseAndChange: string;
+  increase: string;
+  decrease: string;
+  noChange: string;
+  enterOldAndNew: string;
+  oldCannotBeZero: string;
+};
+
+type CardTranslation = {
+  title: string;
+  formula: string;
+  formulaDescription: string;
+  labelValue?: string;
+  labelTotal?: string;
+  labelResult: string;
+  labelBase?: string;
+  labelChange?: string;
+  labelOld?: string;
+  labelNew?: string;
+};
+
+type Translations = {
+  meta: { title: string; description: string };
+  seo: {
+    h1: string;
+    intro: string;
+    content: string;
+    faq: { question: string; answer: string }[];
+  };
+  ui: {
+    calculate: string;
+    backToTop: string;
+    cardA: CardTranslation;
+    cardB: CardTranslation;
+    cardC: CardTranslation;
+    cardD: CardTranslation;
+    hints: UiHints;
+  };
+};
+
+interface Props {
+  locale: string;
+  translations: Translations;
+  adClient?: string;
+  adSlotTop?: string;
+  adSlotMid?: string;
+  adSlotBottom?: string;
+}
+
+export default function CalculatorClient({ locale, translations, adClient = "ca-pub-XXXXXXXXXXXXXXXX", adSlotTop = "1111111111", adSlotMid = "2222222222", adSlotBottom = "3333333333" }: Props) {
+  const h = translations.ui.hints;
+
   // State for calculations
   const [calcA, setCalcA] = useState({ percent: "", total: "", result: "", hint: "", tone: "" });
   const [calcB, setCalcB] = useState({ value: "", total: "", result: "", hint: "", tone: "" });
@@ -37,70 +95,62 @@ export default function CalculatorClient() {
     return String(Number(value.toFixed(d)));
   };
 
-  const copyToClipboard = async (text: string, setter: any, currentState: any) => {
-    if (!text) {
-      setter({ ...currentState, hint: "Nothing to copy.", tone: "warn" });
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(text);
-      setter({ ...currentState, hint: "Copied.", tone: "ok" });
-      setTimeout(() => setter((prev: any) => ({ ...prev, hint: "", tone: "" })), 1200);
-    } catch {
-      setter({ ...currentState, hint: "Copy failed.", tone: "warn" });
-    }
-  };
-
   // Logic Functions
-  const handleCalcA = () => {
+  const handleCalcA = useCallback(() => {
     const p = num(calcA.percent);
     const t = num(calcA.total);
     if (!isFinite(p) || !isFinite(t)) {
-      setCalcA({ ...calcA, result: "", hint: "Enter value and total.", tone: "warn" });
+      setCalcA(prev => ({ ...prev, result: "", hint: "", tone: "" }));
       return;
     }
-    setCalcA({ ...calcA, result: roundSmart((p / 100) * t), hint: "Done.", tone: "ok" });
-  };
+    setCalcA(prev => ({ ...prev, result: roundSmart((p / 100) * t), hint: h.done, tone: "ok" }));
+  }, [calcA.percent, calcA.total, h.done]);
 
-  const handleCalcB = () => {
+  const handleCalcB = useCallback(() => {
     const v = num(calcB.value);
     const t = num(calcB.total);
     if (!isFinite(v) || !isFinite(t)) {
-      setCalcB({ ...calcB, result: "", hint: "Enter value and total.", tone: "warn" });
+      setCalcB(prev => ({ ...prev, result: "", hint: "", tone: "" }));
       return;
     }
     if (t === 0) {
-      setCalcB({ ...calcB, result: "", hint: "Total can't be 0.", tone: "warn" });
+      setCalcB(prev => ({ ...prev, result: "", hint: h.totalCannotBeZero, tone: "warn" }));
       return;
     }
-    setCalcB({ ...calcB, result: roundSmart((v / t) * 100), hint: "Done.", tone: "ok" });
-  };
+    setCalcB(prev => ({ ...prev, result: roundSmart((v / t) * 100), hint: h.done, tone: "ok" }));
+  }, [calcB.value, calcB.total, h.done, h.totalCannotBeZero]);
 
-  const handleCalcC = () => {
+  const handleCalcC = useCallback(() => {
     const base = num(calcC.base);
     const p = num(calcC.percent);
     if (!isFinite(base) || !isFinite(p)) {
-      setCalcC({ ...calcC, result: "", hint: "Enter base and change.", tone: "warn" });
+      setCalcC(prev => ({ ...prev, result: "", hint: "", tone: "" }));
       return;
     }
     const res = base * (1 + p / 100);
-    setCalcC({ ...calcC, result: roundSmart(res), hint: p > 0 ? "Increase." : p < 0 ? "Decrease." : "No change.", tone: "ok" });
-  };
+    setCalcC(prev => ({ ...prev, result: roundSmart(res), hint: p > 0 ? h.increase : p < 0 ? h.decrease : h.noChange, tone: "ok" }));
+  }, [calcC.base, calcC.percent, h.increase, h.decrease, h.noChange]);
 
-  const handleCalcD = () => {
+  const handleCalcD = useCallback(() => {
     const oldV = num(calcD.old);
     const newV = num(calcD.new);
     if (!isFinite(oldV) || !isFinite(newV)) {
-      setCalcD({ ...calcD, result: "", hint: "Enter old and new.", tone: "warn" });
+      setCalcD(prev => ({ ...prev, result: "", hint: "", tone: "" }));
       return;
     }
     if (oldV === 0) {
-      setCalcD({ ...calcD, result: "", hint: "Old can't be 0.", tone: "warn" });
+      setCalcD(prev => ({ ...prev, result: "", hint: h.oldCannotBeZero, tone: "warn" }));
       return;
     }
     const val = ((newV - oldV) / oldV) * 100;
-    setCalcD({ ...calcD, result: roundSmart(val), hint: val > 0 ? "Increase." : val < 0 ? "Decrease." : "No change.", tone: "ok" });
-  };
+    setCalcD(prev => ({ ...prev, result: roundSmart(val), hint: val > 0 ? h.increase : val < 0 ? h.decrease : h.noChange, tone: "ok" }));
+  }, [calcD.old, calcD.new, h.increase, h.decrease, h.noChange, h.oldCannotBeZero]);
+
+  // Live updates
+  useEffect(() => { handleCalcA(); }, [handleCalcA]);
+  useEffect(() => { handleCalcB(); }, [handleCalcB]);
+  useEffect(() => { handleCalcC(); }, [handleCalcC]);
+  useEffect(() => { handleCalcD(); }, [handleCalcD]);
 
   const getHintClass = (tone: string) => {
     if (tone === "ok") return "text-emerald-600";
@@ -108,175 +158,250 @@ export default function CalculatorClient() {
     return "text-slate-500";
   };
 
+  const { cardA, cardB, cardC, cardD } = translations.ui;
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 antialiased font-sans">
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4 py-6 sm:px-6">
-          <div className="flex flex-col items-center gap-4 text-center">
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400 text-white shadow-lg shadow-blue-200 ring-4 ring-blue-50">
-                <Percent size={28} strokeWidth={2.5} />
-              </span>
-              <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-                Percentage <span className="text-blue-400">Calculator</span>
-              </h1>
-            </div>
-            <p className="max-w-prose text-sm font-semibold uppercase tracking-[0.2em] text-slate-400 sm:text-base">
-              Fast • Accurate • Simple
-            </p>
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-8 sm:px-6">
+          <div className="flex items-center gap-4 mb-2">
+            <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shadow-sm ring-1 ring-emerald-200">
+              <Zap size={20} strokeWidth={2.5} fill="currentColor" className="opacity-20" />
+              <Zap size={20} strokeWidth={2.5} className="absolute drop-shadow-sm" />
+            </span>
+            <h1 className="text-xl font-bold uppercase tracking-[0.2em] text-slate-900 sm:text-2xl">
+              {translations.seo.h1}
+            </h1>
           </div>
+          <p className="mt-2 max-w-4xl text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-600 sm:text-xs">
+            {translations.meta.description}
+          </p>
         </div>
       </header>
 
       <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
-        {/* SEO Hidden H2 to structure the page for crawlers */}
-        <h2 className="sr-only">Free Online Percentage Calculation Tools</h2>
+        {/* SEO Hidden H2 */}
+        <h2 className="sr-only">{translations.seo.intro}</h2>
 
-        <div id="calculators" className="mt-6 grid gap-6 lg:grid-cols-2">
+        {/* Ad 1 */}
+        <AdSlot
+          adClient={adClient}
+          adSlot={adSlotTop}
+          adFormat="horizontal"
+          className="my-4"
+        />
+
+        <div id="calculators" className="mt-2 grid gap-6 md:grid-cols-2">
           
           {/* Card A */}
-          <section id="calc-a" className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div className="flex items-start justify-between">
+          <section id="calc-a" className="group rounded-[2rem] bg-white p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl hover:shadow-emerald-50/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shadow-sm ring-1 ring-emerald-200">
+                <Percent size={20} strokeWidth={2.5} />
+              </span>
               <div>
-                <h3 className="text-base font-semibold text-slate-900">Percent to Number</h3>
-                <p className="text-sm font-medium text-slate-500 italic">X% of Y = ?</p>
+                <h3 className="text-lg font-semibold text-slate-800 leading-tight">{cardA.title}</h3>
+                <p className="text-sm font-medium text-emerald-600 italic">{cardA.formula}</p>
               </div>
-              <span className="h-10 w-10 flex items-center justify-center rounded-2xl bg-blue-50 text-blue-400 ring-1 ring-blue-100"><Percent size={18} /></span>
             </div>
-            <div className="mt-6 grid gap-4">
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr_auto_1fr] sm:items-center">
-                <label htmlFor="a-percent" className="text-xs font-bold text-slate-700">Value</label>
+
+            <div className="grid gap-3 sm:grid-cols-3 items-end">
+              <div className="space-y-1.5">
+                <label htmlFor="a-percent" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardA.labelValue}</label>
                 <div className="relative">
-                  <input id="a-percent" type="number" value={calcA.percent} onChange={(e) => setCalcA({...calcA, percent: e.target.value})} placeholder="10" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">%</span>
-                </div>
-                <label htmlFor="a-total" className="text-xs font-bold text-slate-700 sm:text-right">Total</label>
-                <input id="a-total" type="number" value={calcA.total} onChange={(e) => setCalcA({...calcA, total: e.target.value})} placeholder="1000" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
-              </div>
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr] sm:items-center">
-                <label htmlFor="a-result" className="text-xs font-bold text-slate-700">Result</label>
-                <div className="relative">
-                  <input id="a-result" readOnly value={calcA.result} placeholder="—" className="w-full rounded-2xl bg-slate-50 px-3 py-2.5 text-sm font-bold text-blue-400 ring-1 ring-slate-200" />
-                  <button aria-label="Copy result" onClick={() => copyToClipboard(calcA.result, setCalcA, calcA)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white rounded-xl shadow-sm ring-1 ring-slate-200 hover:bg-slate-50"><Copy size={14} /></button>
+                  <input id="a-percent" type="number" value={calcA.percent} onChange={(e) => setCalcA({...calcA, percent: e.target.value})} placeholder="10" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-lg font-bold text-slate-300">%</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <button onClick={handleCalcA} className="inline-flex items-center gap-2 rounded-2xl bg-blue-400 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"><Calculator size={16} /> Calculate</button>
-                <p aria-live="polite" className={`text-xs font-medium ${getHintClass(calcA.tone)}`}>{calcA.hint}</p>
+              <div className="space-y-1.5">
+                <label htmlFor="a-total" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardA.labelTotal}</label>
+                <input id="a-total" type="number" value={calcA.total} onChange={(e) => setCalcA({...calcA, total: e.target.value})} placeholder="1000" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
+              </div>
+              <div className="space-y-1.5">
+                <label htmlFor="a-result" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardA.labelResult}</label>
+                <input id="a-result" readOnly value={calcA.result} placeholder="—" className="w-full rounded-xl bg-emerald-50/50 px-3 py-2.5 text-xl font-bold text-emerald-800 shadow-sm ring-2 ring-emerald-100 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 border border-emerald-200/40" />
+              </div>
+            </div>
+
+            <div className="mt-6 p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100/50">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold uppercase tracking-widest ring-1 ring-emerald-200">Formula</span>
+                <div className="h-px flex-1 bg-emerald-100/50"></div>
+              </div>
+              <p className="text-sm font-medium text-slate-600 leading-relaxed">
+                {cardA.formulaDescription}
+              </p>
+              <div className="mt-2 text-right">
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${getHintClass(calcA.tone)}`}>{calcA.hint}</span>
               </div>
             </div>
           </section>
 
           {/* Card B */}
-          <section id="calc-b" className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div className="flex items-start justify-between">
+          <section id="calc-b" className="group rounded-[2rem] bg-white p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl hover:shadow-emerald-50/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shadow-sm ring-1 ring-emerald-200">
+                <Sigma size={20} strokeWidth={2.5} />
+              </span>
               <div>
-                <h3 className="text-base font-semibold text-slate-900">Number to Percent</h3>
-                <p className="text-sm font-medium text-slate-500 italic">X out of Y = what %?</p>
+                <h3 className="text-lg font-semibold text-slate-800 leading-tight">{cardB.title}</h3>
+                <p className="text-sm font-medium text-emerald-600 italic">{cardB.formula}</p>
               </div>
-              <span className="h-10 w-10 flex items-center justify-center rounded-2xl bg-blue-50 text-blue-400 ring-1 ring-blue-100"><Sigma size={18} /></span>
             </div>
-            <div className="mt-6 grid gap-4">
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr_auto_1fr] sm:items-center">
-                <label htmlFor="b-value" className="text-xs font-bold text-slate-700">Value</label>
-                <input id="b-value" type="number" value={calcB.value} onChange={(e) => setCalcB({...calcB, value: e.target.value})} placeholder="50" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
-                <label htmlFor="b-total" className="text-xs font-bold text-slate-700 sm:text-right">Total</label>
-                <input id="b-total" type="number" value={calcB.total} onChange={(e) => setCalcB({...calcB, total: e.target.value})} placeholder="1000" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
+
+            <div className="grid gap-3 sm:grid-cols-3 items-end">
+              <div className="space-y-1.5">
+                <label htmlFor="b-value" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardB.labelValue}</label>
+                <input id="b-value" type="number" value={calcB.value} onChange={(e) => setCalcB({...calcB, value: e.target.value})} placeholder="50" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
               </div>
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr] sm:items-center">
-                <label htmlFor="b-result" className="text-xs font-bold text-slate-700">Result</label>
+              <div className="space-y-1.5">
+                <label htmlFor="b-total" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardB.labelTotal}</label>
+                <input id="b-total" type="number" value={calcB.total} onChange={(e) => setCalcB({...calcB, total: e.target.value})} placeholder="1000" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
+              </div>
+              <div className="space-y-1.5">
+                <label htmlFor="b-result" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardB.labelResult}</label>
                 <div className="relative">
-                  <input id="b-result" readOnly value={calcB.result} placeholder="—" className="w-full rounded-2xl bg-slate-50 px-3 py-2.5 text-sm font-bold text-blue-400 ring-1 ring-slate-200" />
-                  <span className="absolute right-12 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">%</span>
-                  <button aria-label="Copy result" onClick={() => copyToClipboard(calcB.result, setCalcB, calcB)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white rounded-xl shadow-sm ring-1 ring-slate-200 hover:bg-slate-50"><Copy size={14} /></button>
+                  <input id="b-result" readOnly value={calcB.result} placeholder="—" className="w-full rounded-xl bg-emerald-50/50 px-3 py-2.5 text-xl font-bold text-emerald-800 shadow-sm ring-2 ring-emerald-100 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 border border-emerald-200/40" />
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xl font-bold text-emerald-200/50">%</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <button onClick={handleCalcB} className="inline-flex items-center gap-2 rounded-2xl bg-blue-400 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"><Calculator size={16} /> Calculate</button>
-                <p aria-live="polite" className={`text-xs font-medium ${getHintClass(calcB.tone)}`}>{calcB.hint}</p>
+            </div>
+
+            <div className="mt-6 p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100/50">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold uppercase tracking-widest ring-1 ring-emerald-200">Formula</span>
+                <div className="h-px flex-1 bg-emerald-100/50"></div>
+              </div>
+              <p className="text-sm font-medium text-slate-600 leading-relaxed">
+                {cardB.formulaDescription}
+              </p>
+              <div className="mt-2 text-right">
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${getHintClass(calcB.tone)}`}>{calcB.hint}</span>
               </div>
             </div>
           </section>
 
+          {/* Ad 2 */}
+          <div className="md:col-span-2 my-2">
+            <AdSlot
+              adClient={adClient}
+              adSlot={adSlotMid}
+              adFormat="auto"
+              className="my-0"
+            />
+          </div>
+
           {/* Card C */}
-          <section id="calc-c" className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div className="flex items-start justify-between">
+          <section id="calc-c" className="group rounded-[2rem] bg-white p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl hover:shadow-emerald-50/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shadow-sm ring-1 ring-emerald-200">
+                <TrendingUp size={20} strokeWidth={2.5} />
+              </span>
               <div>
-                <h3 className="text-base font-semibold text-slate-900">Increase / Decrease</h3>
-                <p className="text-sm font-medium text-slate-500 italic">Base ± X% = ?</p>
+                <h3 className="text-lg font-semibold text-slate-800 leading-tight">{cardC.title}</h3>
+                <p className="text-sm font-medium text-emerald-600 italic">{cardC.formula}</p>
               </div>
-              <span className="h-10 w-10 flex items-center justify-center rounded-2xl bg-blue-50 text-blue-400 ring-1 ring-blue-100"><TrendingUp size={18} /></span>
             </div>
-            <div className="mt-6 grid gap-4">
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr_auto_1fr] sm:items-center">
-                <label htmlFor="c-base" className="text-xs font-bold text-slate-700">Base</label>
-                <input id="c-base" type="number" value={calcC.base} onChange={(e) => setCalcC({...calcC, base: e.target.value})} placeholder="1000" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
-                <label htmlFor="c-percent" className="text-xs font-bold text-slate-700 sm:text-right">Change</label>
+
+            <div className="grid gap-3 sm:grid-cols-3 items-end">
+              <div className="space-y-1.5">
+                <label htmlFor="c-base" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardC.labelBase}</label>
+                <input id="c-base" type="number" value={calcC.base} onChange={(e) => setCalcC({...calcC, base: e.target.value})} placeholder="1000" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
+              </div>
+              <div className="space-y-1.5">
+                <label htmlFor="c-percent" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardC.labelChange}</label>
                 <div className="relative">
-                  <input id="c-percent" type="number" value={calcC.percent} onChange={(e) => setCalcC({...calcC, percent: e.target.value})} placeholder="10" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">%</span>
+                  <input id="c-percent" type="number" value={calcC.percent} onChange={(e) => setCalcC({...calcC, percent: e.target.value})} placeholder="10" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-lg font-bold text-slate-300">%</span>
                 </div>
               </div>
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr] sm:items-center">
-                <label htmlFor="c-result" className="text-xs font-bold text-slate-700">Result</label>
-                <div className="relative">
-                  <input id="c-result" readOnly value={calcC.result} placeholder="—" className="w-full rounded-2xl bg-slate-50 px-3 py-2.5 text-sm font-bold text-blue-400 ring-1 ring-slate-200" />
-                  <button aria-label="Copy result" onClick={() => copyToClipboard(calcC.result, setCalcC, calcC)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white rounded-xl shadow-sm ring-1 ring-slate-200 hover:bg-slate-50"><Copy size={14} /></button>
-                </div>
+              <div className="space-y-1.5">
+                <label htmlFor="c-result" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardC.labelResult}</label>
+                <input id="c-result" readOnly value={calcC.result} placeholder="—" className="w-full rounded-xl bg-emerald-50/50 px-3 py-2.5 text-xl font-bold text-emerald-800 shadow-sm ring-2 ring-emerald-100 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 border border-emerald-200/40" />
               </div>
-              <div className="flex items-center justify-between">
-                <button onClick={handleCalcC} className="inline-flex items-center gap-2 rounded-2xl bg-blue-400 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"><Calculator size={16} /> Calculate</button>
-                <p aria-live="polite" className={`text-xs font-medium ${getHintClass(calcC.tone)}`}>{calcC.hint}</p>
+            </div>
+
+            <div className="mt-6 p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100/50">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold uppercase tracking-widest ring-1 ring-emerald-200">Formula</span>
+                <div className="h-px flex-1 bg-emerald-100/50"></div>
+              </div>
+              <p className="text-sm font-medium text-slate-600 leading-relaxed">
+                {cardC.formulaDescription}
+              </p>
+              <div className="mt-2 text-right">
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${getHintClass(calcC.tone)}`}>{calcC.hint}</span>
               </div>
             </div>
           </section>
 
           {/* Card D */}
-          <section id="calc-d" className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div className="flex items-start justify-between">
+          <section id="calc-d" className="group rounded-[2rem] bg-white p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl hover:shadow-emerald-50/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shadow-sm ring-1 ring-emerald-200">
+                <Activity size={20} strokeWidth={2.5} />
+              </span>
               <div>
-                <h3 className="text-base font-semibold text-slate-900">Percentage Change</h3>
-                <p className="text-sm font-medium text-slate-500 italic">Old vs New = % difference?</p>
+                <h3 className="text-lg font-semibold text-slate-800 leading-tight">{cardD.title}</h3>
+                <p className="text-sm font-medium text-emerald-600 italic">{cardD.formula}</p>
               </div>
-              <span className="h-10 w-10 flex items-center justify-center rounded-2xl bg-blue-50 text-blue-400 ring-1 ring-blue-100"><Activity size={18} /></span>
             </div>
-            <div className="mt-6 grid gap-4">
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr_auto_1fr] sm:items-center">
-                <label htmlFor="d-old" className="text-xs font-bold text-slate-700">Old</label>
-                <input id="d-old" type="number" value={calcD.old} onChange={(e) => setCalcD({...calcD, old: e.target.value})} placeholder="1000" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
-                <label htmlFor="d-new" className="text-xs font-bold text-slate-700 sm:text-right">New</label>
-                <input id="d-new" type="number" value={calcD.new} onChange={(e) => setCalcD({...calcD, new: e.target.value})} placeholder="1200" className="w-full rounded-2xl bg-white px-3 py-2.5 text-sm font-medium ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500/20 outline-none" />
+
+            <div className="grid gap-3 sm:grid-cols-3 items-end">
+              <div className="space-y-1.5">
+                <label htmlFor="d-old" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardD.labelOld}</label>
+                <input id="d-old" type="number" value={calcD.old} onChange={(e) => setCalcD({...calcD, old: e.target.value})} placeholder="1000" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
               </div>
-              <div className="grid gap-2 sm:grid-cols-[auto_1fr] sm:items-center">
-                <label htmlFor="d-result" className="text-xs font-bold text-slate-700">Result</label>
+              <div className="space-y-1.5">
+                <label htmlFor="d-new" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardD.labelNew}</label>
+                <input id="d-new" type="number" value={calcD.new} onChange={(e) => setCalcD({...calcD, new: e.target.value})} placeholder="1200" className="w-full rounded-xl bg-white px-3 py-2.5 text-lg font-semibold text-slate-800 ring-2 ring-slate-100 focus:ring-4 focus:ring-emerald-500/20 focus:bg-white outline-none transition-all border border-slate-200/60 placeholder:font-normal placeholder:text-slate-300" />
+              </div>
+              <div className="space-y-1.5">
+                <label htmlFor="d-result" className="text-[11px] font-bold uppercase tracking-widest text-slate-500 ml-1">{cardD.labelResult}</label>
                 <div className="relative">
-                  <input id="d-result" readOnly value={calcD.result} placeholder="—" className="w-full rounded-2xl bg-slate-50 px-3 py-2.5 text-sm font-bold text-blue-400 ring-1 ring-slate-200" />
-                  <span className="absolute right-12 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">%</span>
-                  <button aria-label="Copy result" onClick={() => copyToClipboard(calcD.result, setCalcD, calcD)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white rounded-xl shadow-sm ring-1 ring-slate-200 hover:bg-slate-50"><Copy size={14} /></button>
+                  <input id="d-result" readOnly value={calcD.result} placeholder="—" className="w-full rounded-xl bg-emerald-50/50 px-3 py-2.5 text-xl font-bold text-emerald-800 shadow-sm ring-2 ring-emerald-100 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 border border-emerald-200/40" />
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xl font-bold text-emerald-200/50">%</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <button onClick={handleCalcD} className="inline-flex items-center gap-2 rounded-2xl bg-blue-400 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"><Calculator size={16} /> Calculate</button>
-                <p aria-live="polite" className={`text-xs font-medium ${getHintClass(calcD.tone)}`}>{calcD.hint}</p>
+            </div>
+
+            <div className="mt-6 p-5 rounded-2xl bg-emerald-50/30 border border-emerald-100/50">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold uppercase tracking-widest ring-1 ring-emerald-200">Formula</span>
+                <div className="h-px flex-1 bg-emerald-100/50"></div>
+              </div>
+              <p className="text-sm font-medium text-slate-600 leading-relaxed">
+                {cardD.formulaDescription}
+              </p>
+              <div className="mt-2 text-right">
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${getHintClass(calcD.tone)}`}>{calcD.hint}</span>
               </div>
             </div>
           </section>
         </div>
+
+        {/* Ad 3 */}
+        <AdSlot
+          adClient={adClient}
+          adSlot={adSlotBottom}
+          adFormat="auto"
+          className="mt-10"
+        />
       </main>
 
       {/* Footer */}
-      <footer className="mt-6 border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <footer className="mt-10 border-t border-slate-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-3">
-            <span className="h-8 w-8 flex items-center justify-center rounded-lg bg-blue-400 text-white"><Percent size={14} /></span>
+            <span className="h-8 w-8 flex items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 shadow-sm ring-1 ring-emerald-200"><Percent size={16} strokeWidth={3} /></span>
             <div>
-              <div className="text-sm font-bold text-slate-900">Percentage Calculator</div>
-              <div className="text-xs text-slate-500">© {currentYear}</div>
+              <div className="text-base font-bold text-slate-900">{translations.seo.h1}</div>
+              <div className="text-xs font-medium text-slate-500">© {currentYear}</div>
             </div>
           </div>
-          <a href="#" className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-blue-400 transition-colors">
-            <ArrowUp size={16} /> Back to Top
+          <a href="#" className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-emerald-600 transition-colors">
+            <ArrowUp size={16} /> {translations.ui.backToTop}
           </a>
         </div>
       </footer>

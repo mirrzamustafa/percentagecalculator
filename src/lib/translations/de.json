@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Kostenloser Prozentrechner | Schnelle & Genaue Prozentrechnung",
+    "description": "Berechnen Sie einfach Prozentsätze online. Finden Sie den Prozentsatz einer Zahl, rechnen Sie in Prozent um und berechnen Sie Steigerungen oder Rückgänge."
+  },
+  "seo": {
+    "h1": "Schneller Prozentrechner",
+    "intro": "Nutzen Sie unseren kostenlosen Prozentrechner, um häufige Prozentaufgaben schnell und genau zu lösen.",
+    "content": "Dieser Prozentrechner hilft Ihnen, Prozentwerte, Prozentveränderungen, Steigerungen und Rückgänge zu berechnen. Er funktioniert sofort und ist auf Geschwindigkeit und Genauigkeit optimiert.",
+    "faq": [
+      {
+        "question": "Wie berechnet man einen Prozentsatz?",
+        "answer": "Teilen Sie den Wert durch den Gesamtwert und multiplizieren Sie mit 100."
+      },
+      {
+        "question": "Wie berechnet man eine prozentuale Steigerung?",
+        "answer": "Ziehen Sie den alten Wert vom neuen Wert ab, teilen Sie durch den alten Wert und multiplizieren Sie mit 100."
+      }
+    ]
+  },
+  "ui": {
+    "calculate": "Berechnen",
+    "backToTop": "Nach oben",
+    "cardA": {
+      "title": "Prozent zu Zahl",
+      "formula": "X% von Y = ?",
+      "formulaDescription": "Unser Rechner verwendet die folgende Formel: (p1 * v1) / 100 = Ergebnis (wobei p1=Prozentsatz und v1=Wert). Beispiel: (10 * 1000) / 100 = 100",
+      "labelValue": "Wert",
+      "labelTotal": "Gesamt",
+      "labelResult": "Ergebnis"
+    },
+    "cardB": {
+      "title": "Zahl zu Prozent",
+      "formula": "X von Y = wie viel %?",
+      "formulaDescription": "Unser Rechner verwendet die folgende Formel: (v1 / v2) * 100 = Ergebnis (wobei v1=Wert und v2=Gesamt). Beispiel: (50 / 1000) * 100 = 5%",
+      "labelValue": "Wert",
+      "labelTotal": "Gesamt",
+      "labelResult": "Ergebnis"
+    },
+    "cardC": {
+      "title": "Erhöhung / Senkung",
+      "formula": "Basis ± X% = ?",
+      "formulaDescription": "Unser Rechner verwendet die folgende Formel: v1 * (1 ± p1 / 100) = Ergebnis (wobei v1=Basis und p1=Prozentsatz). Beispiel: 1000 * (1 + 10 / 100) = 1100",
+      "labelBase": "Basis",
+      "labelChange": "Änderung",
+      "labelResult": "Ergebnis"
+    },
+    "cardD": {
+      "title": "Prozentuale Änderung",
+      "formula": "Alt vs Neu = % Unterschied?",
+      "formulaDescription": "Unser Rechner verwendet die folgende Formel: ((v2 - v1) / v1) * 100 = Ergebnis (wobei v1=Alt und v2=Neu). Beispiel: ((1200 - 1000) / 1000) * 100 = 20%",
+      "labelOld": "Alt",
+      "labelNew": "Neu",
+      "labelResult": "Ergebnis"
+    },
+    "hints": {
+      "nothingToCopy": "Nichts zu kopieren.",
+      "copied": "Kopiert.",
+      "copyFailed": "Kopieren fehlgeschlagen.",
+      "enterValueAndTotal": "Wert und Gesamt eingeben.",
+      "totalCannotBeZero": "Gesamt kann nicht 0 sein.",
+      "done": "Fertig.",
+      "enterBaseAndChange": "Basis und Änderung eingeben.",
+      "increase": "Erhöhung.",
+      "decrease": "Senkung.",
+      "noChange": "Keine Änderung.",
+      "enterOldAndNew": "Alt und Neu eingeben.",
+      "oldCannotBeZero": "Alt kann nicht 0 sein."
+    }
+  }
+}

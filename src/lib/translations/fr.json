@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Calculateur de Pourcentage Gratuit | Calcul Rapide et Précis",
+    "description": "Calculez facilement des pourcentages en ligne. Trouvez le pourcentage d'un nombre, convertissez en pourcentage, et calculez des augmentations ou diminutions."
+  },
+  "seo": {
+    "h1": "Calculateur Pourcentage Rapide",
+    "intro": "Utilisez notre calculateur de pourcentage gratuit pour résoudre rapidement et avec précision les problèmes courants de pourcentage.",
+    "content": "Ce calculateur de pourcentage vous aide à calculer des valeurs en pourcentage, des variations de pourcentage, des augmentations et des diminutions. Il fonctionne instantanément et est optimisé pour la rapidité et la précision.",
+    "faq": [
+      {
+        "question": "Comment calculer un pourcentage ?",
+        "answer": "Divisez la valeur par le total et multipliez par 100."
+      },
+      {
+        "question": "Comment calculer une augmentation en pourcentage ?",
+        "answer": "Soustrayez l'ancienne valeur de la nouvelle, divisez par l'ancienne valeur et multipliez par 100."
+      }
+    ]
+  },
+  "ui": {
+    "calculate": "Calculer",
+    "backToTop": "Retour en haut",
+    "cardA": {
+      "title": "Pourcentage en Nombre",
+      "formula": "X% de Y = ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante: (p1 * v1) / 100 = le résultat (où p1=le pourcentage et v1=la valeur). Exemple: (10 * 1000) / 100 = 100",
+      "labelValue": "Valeur",
+      "labelTotal": "Total",
+      "labelResult": "Résultat"
+    },
+    "cardB": {
+      "title": "Nombre en Pourcentage",
+      "formula": "X sur Y = quel % ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante: (v1 / v2) * 100 = le résultat (où v1=la valeur et v2=le total). Exemple: (50 / 1000) * 100 = 5%",
+      "labelValue": "Valeur",
+      "labelTotal": "Total",
+      "labelResult": "Résultat"
+    },
+    "cardC": {
+      "title": "Augmentation / Diminution",
+      "formula": "Base ± X% = ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante: v1 * (1 ± p1 / 100) = le résultat (où v1=la base et p1=le pourcentage). Exemple: 1000 * (1 + 10 / 100) = 1100",
+      "labelBase": "Base",
+      "labelChange": "Variation",
+      "labelResult": "Résultat"
+    },
+    "cardD": {
+      "title": "Variation en Pourcentage",
+      "formula": "Ancien vs Nouveau = % différence ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante: ((v2 - v1) / v1) * 100 = le résultat (où v1=l'ancien et v2=le nouveau). Exemple: ((1200 - 1000) / 1000) * 100 = 20%",
+      "labelOld": "Ancien",
+      "labelNew": "Nouveau",
+      "labelResult": "Résultat"
+    },
+    "hints": {
+      "nothingToCopy": "Rien à copier.",
+      "copied": "Copié.",
+      "copyFailed": "Échec de la copie.",
+      "enterValueAndTotal": "Entrez la valeur et le total.",
+      "totalCannotBeZero": "Le total ne peut pas être 0.",
+      "done": "Terminé.",
+      "enterBaseAndChange": "Entrez la base et la variation.",
+      "increase": "Augmentation.",
+      "decrease": "Diminution.",
+      "noChange": "Aucun changement.",
+      "enterOldAndNew": "Entrez l'ancien et le nouveau.",
+      "oldCannotBeZero": "L'ancien ne peut pas être 0."
+    }
+  }
+}

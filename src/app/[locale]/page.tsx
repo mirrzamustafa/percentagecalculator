@@ -10,6 +10,6 @@ export default async function Page({
   const t = await getTranslations(locale);
 
   return (
-      <CalculatorClient />     
+    <CalculatorClient locale={locale} translations={t} />
   );
 }

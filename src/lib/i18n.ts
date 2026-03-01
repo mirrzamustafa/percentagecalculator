@@ -5,5 +5,5 @@ export async function getTranslations(locale: string) {
     locale = "en";
   }
 
-  return (await import(`./translations/en.json`)).default;
+  return (await import(`./translations/${locale}.json`)).default;
 }

@@ -4,7 +4,7 @@
     "description": "Easily calculate percentages online. Find percent of a number, convert to percent, and calculate increases or decreases."
   },
   "seo": {
-    "h1": "Free Online Percentage Calculator",
+    "h1": "Fast Percentage Calculator",
     "intro": "Use our free percentage calculator to solve common percent problems quickly and accurately.",
     "content": "This percentage calculator helps you compute percentage values, percentage change, increases and decreases. It works instantly and is optimized for speed and accuracy.",
     "faq": [
@@ -17,5 +17,55 @@
         "answer": "Subtract old value from new value, divide by old value and multiply by 100."
       }
     ]
+  },
+  "ui": {
+    "calculate": "Calculate",
+    "backToTop": "Back to Top",
+    "cardA": {
+      "title": "Percent to Number",
+      "formula": "X% of Y = ?",
+      "formulaDescription": "Our calculator uses the following formula: (p1 * v1) / 100 = result (where p1=percentage and v1=value). Example: (10 * 1000) / 100 = 100",
+      "labelValue": "Value",
+      "labelTotal": "Total",
+      "labelResult": "Result"
+    },
+    "cardB": {
+      "title": "Number to Percent",
+      "formula": "X out of Y = what %?",
+      "formulaDescription": "Our calculator uses the following formula: (v1 / v2) * 100 = result (where v1=value and v2=total). Example: (50 / 1000) * 100 = 5%",
+      "labelValue": "Value",
+      "labelTotal": "Total",
+      "labelResult": "Result"
+    },
+    "cardC": {
+      "title": "Increase / Decrease",
+      "formula": "Base ± X% = ?",
+      "formulaDescription": "Our calculator uses the following formula: v1 * (1 ± p1 / 100) = result (where v1=base and p1=percentage). Example: 1000 * (1 + 10 / 100) = 1100",
+      "labelBase": "Base",
+      "labelChange": "Change",
+      "labelResult": "Result"
+    },
+    "cardD": {
+      "title": "Percentage Change",
+      "formula": "Old vs New = % difference?",
+      "formulaDescription": "Our calculator uses the following formula: ((v2 - v1) / v1) * 100 = result (where v1=old and v2=new). Example: ((1200 - 1000) / 1000) * 100 = 20%",
+      "labelOld": "Old",
+      "labelNew": "New",
+      "labelResult": "Result"
+    },
+    "hints": {
+      "nothingToCopy": "Nothing to copy.",
+      "copied": "Copied.",
+      "copyFailed": "Copy failed.",
+      "enterValueAndTotal": "Enter value and total.",
+      "totalCannotBeZero": "Total can't be 0.",
+      "done": "Done.",
+      "enterBaseAndChange": "Enter base and change.",
+      "increase": "Increase.",
+      "decrease": "Decrease.",
+      "noChange": "No change.",
+      "enterOldAndNew": "Enter old and new.",
+      "oldCannotBeZero": "Old can't be 0."
+    }
   }
 }
