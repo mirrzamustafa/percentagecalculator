@@ -1,6 +1,10 @@
 import { Metadata } from "next";
 import { getTranslations } from "@/lib/i18n";
 import { supportedLocales } from "@/lib/domainConfig";
+import { Inter } from "next/font/google";
+import "../../globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata({
   params,
@@ -75,7 +79,7 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body>
+      <body className={inter.className}>
         {children}
 
         <script

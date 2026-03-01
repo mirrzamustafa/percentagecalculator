@@ -17,6 +17,10 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
   const locale = domainLocaleMap[hostname] || defaultLocale;
 
+  if (pathname === "/") {
+    return;
+  }
+
   if (!pathname.startsWith(`/${locale}`)) {
     const url = request.nextUrl.clone();
     url.pathname = `/${locale}${pathname}`;

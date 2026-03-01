@@ -1,0 +1,87 @@
+import { Metadata } from "next";
+import { getTranslations } from "@/lib/i18n";
+import { Inter } from "next/font/google";
+import "../globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = "fr";
+  const t = await getTranslations(locale);
+  const baseUrl = "https://percentagecalculator.fr";
+
+  return {
+    title: t.meta.title,
+    description: t.meta.description,
+    alternates: {
+      canonical: baseUrl,
+      languages: {
+        en: "https://percentagecalculator.us/en",
+        fr: "https://percentagecalculator.fr/fr",
+        it: "https://percentagecalculator.it/it",
+        de: "https://percentagecalculator.de/de",
+        es: "https://percentagecalculator.es/es",
+        "x-default": "https://percentagecalculator.us/en"
+      }
+    },
+    openGraph: {
+      title: t.meta.title,
+      description: t.meta.description,
+      url: baseUrl,
+      type: "website"
+    }
+  };
+}
+
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const locale = "fr";
+  const t = await getTranslations(locale);
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: t.seo.faq.map((item: any) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
+
+  const appSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: t.meta.title,
+    applicationCategory: "CalculatorApplication",
+    operatingSystem: "All"
+  };
+
+  return (
+    <html lang={locale}>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
+      <body className={inter.className}>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </body>
+    </html>
+  );
+}
