@@ -8,4 +8,4 @@ export const domainLocaleMap: Record<string, string> = {
 
 export const supportedLocales = ["en", "fr", "it", "de", "es"];
 
-export const defaultLocale = "en";
+export const defaultLocale = "fr";
