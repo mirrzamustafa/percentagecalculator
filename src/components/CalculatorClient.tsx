@@ -278,7 +278,8 @@ export default function CalculatorClient({
       </header>
 
       {/* Hero Section */}
-      {/* <section className="relative overflow-hidden bg-white pt-16 pb-20 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-40">
+      <section className="relative overflow-hidden bg-white pt-12 pb-16 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-40">
+        {/* Background Gradients */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none">
           <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full ${ACTIVE_THEME.bg} opacity-20 blur-[120px]`} />
           <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full ${ACTIVE_THEME.bg} opacity-10 blur-[120px]`} />
@@ -286,42 +287,42 @@ export default function CalculatorClient({
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-4xl mx-auto">
-            <div className={`inline-flex items-center gap-2 rounded-full ${ACTIVE_THEME.bg} px-3 py-1 text-xs font-bold uppercase tracking-widest ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring} mb-8 animate-fade-in`}>
-              <Zap size={14} fill="currentColor" /> 2026 Edition
+            <div className={`inline-flex items-center gap-2 rounded-full ${ACTIVE_THEME.bg} px-3 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring} mb-6 sm:mb-8 animate-fade-in`}>
+              <Zap size={12} fill="currentColor" className="sm:w-3.5 sm:h-3.5" /> 2026 Edition
             </div>
-            <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-7xl mb-8 leading-[1.1] animate-fade-in">
+            <h1 className="text-3xl font-black tracking-tight text-slate-900 sm:text-7xl mb-6 sm:mb-8 leading-[1.1] animate-fade-in">
               {translations.ui.hero.title}
             </h1>
-            <p className="text-lg sm:text-xl leading-relaxed text-slate-600 mb-10 max-w-2xl mx-auto animate-fade-in [animation-delay:100ms]">
+            <p className="text-base sm:text-xl leading-relaxed text-slate-600 mb-8 sm:mb-10 max-w-2xl mx-auto animate-fade-in [animation-delay:100ms]">
               {translations.ui.hero.subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in [animation-delay:200ms]">
-              <a href="#calculators" className={`w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-slate-900 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-slate-200 transition-all hover:bg-slate-800 hover:scale-105 active:scale-95`}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12 animate-fade-in [animation-delay:200ms]">
+              <a href="#calculators" className={`w-full sm:w-auto inline-flex items-center justify-center rounded-xl sm:rounded-2xl bg-slate-900 px-6 py-3.5 sm:px-8 sm:py-4 text-base sm:text-lg font-bold text-white shadow-xl shadow-slate-200 transition-all hover:bg-slate-800 hover:scale-105 active:scale-95`}>
                 {translations.ui.hero.ctaPrimary}
               </a>
-              <a href="#formulas" className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-bold text-slate-700 shadow-sm ring-1 ring-slate-200 transition-all hover:bg-slate-50 hover:ring-slate-300 hover:scale-105 active:scale-95">
+              <a href="#formulas" className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl sm:rounded-2xl bg-white px-6 py-3.5 sm:px-8 sm:py-4 text-base sm:text-lg font-bold text-slate-700 shadow-sm ring-1 ring-slate-200 transition-all hover:bg-slate-50 hover:ring-slate-300 hover:scale-105 active:scale-95">
                 {translations.ui.hero.ctaSecondary}
               </a>
             </div>
-            <div className="flex flex-col items-center gap-8 animate-fade-in [animation-delay:300ms]">
-              <p className="text-sm font-black uppercase tracking-[0.3em] text-slate-400">
+            <div className="flex flex-col items-center gap-6 sm:gap-8 animate-fade-in [animation-delay:300ms]">
+              <p className="text-[10px] sm:text-sm font-black uppercase tracking-[0.3em] text-slate-400">
                 {translations.ui.hero.trustText}
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-100">
-                <div className="flex items-center gap-2 text-xl font-black tracking-tighter">
-                  <ShieldCheck size={24} className={ACTIVE_THEME.accentText} /> SECURE
+              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-16 opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-100">
+                <div className="flex items-center gap-1.5 sm:gap-2 text-base sm:text-base sm:text-xl font-black tracking-tighter">
+                  <ShieldCheck size={18} className={`${ACTIVE_THEME.accentText} sm:w-6 sm:h-6`} /> SECURE
                 </div>
-                <div className="flex items-center gap-2 text-xl font-black tracking-tighter">
-                  <CheckCircle2 size={24} className={ACTIVE_THEME.accentText} /> PRECISE
+                <div className="flex items-center gap-1.5 sm:gap-2 text-base sm:text-base sm:text-xl font-black tracking-tighter">
+                  <CheckCircle2 size={18} className={`${ACTIVE_THEME.accentText} sm:w-6 sm:h-6`} /> PRECISE
                 </div>
-                <div className="flex items-center gap-2 text-xl font-black tracking-tighter">
-                  <Award size={24} className={ACTIVE_THEME.accentText} /> TRUSTED
+                <div className="flex items-center gap-1.5 sm:gap-2 text-base sm:text-base sm:text-xl font-black tracking-tighter">
+                  <Award size={18} className={`${ACTIVE_THEME.accentText} sm:w-6 sm:h-6`} /> TRUSTED
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       <main className="mx-auto w-full max-w-7xl px-4 py-12 sm:py-20 sm:px-6 lg:px-8 overflow-x-hidden">
         <h2 className="sr-only">{translations.seo.intro}</h2>
@@ -329,49 +330,49 @@ export default function CalculatorClient({
         <AdSlot adClient={adClient} adSlot={adSlotTop} adFormat="horizontal" className="my-8" />
 
         {/* How It Works Section */}
-        {/* <section className="mb-20 sm:mb-32">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl mb-4">
+        <section className="mb-16 sm:mb-32">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-lg sm:text-2xl font-black tracking-tight text-slate-900 sm:text-4xl mb-3 sm:mb-4">
               How It Works
             </h2>
-            <p className="text-slate-500 font-medium">Three simple steps to solve any percentage problem.</p>
+            <p className="text-sm sm:text-base text-slate-500 font-medium">Three simple steps to solve any percentage problem.</p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
             {[
               { step: "01", title: "Select Calculator", desc: "Choose the specific percentage problem you need to solve from our specialized cards." },
               { step: "02", title: "Input Values", desc: "Enter your numbers into the clearly marked fields. Results update instantly as you type." },
               { step: "03", title: "Get Results", desc: "Copy your precise result and see the underlying formula used for the calculation." }
             ].map((item, i) => (
-              <div key={i} className="relative p-8 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-xl hover:-translate-y-1">
-                <div className={`text-4xl font-black ${ACTIVE_THEME.accentText} opacity-20 mb-4`}>{item.step}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+              <div key={i} className="relative p-6 sm:p-8 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div className={`text-3xl sm:text-4xl font-black ${ACTIVE_THEME.accentText} opacity-20 mb-3 sm:mb-4`}>{item.step}</div>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
-        </section> */}
+        </section>
 
         <div id="calculators" className="mt-2 flex flex-col gap-8 sm:gap-12">
         
           {/* Card A */}
           <section className={`group mx-auto w-full max-w-4xl rounded-2xl bg-white shadow-sm shadow-slate-200/50 ring-1 ring-slate-200/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-100/50 hover:-translate-y-1 overflow-hidden`}>
-            <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
+            <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-5 sm:p-8`}>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="space-y-1">
-                  <h3 className="text-2xl font-black tracking-tight text-slate-900">
+                  <h3 className="text-xl sm:text-lg sm:text-2xl font-black tracking-tight text-slate-900">
                     {cardA.title}
                   </h3>
-                  <p className="text-sm font-medium text-slate-500">{cardA.formulaDescription.split('.')[0]}.</p>
+                  <p className="text-xs sm:text-sm font-medium text-slate-500">{cardA.formulaDescription.split('.')[0]}.</p>
                 </div>
-                <div className={`inline-flex items-center rounded-xl ${ACTIVE_THEME.bg} px-4 py-2 font-mono text-sm font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+                <div className={`inline-flex items-center rounded-xl ${ACTIVE_THEME.bg} px-3 py-1.5 sm:px-4 sm:py-2 font-mono text-xs sm:text-sm font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
                   {cardA.formula}
                 </div>
               </div>
             </div>
 
-            <div className="p-6 sm:p-10">
-              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-4 gap-y-8">
-                <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
+            <div className="p-5 sm:p-10">
+              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 sm:gap-4 gap-y-6 sm:gap-y-8">
+                <span className="text-[10px] sm:text-sm font-black uppercase tracking-[0.2em] text-slate-400">
                   {cardA.labelValue}
                 </span>
 
@@ -381,19 +382,18 @@ export default function CalculatorClient({
                     value={calcA.percent}
                     onChange={(e) => setCalcA({ ...calcA, percent: e.target.value })}
                     placeholder="10"
-                    className={`w-24 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                    className={`w-20 sm:w-32 rounded-xl bg-slate-50 px-3 py-3 sm:px-4 sm:py-4 text-lg sm:text-base sm:text-xl font-black text-slate-900
                               ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                              sm:w-32`}
+                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300`}
                   />
-                  <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Percentage</div>
+                  <div className="absolute -bottom-5 left-0 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Percentage</div>
                 </div>
 
-                <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring} shadow-sm`}>
-                  <Percent size={24} strokeWidth={3} />
+                <span className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring} shadow-sm`}>
+                  <Percent size={20} strokeWidth={3} className="sm:w-6 sm:h-6" />
                 </span>
 
-                <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
+                <span className="text-[10px] sm:text-sm font-black uppercase tracking-[0.2em] text-slate-400">
                   {cardA.labelTotal}
                 </span>
 
@@ -403,28 +403,27 @@ export default function CalculatorClient({
                     value={calcA.total}
                     onChange={(e) => setCalcA({ ...calcA, total: e.target.value })}
                     placeholder="1000"
-                    className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                    className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl sm:h-auto rounded-xl bg-slate-50 px-3 py-3 sm:px-4 sm:py-4 text-lg sm:text-base sm:text-xl font-black text-slate-900
                               ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                              sm:w-36`}
+                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300`}
                   />
-                  <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Total Value</div>
+                  <div className="absolute -bottom-5 left-0 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Total Value</div>
                 </div>
 
-                <span className="text-3xl font-black text-slate-200 mx-2">{translations.ui.isEqual}</span>
+                <span className="text-2xl sm:text-3xl font-black text-slate-200 mx-1 sm:mx-2">{translations.ui.isEqual}</span>
 
                 <div className="relative">
                   <input
                     readOnly
                     value={calcA.result}
                     placeholder="—"
-                    className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
+                    className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl ${ACTIVE_THEME.resultBg} px-3 py-3 sm:px-4 sm:py-4 text-xl sm:text-lg sm:text-2xl font-black ${ACTIVE_THEME.resultText}
                               shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                              border ${ACTIVE_THEME.resultBorder} sm:w-44`}
+                              border ${ACTIVE_THEME.resultBorder}`}
                   />
                   {calcA.result && (
-                    <div className="absolute -top-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg animate-bounce">
-                      <Zap size={12} fill="currentColor" />
+                    <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg animate-bounce">
+                      <Zap size={10} fill="currentColor" className="sm:w-3 sm:h-3" />
                     </div>
                   )}
                 </div>
@@ -438,7 +437,7 @@ export default function CalculatorClient({
             <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="space-y-1">
-                  <h3 className="text-2xl font-black tracking-tight text-slate-900">
+                  <h3 className="text-lg sm:text-2xl font-black tracking-tight text-slate-900">
                     {cardB.title}
                   </h3>
                   <p className="text-sm font-medium text-slate-500">{cardB.formulaDescription.split('.')[0]}.</p>
@@ -457,7 +456,7 @@ export default function CalculatorClient({
                     value={calcB.value}
                     onChange={(e) => setCalcB({ ...calcB, value: e.target.value })}
                     placeholder="50"
-                    className={`w-24 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                    className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl bg-slate-50 px-4 py-4 text-base sm:text-xl font-black text-slate-900
                               ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                               outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
                               sm:w-32`}
@@ -475,7 +474,7 @@ export default function CalculatorClient({
                     value={calcB.total}
                     onChange={(e) => setCalcB({ ...calcB, total: e.target.value })}
                     placeholder="1000"
-                    className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                    className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl sm:h-auto rounded-xl bg-slate-50 px-3 sm:px-4 py-2 sm:py-4 text-base sm:text-xl font-black text-base sm:text-xl font-black text-slate-900
                               ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                               outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
                               sm:w-36`}
@@ -490,11 +489,11 @@ export default function CalculatorClient({
                     readOnly
                     value={calcB.result}
                     placeholder="—"
-                    className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
+                    className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-lg sm:text-2xl font-black ${ACTIVE_THEME.resultText}
                               shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
                               border ${ACTIVE_THEME.resultBorder} sm:w-44`}
                   />
-                  <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-xl font-black ${ACTIVE_THEME.percentText}`}>
+                  <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-base sm:text-xl font-black ${ACTIVE_THEME.percentText}`}>
                     %
                   </span>
                   {calcB.result && (
@@ -524,7 +523,7 @@ export default function CalculatorClient({
   <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div className="space-y-1">
-        <h3 className="text-2xl font-black tracking-tight text-slate-900">
+        <h3 className="text-lg sm:text-2xl font-black tracking-tight text-slate-900">
           {cardD.title}
         </h3>
         <p className="text-sm font-medium text-slate-500">{cardD.formulaDescription.split('.')[0]}.</p>
@@ -547,7 +546,7 @@ export default function CalculatorClient({
           value={calcD.old}
           onChange={(e) => setCalcD({ ...calcD, old: e.target.value })}
           placeholder="1000"
-          className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+          className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl rounded-xl bg-slate-50 px-3 sm:px-4 py-2 sm:py-4 text-base sm:text-xl font-black text-base sm:text-xl font-black text-slate-900
                     ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                     outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
                     sm:w-36`}
@@ -565,7 +564,7 @@ export default function CalculatorClient({
           value={calcD.new}
           onChange={(e) => setCalcD({ ...calcD, new: e.target.value })}
           placeholder="1200"
-          className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+          className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl bg-slate-50 px-3 sm:px-4 py-2 sm:py-4 text-base sm:text-xl font-black text-base sm:text-xl font-black text-slate-900
                     ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                     outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
                     sm:w-36`}
@@ -580,11 +579,11 @@ export default function CalculatorClient({
           readOnly
           value={calcD.result}
           placeholder="—"
-          className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
+          className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-lg sm:text-2xl font-black ${ACTIVE_THEME.resultText}
                     shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
                     border ${ACTIVE_THEME.resultBorder} sm:w-44`}
         />
-        <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-xl font-black ${ACTIVE_THEME.percentText}`}>
+        <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-base sm:text-xl font-black ${ACTIVE_THEME.percentText}`}>
           %
         </span>
         {calcD.result && (
@@ -604,7 +603,7 @@ export default function CalculatorClient({
           <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="space-y-1">
-                <h3 className="text-2xl font-black tracking-tight text-slate-900">
+                <h3 className="text-lg sm:text-2xl font-black tracking-tight text-slate-900">
                   {cardC.title}
                 </h3>
                 <p className="text-sm font-medium text-slate-500">{cardC.formulaDescription.split('.')[0]}.</p>
@@ -627,7 +626,7 @@ export default function CalculatorClient({
                   value={calcC.base}
                   onChange={(e) => setCalcC({ ...calcC, base: e.target.value })}
                   placeholder="1000"
-                  className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                  className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl rounded-xl bg-slate-50 px-3 sm:px-4 py-2 sm:py-4 text-base sm:text-xl font-black text-base sm:text-xl font-black text-slate-900
                             ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                             outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
                             sm:w-36`}
@@ -645,12 +644,12 @@ export default function CalculatorClient({
                   value={calcC.percent}
                   onChange={(e) => setCalcC({ ...calcC, percent: e.target.value })}
                   placeholder="10"
-                  className={`w-24 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                  className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl bg-slate-50 px-4 py-4 text-base sm:text-xl font-black text-slate-900
                             ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                             outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
                             sm:w-32`}
                 />
-                <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-xl font-black text-slate-300`}>
+                <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-base sm:text-xl font-black text-slate-300`}>
                   %
                 </span>
                 <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Change %</div>
@@ -663,7 +662,7 @@ export default function CalculatorClient({
                   readOnly
                   value={calcC.result}
                   placeholder="—"
-                  className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
+                  className={`w-20 sm:w-32 h-10 sm:h-auto rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-lg sm:text-2xl font-black ${ACTIVE_THEME.resultText}
                             shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
                             border ${ACTIVE_THEME.resultBorder} sm:w-44`}
                 />
@@ -694,11 +693,11 @@ export default function CalculatorClient({
             
             <div className={`rounded-3xl bg-white p-8 sm:p-12 shadow-2xl shadow-slate-200/50 ring-1 ring-slate-200/60 relative overflow-hidden`}>
               <div className={`absolute top-0 right-0 w-32 h-32 ${ACTIVE_THEME.bg} opacity-10 rounded-bl-full`} />
-              <h3 className="mb-6 text-2xl font-black text-slate-900">
+              <h3 className="mb-6 text-lg sm:text-2xl font-black text-slate-900">
                 {translations.seo.howTo.title}
               </h3>
               <p className="mb-8 text-lg text-slate-600 leading-relaxed">{translations.seo.howTo.content}</p>
-              <div className={`mb-8 rounded-2xl ${ACTIVE_THEME.bg} p-6 text-center font-mono text-xl font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+              <div className={`mb-8 rounded-2xl ${ACTIVE_THEME.bg} p-6 text-center font-mono text-base sm:text-xl font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
                 {translations.seo.howTo.formula}
               </div>
               <p className="text-sm font-bold uppercase tracking-widest text-slate-400 italic">{translations.seo.howTo.example}</p>
@@ -765,7 +764,7 @@ export default function CalculatorClient({
                   <span className="text-xs font-black uppercase tracking-[0.3em] text-emerald-600/60">
                     {item.label}
                   </span>
-                  <div className="rounded-2xl bg-white p-6 font-mono text-2xl font-black text-slate-900 shadow-xl ring-1 ring-emerald-200">
+                  <div className="rounded-2xl bg-white p-6 font-mono text-lg sm:text-2xl font-black text-slate-900 shadow-xl ring-1 ring-emerald-200">
                     {item.value}
                   </div>
                 </div>
@@ -783,7 +782,7 @@ export default function CalculatorClient({
             <div className="grid gap-6 max-w-4xl mx-auto">
               {translations.seo.faq.map((item, i) => (
                 <div key={i} className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-xl hover:ring-emerald-200">
-                  <h4 className="text-xl font-black text-slate-900 mb-4 flex items-center gap-3">
+                  <h4 className="text-base sm:text-xl font-black text-slate-900 mb-4 flex items-center gap-3">
                     <span className={`flex h-6 w-6 items-center justify-center rounded-full ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} text-xs`}>?</span>
                     {item.question}
                   </h4>
@@ -814,7 +813,7 @@ export default function CalculatorClient({
                   <Zap size={22} strokeWidth={2.5} fill="currentColor" className="opacity-20" />
                   <Zap size={22} strokeWidth={2.5} className="absolute" />
                 </span>
-                <span className="text-xl font-black uppercase tracking-tighter">
+                <span className="text-base sm:text-xl font-black uppercase tracking-tighter">
                   {translations.seo.h1.split(' ')[0]} <span className={ACTIVE_THEME.accentText}>Calc</span>
                 </span>
               </div>
