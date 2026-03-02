@@ -91,6 +91,13 @@
     "backToTop": "Nach oben",
     "privacyPolicy": "Datenschutzerklärung",
     "termsOfService": "Nutzungsbedingungen",
+    "hero": {
+      "title": "Lösen Sie jedes Prozentproblem sofort",
+      "subtitle": "Der schnellste und genaueste Online-Prozentrechner für Finanzen, Handel und tägliche Mathematik.",
+      "ctaPrimary": "Berechnung starten",
+      "ctaSecondary": "Formeln lernen",
+      "trustText": "Weltweit von Tausenden von Benutzern vertraut"
+    },
     "cardA": {
       "title": "Prozent zu Zahl",
       "formula": "X% von Y = ?",

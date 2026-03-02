@@ -6,26 +6,29 @@ import AdSlot from "@/components/AdSlot";
 import {
   Percent,
   ArrowUp,
-  Zap
+  Zap,
+  ShieldCheck,
+  CheckCircle2,
+  Award
 } from "lucide-react";
 
 const THEMES = {
   emerald: {
     primary: "emerald",
-    bg: "bg-emerald-100",
-    text: "text-emerald-700",
-    ring: "ring-emerald-200",
-    focus: "focus:ring-emerald-500/20",
-    resultBg: "bg-emerald-50/50",
-    resultText: "text-emerald-800",
-    resultRing: "ring-emerald-100",
-    resultBorder: "border-emerald-200/40",
+    bg: "bg-emerald-50",
+    text: "text-emerald-600",
+    ring: "ring-emerald-100",
+    focus: "focus:ring-emerald-500/10",
+    resultBg: "bg-emerald-50/40",
+    resultText: "text-emerald-900",
+    resultRing: "ring-emerald-100/50",
+    resultBorder: "border-emerald-200/50",
     accentText: "text-emerald-600",
     percentText: "text-emerald-300",
-    footerBg: "bg-emerald-100",
-    footerText: "text-emerald-700",
-    footerRing: "ring-emerald-200",
-    hoverShadow: "hover:shadow-emerald-50/50",
+    footerBg: "bg-white",
+    footerText: "text-slate-600",
+    footerRing: "ring-slate-100",
+    hoverShadow: "hover:shadow-emerald-500/10",
     linkHover: "hover:text-emerald-600"
   },
   blue: {
@@ -115,6 +118,13 @@ type Translations = {
     backToTop: string;
     privacyPolicy: string;
     termsOfService: string;
+    hero: {
+      title: string;
+      subtitle: string;
+      ctaPrimary: string;
+      ctaSecondary: string;
+      trustText: string;
+    };
     cardA: CardTranslation;
     cardB: CardTranslation;
     cardC: CardTranslation;
@@ -237,151 +247,261 @@ export default function CalculatorClient({
   const { cardA, cardB, cardC, cardD } = translations.ui;
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased font-sans overflow-x-hidden selection:bg-emerald-100 selection:text-emerald-900">
 
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-8 sm:px-6">
-          <div className="flex items-center gap-4 mb-2">
-            <span className={`relative inline-flex h-9 w-9 items-center justify-center rounded-xl ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} shadow-sm ring-1 ${ACTIVE_THEME.ring}`}>
-              <Zap size={20} strokeWidth={2.5} fill="currentColor" className="opacity-20" />
-              <Zap size={20} strokeWidth={2.5} className="absolute drop-shadow-sm" />
-            </span>
-            <h1 className="text-xl font-bold uppercase tracking-[0.2em] text-slate-900 sm:text-2xl">
-              {translations.seo.h1}
-            </h1>
+      {/* Modern Sticky Navbar */}
+      <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/70 backdrop-blur-xl transition-all duration-300">
+        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3">
+            <a href={`/${locale}`} className="group flex items-center gap-3 transition-transform hover:scale-105">
+              <span className={`relative inline-flex h-10 w-10 items-center justify-center rounded-xl ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} shadow-sm ring-1 ${ACTIVE_THEME.ring} transition-all group-hover:shadow-md group-hover:ring-2`}>
+                <Zap size={22} strokeWidth={2.5} fill="currentColor" className="opacity-20" />
+                <Zap size={22} strokeWidth={2.5} className="absolute drop-shadow-sm" />
+              </span>
+              <span className="hidden text-lg font-black uppercase tracking-tighter text-slate-900 sm:block">
+                {translations.seo.h1.split(' ')[0]} <span className={ACTIVE_THEME.accentText}>Calc</span>
+              </span>
+            </a>
           </div>
-          <p className="mt-2 max-w-4xl text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-600 sm:text-xs">
-            {translations.meta.description}
-          </p>
+
+          <div className="flex items-center gap-4">
+            <nav className="hidden md:flex items-center gap-6">
+              <a href="#calculators" className="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">{translations.ui.calculate}</a>
+              <a href="#faq" className="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">FAQ</a>
+            </nav>
+            <div className="h-6 w-px bg-slate-200 hidden sm:block" />
+            <a href="#calculators" className={`hidden sm:inline-flex items-center justify-center rounded-full ${ACTIVE_THEME.bg} px-5 py-2 text-sm font-bold ${ACTIVE_THEME.text} shadow-sm ring-1 ${ACTIVE_THEME.ring} transition-all hover:shadow-md hover:scale-105 active:scale-95`}>
+              {translations.ui.hero.ctaPrimary}
+            </a>
+          </div>
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:py-8 sm:px-6 overflow-x-hidden">
+      {/* Hero Section */}
+      {/* <section className="relative overflow-hidden bg-white pt-16 pb-20 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-40">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none">
+          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full ${ACTIVE_THEME.bg} opacity-20 blur-[120px]`} />
+          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full ${ACTIVE_THEME.bg} opacity-10 blur-[120px]`} />
+        </div>
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className={`inline-flex items-center gap-2 rounded-full ${ACTIVE_THEME.bg} px-3 py-1 text-xs font-bold uppercase tracking-widest ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring} mb-8 animate-fade-in`}>
+              <Zap size={14} fill="currentColor" /> 2026 Edition
+            </div>
+            <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-7xl mb-8 leading-[1.1] animate-fade-in">
+              {translations.ui.hero.title}
+            </h1>
+            <p className="text-lg sm:text-xl leading-relaxed text-slate-600 mb-10 max-w-2xl mx-auto animate-fade-in [animation-delay:100ms]">
+              {translations.ui.hero.subtitle}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in [animation-delay:200ms]">
+              <a href="#calculators" className={`w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-slate-900 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-slate-200 transition-all hover:bg-slate-800 hover:scale-105 active:scale-95`}>
+                {translations.ui.hero.ctaPrimary}
+              </a>
+              <a href="#formulas" className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-bold text-slate-700 shadow-sm ring-1 ring-slate-200 transition-all hover:bg-slate-50 hover:ring-slate-300 hover:scale-105 active:scale-95">
+                {translations.ui.hero.ctaSecondary}
+              </a>
+            </div>
+            <div className="flex flex-col items-center gap-8 animate-fade-in [animation-delay:300ms]">
+              <p className="text-sm font-black uppercase tracking-[0.3em] text-slate-400">
+                {translations.ui.hero.trustText}
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-100">
+                <div className="flex items-center gap-2 text-xl font-black tracking-tighter">
+                  <ShieldCheck size={24} className={ACTIVE_THEME.accentText} /> SECURE
+                </div>
+                <div className="flex items-center gap-2 text-xl font-black tracking-tighter">
+                  <CheckCircle2 size={24} className={ACTIVE_THEME.accentText} /> PRECISE
+                </div>
+                <div className="flex items-center gap-2 text-xl font-black tracking-tighter">
+                  <Award size={24} className={ACTIVE_THEME.accentText} /> TRUSTED
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      <main className="mx-auto w-full max-w-7xl px-4 py-12 sm:py-20 sm:px-6 lg:px-8 overflow-x-hidden">
         <h2 className="sr-only">{translations.seo.intro}</h2>
 
-        <AdSlot adClient={adClient} adSlot={adSlotTop} adFormat="horizontal" className="my-4" />
+        <AdSlot adClient={adClient} adSlot={adSlotTop} adFormat="horizontal" className="my-8" />
 
-        <div id="calculators" className="mt-2 flex flex-col gap-5 sm:gap-6">
+        {/* How It Works Section */}
+        {/* <section className="mb-20 sm:mb-32">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl mb-4">
+              How It Works
+            </h2>
+            <p className="text-slate-500 font-medium">Three simple steps to solve any percentage problem.</p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              { step: "01", title: "Select Calculator", desc: "Choose the specific percentage problem you need to solve from our specialized cards." },
+              { step: "02", title: "Input Values", desc: "Enter your numbers into the clearly marked fields. Results update instantly as you type." },
+              { step: "03", title: "Get Results", desc: "Copy your precise result and see the underlying formula used for the calculation." }
+            ].map((item, i) => (
+              <div key={i} className="relative p-8 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div className={`text-4xl font-black ${ACTIVE_THEME.accentText} opacity-20 mb-4`}>{item.step}</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section> */}
+
+        <div id="calculators" className="mt-2 flex flex-col gap-8 sm:gap-12">
         
           {/* Card A */}
-          <section className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}>
-            <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-xl font-bold text-slate-900">
-                  {cardA.title}
-                </h3>
-                <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+          <section className={`group mx-auto w-full max-w-4xl rounded-2xl bg-white shadow-sm shadow-slate-200/50 ring-1 ring-slate-200/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-100/50 hover:-translate-y-1 overflow-hidden`}>
+            <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-black tracking-tight text-slate-900">
+                    {cardA.title}
+                  </h3>
+                  <p className="text-sm font-medium text-slate-500">{cardA.formulaDescription.split('.')[0]}.</p>
+                </div>
+                <div className={`inline-flex items-center rounded-xl ${ACTIVE_THEME.bg} px-4 py-2 font-mono text-sm font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
                   {cardA.formula}
                 </div>
               </div>
             </div>
 
-            <div className="p-4 sm:p-8">
-              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
-                <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+            <div className="p-6 sm:p-10">
+              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-4 gap-y-8">
+                <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
                   {cardA.labelValue}
                 </span>
 
-                <input
-                  type="number"
-                  value={calcA.percent}
-                  onChange={(e) => setCalcA({ ...calcA, percent: e.target.value })}
-                  placeholder="10"
-                  className={`w-20 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
-                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                            sm:w-28`}
-                />
+                <div className="relative group/input">
+                  <input
+                    type="number"
+                    value={calcA.percent}
+                    onChange={(e) => setCalcA({ ...calcA, percent: e.target.value })}
+                    placeholder="10"
+                    className={`w-24 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                              ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                              sm:w-32`}
+                  />
+                  <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Percentage</div>
+                </div>
 
-                <span className={`flex h-10 w-10 items-center justify-center rounded-none ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
-                  <Percent size={20} strokeWidth={3} />
+                <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring} shadow-sm`}>
+                  <Percent size={24} strokeWidth={3} />
                 </span>
 
-                <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+                <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
                   {cardA.labelTotal}
                 </span>
 
-                <input
-                  type="number"
-                  value={calcA.total}
-                  onChange={(e) => setCalcA({ ...calcA, total: e.target.value })}
-                  placeholder="1000"
-                  className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
-                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                            sm:w-32`}
-                />
+                <div className="relative group/input">
+                  <input
+                    type="number"
+                    value={calcA.total}
+                    onChange={(e) => setCalcA({ ...calcA, total: e.target.value })}
+                    placeholder="1000"
+                    className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                              ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                              sm:w-36`}
+                  />
+                  <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Total Value</div>
+                </div>
 
-                <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
+                <span className="text-3xl font-black text-slate-200 mx-2">{translations.ui.isEqual}</span>
 
-                <input
-                  readOnly
-                  value={calcA.result}
-                  placeholder="—"
-                  className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
-                            shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                            border ${ACTIVE_THEME.resultBorder} sm:w-40`}
-                />
+                <div className="relative">
+                  <input
+                    readOnly
+                    value={calcA.result}
+                    placeholder="—"
+                    className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
+                              shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
+                              border ${ACTIVE_THEME.resultBorder} sm:w-44`}
+                  />
+                  {calcA.result && (
+                    <div className="absolute -top-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg animate-bounce">
+                      <Zap size={12} fill="currentColor" />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </section>
 
 
           {/* Card B */}
-          <section className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}>
-            <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-xl font-bold text-slate-900">
-                  {cardB.title}
-                </h3>
-                <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+          <section className={`group mx-auto w-full max-w-4xl rounded-2xl bg-white shadow-sm shadow-slate-200/50 ring-1 ring-slate-200/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-100/50 hover:-translate-y-1 overflow-hidden`}>
+            <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-black tracking-tight text-slate-900">
+                    {cardB.title}
+                  </h3>
+                  <p className="text-sm font-medium text-slate-500">{cardB.formulaDescription.split('.')[0]}.</p>
+                </div>
+                <div className={`inline-flex items-center rounded-xl ${ACTIVE_THEME.bg} px-4 py-2 font-mono text-sm font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
                   {cardB.formula}
                 </div>
               </div>
             </div>
 
-            <div className="p-4 sm:p-8">
-              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
-                <input
-                  type="number"
-                  value={calcB.value}
-                  onChange={(e) => setCalcB({ ...calcB, value: e.target.value })}
-                  placeholder="50"
-                  className={`w-20 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
-                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                            sm:w-28`}
-                />
+            <div className="p-6 sm:p-10">
+              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-4 gap-y-8">
+                <div className="relative group/input">
+                  <input
+                    type="number"
+                    value={calcB.value}
+                    onChange={(e) => setCalcB({ ...calcB, value: e.target.value })}
+                    placeholder="50"
+                    className={`w-24 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                              ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                              sm:w-32`}
+                  />
+                  <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Value</div>
+                </div>
 
-                <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+                <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
                   {cardB.labelTotal}
                 </span>
 
-                <input
-                  type="number"
-                  value={calcB.total}
-                  onChange={(e) => setCalcB({ ...calcB, total: e.target.value })}
-                  placeholder="1000"
-                  className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
-                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                            sm:w-32`}
-                />
+                <div className="relative group/input">
+                  <input
+                    type="number"
+                    value={calcB.total}
+                    onChange={(e) => setCalcB({ ...calcB, total: e.target.value })}
+                    placeholder="1000"
+                    className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                              ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                              outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                              sm:w-36`}
+                  />
+                  <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Total</div>
+                </div>
 
-                <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
+                <span className="text-3xl font-black text-slate-200 mx-2">{translations.ui.isEqual}</span>
 
                 <div className="relative">
                   <input
                     readOnly
                     value={calcB.result}
                     placeholder="—"
-                    className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
+                    className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
                               shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                              border ${ACTIVE_THEME.resultBorder} sm:w-40`}
+                              border ${ACTIVE_THEME.resultBorder} sm:w-44`}
                   />
-                  <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-lg font-black ${ACTIVE_THEME.percentText}`}>
+                  <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-xl font-black ${ACTIVE_THEME.percentText}`}>
                     %
                   </span>
+                  {calcB.result && (
+                    <div className="absolute -top-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg animate-bounce">
+                      <Zap size={12} fill="currentColor" />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -399,65 +519,79 @@ export default function CalculatorClient({
 {/* Card D */}
 <section
   id="calc-d"
-  className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}
+  className={`group mx-auto w-full max-w-4xl rounded-2xl bg-white shadow-sm shadow-slate-200/50 ring-1 ring-slate-200/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-100/50 hover:-translate-y-1 overflow-hidden`}
 >
-  <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <h3 className="text-xl font-bold text-slate-900">
-        {cardD.title}
-      </h3>
-      <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+  <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="space-y-1">
+        <h3 className="text-2xl font-black tracking-tight text-slate-900">
+          {cardD.title}
+        </h3>
+        <p className="text-sm font-medium text-slate-500">{cardD.formulaDescription.split('.')[0]}.</p>
+      </div>
+      <div className={`inline-flex items-center rounded-xl ${ACTIVE_THEME.bg} px-4 py-2 font-mono text-sm font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
         {cardD.formula}
       </div>
     </div>
   </div>
 
-  <div className="p-4 sm:p-8">
-    <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
-      <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+  <div className="p-6 sm:p-10">
+    <div className="flex flex-wrap items-center justify-start sm:justify-center gap-4 gap-y-8">
+      <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
         {cardD.labelOld}
       </span>
 
-      <input
-        type="number"
-        value={calcD.old}
-        onChange={(e) => setCalcD({ ...calcD, old: e.target.value })}
-        placeholder="1000"
-        className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
-                  ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                  outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                  sm:w-32`}
-      />
+      <div className="relative group/input">
+        <input
+          type="number"
+          value={calcD.old}
+          onChange={(e) => setCalcD({ ...calcD, old: e.target.value })}
+          placeholder="1000"
+          className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                    ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                    outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                    sm:w-36`}
+        />
+        <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Old Value</div>
+      </div>
 
-      <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+      <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
         {cardD.labelNew}
       </span>
 
-      <input
-        type="number"
-        value={calcD.new}
-        onChange={(e) => setCalcD({ ...calcD, new: e.target.value })}
-        placeholder="1200"
-        className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
-                  ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                  outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                  sm:w-32`}
-      />
+      <div className="relative group/input">
+        <input
+          type="number"
+          value={calcD.new}
+          onChange={(e) => setCalcD({ ...calcD, new: e.target.value })}
+          placeholder="1200"
+          className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                    ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                    outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                    sm:w-36`}
+        />
+        <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">New Value</div>
+      </div>
 
-      <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
+      <span className="text-3xl font-black text-slate-200 mx-2">{translations.ui.isEqual}</span>
 
       <div className="relative">
         <input
           readOnly
           value={calcD.result}
           placeholder="—"
-          className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
+          className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
                     shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                    border ${ACTIVE_THEME.resultBorder} sm:w-40`}
+                    border ${ACTIVE_THEME.resultBorder} sm:w-44`}
         />
-        <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-lg font-black ${ACTIVE_THEME.percentText}`}>
+        <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-xl font-black ${ACTIVE_THEME.percentText}`}>
           %
         </span>
+        {calcD.result && (
+          <div className="absolute -top-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg animate-bounce">
+            <Zap size={12} fill="currentColor" />
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -465,165 +599,195 @@ export default function CalculatorClient({
         {/* Card C */}
         <section
           id="calc-c"
-          className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}
+          className={`group mx-auto w-full max-w-4xl rounded-2xl bg-white shadow-sm shadow-slate-200/50 ring-1 ring-slate-200/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-100/50 hover:-translate-y-1 overflow-hidden`}
         >
-          <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <h3 className="text-xl font-bold text-slate-900">
-                {cardC.title}
-              </h3>
-              <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+          <div className={`border-l-4 border-emerald-500 bg-emerald-50/30 p-6 sm:p-8`}>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="space-y-1">
+                <h3 className="text-2xl font-black tracking-tight text-slate-900">
+                  {cardC.title}
+                </h3>
+                <p className="text-sm font-medium text-slate-500">{cardC.formulaDescription.split('.')[0]}.</p>
+              </div>
+              <div className={`inline-flex items-center rounded-xl ${ACTIVE_THEME.bg} px-4 py-2 font-mono text-sm font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
                 {cardC.formula}
               </div>
             </div>
           </div>
 
-          <div className="p-4 sm:p-8">
-            <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
-              <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+          <div className="p-6 sm:p-10">
+            <div className="flex flex-wrap items-center justify-start sm:justify-center gap-4 gap-y-8">
+              <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
                 {cardC.labelBase}
               </span>
 
-              <input
-                type="number"
-                value={calcC.base}
-                onChange={(e) => setCalcC({ ...calcC, base: e.target.value })}
-                placeholder="1000"
-                className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
-                          ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                          outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                          sm:w-32`}
-              />
+              <div className="relative group/input">
+                <input
+                  type="number"
+                  value={calcC.base}
+                  onChange={(e) => setCalcC({ ...calcC, base: e.target.value })}
+                  placeholder="1000"
+                  className={`w-28 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
+                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                            sm:w-36`}
+                />
+                <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Base Value</div>
+              </div>
 
-              <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+              <span className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 sm:text-base">
                 {cardC.labelChange}
               </span>
 
-              <div className="relative">
+              <div className="relative group/input">
                 <input
                   type="number"
                   value={calcC.percent}
                   onChange={(e) => setCalcC({ ...calcC, percent: e.target.value })}
                   placeholder="10"
-                  className={`w-20 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                  className={`w-24 rounded-xl bg-slate-50 px-4 py-4 text-xl font-black text-slate-900
                             ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                             outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                            sm:w-28`}
+                            sm:w-32`}
                 />
-                <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-lg font-bold text-slate-300`}>
+                <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-xl font-black text-slate-300`}>
                   %
                 </span>
+                <div className="absolute -bottom-6 left-0 text-[10px] font-bold uppercase tracking-widest text-slate-400 opacity-0 group-focus-within/input:opacity-100 transition-opacity">Change %</div>
               </div>
 
-              <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
+              <span className="text-3xl font-black text-slate-200 mx-2">{translations.ui.isEqual}</span>
 
-              <input
-                readOnly
-                value={calcC.result}
-                placeholder="—"
-                className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
-                          shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                          border ${ACTIVE_THEME.resultBorder} sm:w-40`}
-              />
+              <div className="relative">
+                <input
+                  readOnly
+                  value={calcC.result}
+                  placeholder="—"
+                  className={`w-36 rounded-xl ${ACTIVE_THEME.resultBg} px-4 py-4 text-2xl font-black ${ACTIVE_THEME.resultText}
+                            shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
+                            border ${ACTIVE_THEME.resultBorder} sm:w-44`}
+                />
+                {calcC.result && (
+                  <div className="absolute -top-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg animate-bounce">
+                    <Zap size={12} fill="currentColor" />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </section>
         </div>
 
         {/* SEO Content Section */}
-        <div className="mt-16 space-y-12 border-t border-slate-200 pt-16">
+        <div className="mt-32 space-y-24 border-t border-slate-200 pt-32">
           
           {/* Intro & How To */}
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          <div className="grid gap-16 lg:grid-cols-2 items-center">
+            <div className="space-y-8">
+              <h2 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl">
                 {translations.seo.h1}
               </h2>
-              <p className="text-lg leading-relaxed text-slate-600">
+              <p className="text-xl leading-relaxed text-slate-600">
                 {translations.seo.intro}
               </p>
             </div>
             
-            <div className={`rounded-none bg-white p-6 shadow-md ring-1 ring-slate-200`}>
-              <h3 className="mb-4 text-xl font-bold text-slate-800">
+            <div className={`rounded-3xl bg-white p-8 sm:p-12 shadow-2xl shadow-slate-200/50 ring-1 ring-slate-200/60 relative overflow-hidden`}>
+              <div className={`absolute top-0 right-0 w-32 h-32 ${ACTIVE_THEME.bg} opacity-10 rounded-bl-full`} />
+              <h3 className="mb-6 text-2xl font-black text-slate-900">
                 {translations.seo.howTo.title}
               </h3>
-              <p className="mb-4 text-slate-600">{translations.seo.howTo.content}</p>
-              <div className={`mb-4 rounded-none ${ACTIVE_THEME.bg} p-4 text-center font-mono text-lg font-bold ${ACTIVE_THEME.text}`}>
+              <p className="mb-8 text-lg text-slate-600 leading-relaxed">{translations.seo.howTo.content}</p>
+              <div className={`mb-8 rounded-2xl ${ACTIVE_THEME.bg} p-6 text-center font-mono text-xl font-black ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
                 {translations.seo.howTo.formula}
               </div>
-              <p className="text-sm italic text-slate-500">{translations.seo.howTo.example}</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-slate-400 italic">{translations.seo.howTo.example}</p>
             </div>
           </div>
 
           {/* Situations & Why Us */}
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-slate-900">{translations.seo.situations.title}</h3>
-              <p className="text-slate-600">{translations.seo.situations.content}</p>
-              <ul className="space-y-2">
+          <div className="grid gap-16 md:grid-cols-2">
+            <div className="space-y-8">
+              <h3 className="text-3xl font-black text-slate-900">{translations.seo.situations.title}</h3>
+              <p className="text-lg text-slate-600 leading-relaxed">{translations.seo.situations.content}</p>
+              <ul className="grid gap-4">
                 {translations.seo.situations.items.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-600">
-                    <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${ACTIVE_THEME.bg}`} />
-                    {item}
+                  <li key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm ring-1 ring-slate-100 transition-all hover:ring-emerald-200">
+                    <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text}`}>
+                      <Zap size={14} fill="currentColor" />
+                    </span>
+                    <span className="font-bold text-slate-700">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-slate-900">{translations.seo.whyUs.title}</h3>
-              <ul className="grid gap-3 sm:grid-cols-2">
+            <div className="space-y-8">
+              <h3 className="text-3xl font-black text-slate-900">{translations.seo.whyUs.title}</h3>
+              <div className="grid gap-4 sm:grid-cols-2">
                 {translations.seo.whyUs.items.map((item, i) => (
-                  <li key={i} className={`rounded-none border border-slate-100 bg-white p-3 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:border-${ACTIVE_THEME.primary}-200`}>
-                    {item}
-                  </li>
+                  <div key={i} className={`rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all hover:shadow-xl hover:-translate-y-1`}>
+                    <p className="font-black text-slate-800 leading-tight">{item}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
 
           {/* Practical Examples */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-slate-900">{translations.seo.examples.title}</h3>
-            <div className="grid gap-4 sm:grid-cols-3">
+          <div className="space-y-12">
+            <div className="text-center max-w-3xl mx-auto">
+              <h3 className="text-3xl font-black text-slate-900 mb-4">{translations.seo.examples.title}</h3>
+              <p className="text-slate-500 font-medium">Real-world scenarios where percentage calculations are essential.</p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-3">
               {translations.seo.examples.items.map((item, i) => (
-                <div key={i} className="rounded-none border border-slate-200 bg-white p-5 shadow-sm">
-                  <h4 className={`mb-2 font-bold ${ACTIVE_THEME.accentText}`}>{item.title}</h4>
-                  <p className="text-sm leading-relaxed text-slate-600">{item.content}</p>
+                <div key={i} className="rounded-3xl border border-slate-200/60 bg-white p-8 shadow-sm transition-all hover:shadow-2xl hover:ring-2 hover:ring-emerald-500/20">
+                  <h4 className={`mb-4 text-lg font-black ${ACTIVE_THEME.accentText} uppercase tracking-tight`}>{item.title}</h4>
+                  <p className="text-base leading-relaxed text-slate-600 font-medium">{item.content}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Detailed Formulas */}
-          <div className={`rounded-none ${ACTIVE_THEME.bg} p-8 text-center sm:p-12`}>
-            <h3 className={`mb-8 text-2xl font-bold ${ACTIVE_THEME.text}`}>
+          <div id="formulas" className={`rounded-[3rem] ${ACTIVE_THEME.bg} p-12 text-center sm:p-20 relative overflow-hidden`}>
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+              <div className="absolute top-10 left-10 w-40 h-40 border-8 border-white rounded-full" />
+              <div className="absolute bottom-10 right-10 w-60 h-60 border-8 border-white rounded-full" />
+            </div>
+            <h3 className={`mb-12 text-4xl font-black ${ACTIVE_THEME.text} relative`}>
               {translations.seo.formulas.title}
             </h3>
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-2 relative">
               {translations.seo.formulas.items.map((item, i) => (
-                <div key={i} className="space-y-3">
-                  <span className="text-sm font-bold uppercase tracking-wider text-slate-500">
+                <div key={i} className="space-y-4">
+                  <span className="text-xs font-black uppercase tracking-[0.3em] text-emerald-600/60">
                     {item.label}
                   </span>
-                  <div className="rounded-none bg-white p-4 font-mono text-xl font-bold text-slate-800 shadow-sm">
+                  <div className="rounded-2xl bg-white p-6 font-mono text-2xl font-black text-slate-900 shadow-xl ring-1 ring-emerald-200">
                     {item.value}
                   </div>
                 </div>
               ))}
             </div>
-            <p className="mt-8 text-slate-600">{translations.seo.formulas.content}</p>
+            <p className="mt-12 text-lg font-bold text-emerald-800/70 relative">{translations.seo.formulas.content}</p>
           </div>
 
           {/* FAQ Section */}
-          <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-900">FAQ – {translations.ui.calculate}</h3>
-            <div className="grid gap-6 md:grid-cols-2">
+          <div id="faq" className="space-y-16">
+            <div className="text-center">
+              <h3 className="text-4xl font-black text-slate-900 mb-4">Frequently Asked Questions</h3>
+              <p className="text-slate-500 font-medium">Everything you need to know about percentage calculations.</p>
+            </div>
+            <div className="grid gap-6 max-w-4xl mx-auto">
               {translations.seo.faq.map((item, i) => (
-                <div key={i} className="space-y-2">
-                  <h4 className="font-bold text-slate-800">Q: {item.question}</h4>
-                  <p className="text-slate-600">R: {item.answer}</p>
+                <div key={i} className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-xl hover:ring-emerald-200">
+                  <h4 className="text-xl font-black text-slate-900 mb-4 flex items-center gap-3">
+                    <span className={`flex h-6 w-6 items-center justify-center rounded-full ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} text-xs`}>?</span>
+                    {item.question}
+                  </h4>
+                  <p className="text-lg leading-relaxed text-slate-600 pl-9">{item.answer}</p>
                 </div>
               ))}
             </div>
@@ -636,33 +800,65 @@ export default function CalculatorClient({
           adClient={adClient}
           adSlot={adSlotBottom}
           adFormat="auto"
-          className="mt-16"
+          className="mt-32"
         />
       </main>
 
-      {/* Footer */}
-      <footer className="mt-10 border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <span className={`h-8 w-8 flex items-center justify-center rounded-lg ${ACTIVE_THEME.footerBg} ${ACTIVE_THEME.footerText} shadow-sm ring-1 ${ACTIVE_THEME.footerRing}`}><Percent size={16} strokeWidth={3} /></span>
+      {/* Modern Footer */}
+      <footer className="bg-white border-t border-slate-200 pt-20 pb-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 md:grid-cols-4 mb-20">
+            <div className="col-span-2 space-y-6">
+              <div className="flex items-center gap-3">
+                <span className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} shadow-sm ring-1 ${ACTIVE_THEME.ring}`}>
+                  <Zap size={22} strokeWidth={2.5} fill="currentColor" className="opacity-20" />
+                  <Zap size={22} strokeWidth={2.5} className="absolute" />
+                </span>
+                <span className="text-xl font-black uppercase tracking-tighter">
+                  {translations.seo.h1.split(' ')[0]} <span className={ACTIVE_THEME.accentText}>Calc</span>
+                </span>
+              </div>
+              <p className="text-lg text-slate-500 max-w-sm leading-relaxed">
+                The world's most precise and user-friendly percentage calculator. Built for speed, accuracy, and ease of use.
+              </p>
+            </div>
             <div>
-              <div className="text-base font-bold text-slate-900">{translations.seo.h1}</div>
-              <div className="text-xs font-medium text-slate-500">© {currentYear}</div>
+              <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">Product</h4>
+              <ul className="space-y-4">
+                <li><a href="#calculators" className="text-slate-500 hover:text-slate-900 transition-colors font-medium">Calculators</a></li>
+                <li><a href="#formulas" className="text-slate-500 hover:text-slate-900 transition-colors font-medium">Formulas</a></li>
+                <li><a href="#faq" className="text-slate-500 hover:text-slate-900 transition-colors font-medium">FAQ</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">Legal</h4>
+              <ul className="space-y-4">
+                <li><a href={`/${locale}/privacy`} className="text-slate-500 hover:text-slate-900 transition-colors font-medium">{translations.ui.privacyPolicy}</a></li>
+                <li><a href={`/${locale}/terms`} className="text-slate-500 hover:text-slate-900 transition-colors font-medium">{translations.ui.termsOfService}</a></li>
+              </ul>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-6">
-            <a href={`/${locale}/privacy`} className={`text-sm font-bold text-slate-600 ${ACTIVE_THEME.linkHover} transition-colors`}>
-              {translations.ui.privacyPolicy}
-            </a>
-            <a href={`/${locale}/terms`} className={`text-sm font-bold text-slate-600 ${ACTIVE_THEME.linkHover} transition-colors`}>
-              {translations.ui.termsOfService}
-            </a>
-            <a href="#" className={`inline-flex items-center gap-2 text-sm font-bold text-slate-600 ${ACTIVE_THEME.linkHover} transition-colors`}>
-              <ArrowUp size={16} /> {translations.ui.backToTop}
-            </a>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-10 border-t border-slate-100">
+            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">
+              &copy; {currentYear} {translations.seo.h1.split(' ')[0]} Calc. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6">
+              <div className={`h-2 w-2 rounded-full bg-emerald-500 animate-pulse`} />
+              <span className="text-xs font-black uppercase tracking-widest text-slate-400">System Status: Operational</span>
+            </div>
           </div>
         </div>
       </footer>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-2xl transition-all hover:scale-110 active:scale-95 sm:h-16 sm:w-16`}
+        aria-label={translations.ui.backToTop}
+      >
+        <ArrowUp size={24} strokeWidth={3} />
+      </button>
+
     </div>
   );
 }

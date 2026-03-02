@@ -91,6 +91,13 @@
     "backToTop": "Volver arriba",
     "privacyPolicy": "Política de privacidad",
     "termsOfService": "Términos de servicio",
+    "hero": {
+      "title": "Resuelva cualquier problema de porcentaje al instante",
+      "subtitle": "La calculadora de porcentajes en línea más rápida y precisa para finanzas, comercio y matemáticas diarias.",
+      "ctaPrimary": "Empezar a calcular",
+      "ctaSecondary": "Aprender fórmulas",
+      "trustText": "Confiado por miles de usuarios en todo el mundo"
+    },
     "cardA": {
       "title": "Porcentaje a Número",
       "formula": "X% de Y = ?",

@@ -91,6 +91,13 @@
     "backToTop": "Retour en haut",
     "privacyPolicy": "Politique de confidentialité",
     "termsOfService": "Conditions d'utilisation",
+    "hero": {
+      "title": "Résolvez n'importe quel problème de pourcentage instantanément",
+      "subtitle": "Le calculateur de pourcentage en ligne le plus rapide et le plus précis pour la finance, le commerce et les mathématiques quotidiennes.",
+      "ctaPrimary": "Commencer le calcul",
+      "ctaSecondary": "Apprendre les formules",
+      "trustText": "Approuvé par des milliers d'utilisateurs dans le monde"
+    },
     "cardA": {
       "title": "Pourcentage vers Nombre",
       "formula": "X % de Y = ?",

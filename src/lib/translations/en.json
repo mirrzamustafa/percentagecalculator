@@ -91,6 +91,13 @@
     "backToTop": "Back to Top",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
+    "hero": {
+      "title": "Solve Any Percentage Problem Instantly",
+      "subtitle": "The fastest, most accurate online percentage calculator for finance, commerce, and daily math. Simple, free, and precise.",
+      "ctaPrimary": "Start Calculating",
+      "ctaSecondary": "Learn Formulas",
+      "trustText": "Trusted by thousands of users worldwide"
+    },
     "cardA": {
       "title": "Percent to Number",
       "formula": "X% of Y = ?",
