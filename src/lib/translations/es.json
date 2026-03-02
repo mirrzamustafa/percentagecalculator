@@ -4,53 +4,123 @@
     "description": "Calcula fácilmente porcentajes en línea. Encuentra el porcentaje de un número, convierte a porcentaje y calcula aumentos o disminuciones."
   },
   "seo": {
-    "h1": "Calculadora Porcentaje Rápida",
-    "intro": "Usa nuestra calculadora de porcentaje gratuita para resolver problemas comunes de porcentaje de forma rápida y precisa.",
-    "content": "Esta calculadora de porcentaje te ayuda a calcular valores porcentuales, cambios porcentuales, aumentos y disminuciones. Funciona al instante y está optimizada para velocidad y precisión.",
+    "h1": "Calculadora de porcentajes en línea – Rápida y precisa",
+    "intro": "¿Busca calcular un porcentaje de forma rápida y sencilla? En nuestro sitio, nuestra calculadora de porcentajes le permite determinar cualquier porcentaje en segundos, sin esfuerzo y sin riesgo de error. Ya sea que desee calcular un porcentaje sobre un precio, encontrar un descuento o calcular un aumento, nuestra herramienta está hecha para usted.",
+    "howTo": {
+      "title": "Cómo calcular un porcentaje fácilmente",
+      "content": "La fórmula básica para calcular un porcentaje es muy sencilla:",
+      "formula": "Porcentaje = (Parte / Total) × 100",
+      "example": "Ejemplo: si quieres saber cuánto representa 45 de 180: (45 / 180) × 100 = 25%"
+    },
+    "situations": {
+      "title": "Cálculo de porcentajes: situaciones comunes",
+      "content": "Los cálculos de porcentajes se utilizan en muchas áreas de la vida diaria:",
+      "items": [
+        "Comercio y ventas: determinación de descuentos, promociones e IVA",
+        "Finanzas personales: cálculo de intereses, ahorros e inversiones",
+        "Salarios: cálculo de aumentos o disminuciones",
+        "Estadísticas y encuestas: participación en eventos o resultados electorales"
+      ]
+    },
+    "examples": {
+      "title": "Ejemplos prácticos de cálculo de porcentajes",
+      "items": [
+        {
+          "title": "Ejemplo 1: Calcular un porcentaje sobre un precio",
+          "content": "Precio neto: 150 € | Descuento: 15 % | Cálculo: 150 × 0,15 = 22,50 € | Precio final: 150 – 22,50 = 127,50 €"
+        },
+        {
+          "title": "Ejemplo 2: Calcular el porcentaje de aumento",
+          "content": "Salario actual: 2200 € | Aumento: 10 % | Cálculo: 2200 × 0,10 = 220 € | Nuevo salario: 2200 + 220 = 2420 €"
+        },
+        {
+          "title": "Ejemplo 3: Calcular el porcentaje entre dos números",
+          "content": "Número total: 500 | Número de participantes: 325 | Cálculo: (325 / 500) × 100 = 65 %"
+        }
+      ]
+    },
+    "formulas": {
+      "title": "Fórmula para calcular un porcentaje",
+      "content": "Si prefieres hacer el cálculo a mano, aquí tienes las fórmulas:",
+      "items": [
+        {
+          "label": "Porcentaje",
+          "value": "(Valor parcial / Valor total) × 100"
+        },
+        {
+          "label": "Porcentaje de cambio",
+          "value": "((Nuevo valor – Valor antiguo) / Valor antiguo) × 100"
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Por qué utilizar nuestra calculadora de porcentajes en línea",
+      "items": [
+        "Rápida y fiable: resultados instantáneos y exactos",
+        "Fácil de usar: sin necesidad de conocimientos matemáticos avanzados",
+        "Educativa: aprenda a realizar un cálculo de porcentaje usted mismo",
+        "Gratuita: nuestro cálculo de porcentaje gratuito es accesible para todos"
+      ]
+    },
     "faq": [
       {
-        "question": "¿Cómo se calcula el porcentaje?",
-        "answer": "Divide el valor entre el total y multiplica por 100."
+        "question": "¿Cómo calcular un porcentaje?",
+        "answer": "Divide la parte por el total y luego multiplica por 100. Ejemplo: 50 de 200 = (50/200) × 100 = 25 %."
       },
       {
-        "question": "¿Cómo se calcula el aumento porcentual?",
-        "answer": "Resta el valor antiguo al nuevo valor, divide entre el valor antiguo y multiplica por 100."
+        "question": "¿Cómo hacer un cálculo de porcentaje rápidamente?",
+        "answer": "Utilice nuestra calculadora de porcentajes gratuita para obtener el resultado en segundos."
+      },
+      {
+        "question": "¿Cuál es la fórmula para calcular un porcentaje?",
+        "answer": "Porcentaje = (Valor parcial ÷ Valor total) × 100. Para aumento o disminución, use ((Nuevo valor – Valor antiguo) ÷ Valor antiguo) × 100."
+      },
+      {
+        "question": "¿Se puede calcular el porcentaje entre dos números?",
+        "answer": "Sí, divide el número parcial por el número total y multiplica por 100."
+      },
+      {
+        "question": "¿Cómo calcular un porcentaje sobre un precio?",
+        "answer": "Multiplique el precio por el porcentaje en decimal. Ejemplo: 200 € × 0,15 = 30 €."
       }
     ]
   },
   "ui": {
+    "isEqual": "=",
     "calculate": "Calcular",
     "backToTop": "Volver arriba",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio",
     "cardA": {
       "title": "Porcentaje a Número",
       "formula": "X% de Y = ?",
       "formulaDescription": "Nuestra calculadora utiliza la siguiente fórmula: (p1 * v1) / 100 = resultado (donde p1=porcentaje y v1=valor). Ejemplo: (10 * 1000) / 100 = 100",
-      "labelValue": "Valor",
-      "labelTotal": "Total",
+      "labelValue": "Qué es el",
+      "labelTotal": "de",
       "labelResult": "Resultado"
     },
     "cardB": {
       "title": "Número a Porcentaje",
       "formula": "X de Y = ¿qué %?",
       "formulaDescription": "Nuestra calculadora utiliza la siguiente fórmula: (v1 / v2) * 100 = resultado (donde v1=valor y v2=total). Ejemplo: (50 / 1000) * 100 = 5%",
-      "labelValue": "Valor",
-      "labelTotal": "Total",
+      "labelValue": "",
+      "labelTotal": "es qué % de",
       "labelResult": "Resultado"
     },
     "cardC": {
       "title": "Aumento / Disminución",
       "formula": "Base ± X% = ?",
       "formulaDescription": "Nuestra calculadora utiliza la siguiente fórmula: v1 * (1 ± p1 / 100) = resultado (donde v1=base y p1=porcentaje). Ejemplo: 1000 * (1 + 10 / 100) = 1100",
-      "labelBase": "Base",
-      "labelChange": "Cambio",
+      "labelBase": "Cuál es el aumento/disminución porcentual de",
+      "labelChange": "por",
       "labelResult": "Resultado"
     },
     "cardD": {
       "title": "Cambio Porcentual",
       "formula": "Antiguo vs Nuevo = % diferencia?",
       "formulaDescription": "Nuestra calculadora utiliza la siguiente fórmula: ((v2 - v1) / v1) * 100 = resultado (donde v1=antiguo y v2=nuevo). Ejemplo: ((1200 - 1000) / 1000) * 100 = 20%",
-      "labelOld": "Antiguo",
-      "labelNew": "Nuevo",
+      "labelOld": "Cambio de",
+      "labelNew": "a",
       "labelResult": "Resultado"
     },
     "hints": {

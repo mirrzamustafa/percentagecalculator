@@ -8,11 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? "https://percentagecalculator.us"
         : `https://percentagecalculator.${locale}`;
 
-    return {
-      url: `${domain}/${locale}`,
-      lastModified: new Date(),
-    };
-  });
+    const baseUrl = `${domain}/${locale}`;
+    return [
+      { url: baseUrl, lastModified: new Date() },
+      { url: `${baseUrl}/privacy`, lastModified: new Date() },
+      { url: `${baseUrl}/terms`, lastModified: new Date() },
+    ];
+  }).flat();
 
   return routes;
 }

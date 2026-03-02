@@ -4,53 +4,123 @@
     "description": "Berechnen Sie einfach Prozentsätze online. Finden Sie den Prozentsatz einer Zahl, rechnen Sie in Prozent um und berechnen Sie Steigerungen oder Rückgänge."
   },
   "seo": {
-    "h1": "Schneller Prozentrechner",
-    "intro": "Nutzen Sie unseren kostenlosen Prozentrechner, um häufige Prozentaufgaben schnell und genau zu lösen.",
-    "content": "Dieser Prozentrechner hilft Ihnen, Prozentwerte, Prozentveränderungen, Steigerungen und Rückgänge zu berechnen. Er funktioniert sofort und ist auf Geschwindigkeit und Genauigkeit optimiert.",
+    "h1": "Online-Prozentrechner – Schnell & Präzise",
+    "intro": "Möchten Sie einen Prozentsatz schnell und einfach berechnen? Auf unserer Website können Sie mit unserem Prozentrechner jeden Prozentsatz in Sekundenschnelle ermitteln, mühelos und ohne Fehlerrisiko. Egal, ob Sie einen Prozentsatz auf einen Preis berechnen, einen Rabatt finden oder eine Erhöhung berechnen möchten, unser Tool ist für Sie gemacht.",
+    "howTo": {
+      "title": "Wie man einen Prozentsatz einfach berechnet",
+      "content": "Die Grundformel zur Berechnung eines Prozentsatzes ist sehr einfach:",
+      "formula": "Prozentsatz = (Teil / Gesamt) × 100",
+      "example": "Beispiel: Wenn Sie wissen wollen, wie viel 45 von 180 sind: (45 / 180) × 100 = 25%"
+    },
+    "situations": {
+      "title": "Prozentrechnung: Häufige Situationen",
+      "content": "Prozentrechnungen werden in vielen Bereichen des täglichen Lebens verwendet:",
+      "items": [
+        "Handel und Verkauf: Ermittlung von Rabatten, Aktionen und Mehrwertsteuer",
+        "Persönliche Finanzen: Berechnung von Zinsen, Ersparnissen und Investitionen",
+        "Gehälter: Berechnung von Erhöhungen oder Senkungen",
+        "Statistiken und Umfragen: Teilnahme an Veranstaltungen oder Wahlergebnisse"
+      ]
+    },
+    "examples": {
+      "title": "Praktische Beispiele zur Prozentrechnung",
+      "items": [
+        {
+          "title": "Beispiel 1: Prozentsatz auf einen Preis berechnen",
+          "content": "Nettopreis: 150 € | Rabatt: 15 % | Rechnung: 150 × 0,15 = 22,50 € | Endpreis: 150 – 22,50 = 127,50 €"
+        },
+        {
+          "title": "Beispiel 2: Prozentuale Erhöhung berechnen",
+          "content": "Aktuelles Gehalt: 2200 € | Erhöhung: 10 % | Rechnung: 2200 × 0,10 = 220 € | Neues Gehalt: 2200 + 220 = 2420 €"
+        },
+        {
+          "title": "Beispiel 3: Prozentsatz zwischen zwei Zahlen berechnen",
+          "content": "Gesamtzahl: 500 | Anzahl der Teilnehmer: 325 | Rechnung: (325 / 500) × 100 = 65 %"
+        }
+      ]
+    },
+    "formulas": {
+      "title": "Formel zur Berechnung eines Prozentsatzes",
+      "content": "Wenn Sie die Rechnung lieber von Hand machen, finden Sie hier die Formeln:",
+      "items": [
+        {
+          "label": "Prozentsatz",
+          "value": "(Teilwert / Gesamtwert) × 100"
+        },
+        {
+          "label": "Prozentuale Änderung",
+          "value": "((Neuer Wert – Alter Wert) / Alter Wert) × 100"
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Warum Sie unseren Online-Prozentrechner nutzen sollten",
+      "items": [
+        "Schnell und zuverlässig: Sofortige und genaue Ergebnisse",
+        "Einfach zu bedienen: Keine fortgeschrittenen Mathematikkenntnisse erforderlich",
+        "Lehrreich: Lernen Sie, wie man eine Prozentrechnung selbst durchführt",
+        "Kostenlos: Unsere kostenlose Prozentrechnung ist für jeden zugänglich"
+      ]
+    },
     "faq": [
       {
         "question": "Wie berechnet man einen Prozentsatz?",
-        "answer": "Teilen Sie den Wert durch den Gesamtwert und multiplizieren Sie mit 100."
+        "answer": "Teilen Sie den Teil durch das Ganze und multiplizieren Sie das Ergebnis mit 100. Beispiel: 50 von 200 = (50/200) × 100 = 25 %."
       },
       {
-        "question": "Wie berechnet man eine prozentuale Steigerung?",
-        "answer": "Ziehen Sie den alten Wert vom neuen Wert ab, teilen Sie durch den alten Wert und multiplizieren Sie mit 100."
+        "question": "Wie kann man einen Prozentsatz schnell berechnen?",
+        "answer": "Nutzen Sie unseren kostenlosen Prozentrechner, um das Ergebnis in Sekundenschnelle zu erhalten."
+      },
+      {
+        "question": "Wie lautet die Formel zur Berechnung eines Prozentsatzes?",
+        "answer": "Prozentsatz = (Teilwert ÷ Gesamtwert) × 100. Für Erhöhung oder Senkung verwenden Sie ((Neuer Wert – Alter Wert) ÷ Alter Wert) × 100."
+      },
+      {
+        "question": "Kann man den Prozentsatz zwischen zwei Zahlen berechnen?",
+        "answer": "Ja, teilen Sie die Teilzahl durch die Gesamtzahl und multiplizieren Sie mit 100."
+      },
+      {
+        "question": "Wie berechnet man einen Prozentsatz auf einen Preis?",
+        "answer": "Multiplizieren Sie den Preis mit dem Prozentsatz als Dezimalzahl. Beispiel: 200 € × 0,15 = 30 €."
       }
     ]
   },
   "ui": {
+    "isEqual": "=",
     "calculate": "Berechnen",
     "backToTop": "Nach oben",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfService": "Nutzungsbedingungen",
     "cardA": {
       "title": "Prozent zu Zahl",
       "formula": "X% von Y = ?",
       "formulaDescription": "Unser Rechner verwendet die folgende Formel: (p1 * v1) / 100 = Ergebnis (wobei p1=Prozentsatz und v1=Wert). Beispiel: (10 * 1000) / 100 = 100",
-      "labelValue": "Wert",
-      "labelTotal": "Gesamt",
+      "labelValue": "Was ist",
+      "labelTotal": "von",
       "labelResult": "Ergebnis"
     },
     "cardB": {
       "title": "Zahl zu Prozent",
       "formula": "X von Y = wie viel %?",
       "formulaDescription": "Unser Rechner verwendet die folgende Formel: (v1 / v2) * 100 = Ergebnis (wobei v1=Wert und v2=Gesamt). Beispiel: (50 / 1000) * 100 = 5%",
-      "labelValue": "Wert",
-      "labelTotal": "Gesamt",
+      "labelValue": "",
+      "labelTotal": "ist wie viel % von",
       "labelResult": "Ergebnis"
     },
     "cardC": {
       "title": "Erhöhung / Senkung",
       "formula": "Basis ± X% = ?",
       "formulaDescription": "Unser Rechner verwendet die folgende Formel: v1 * (1 ± p1 / 100) = Ergebnis (wobei v1=Basis und p1=Prozentsatz). Beispiel: 1000 * (1 + 10 / 100) = 1100",
-      "labelBase": "Basis",
-      "labelChange": "Änderung",
+      "labelBase": "Was ist die prozentuale Erhöhung/Senkung von",
+      "labelChange": "um",
       "labelResult": "Ergebnis"
     },
     "cardD": {
       "title": "Prozentuale Änderung",
       "formula": "Alt vs Neu = % Unterschied?",
       "formulaDescription": "Unser Rechner verwendet die folgende Formel: ((v2 - v1) / v1) * 100 = Ergebnis (wobei v1=Alt und v2=Neu). Beispiel: ((1200 - 1000) / 1000) * 100 = 20%",
-      "labelOld": "Alt",
-      "labelNew": "Neu",
+      "labelOld": "Änderung von",
+      "labelNew": "auf",
       "labelResult": "Ergebnis"
     },
     "hints": {

@@ -4,53 +4,123 @@
     "description": "Easily calculate percentages online. Find percent of a number, convert to percent, and calculate increases or decreases."
   },
   "seo": {
-    "h1": "Fast Percentage Calculator",
-    "intro": "Use our free percentage calculator to solve common percent problems quickly and accurately.",
-    "content": "This percentage calculator helps you compute percentage values, percentage change, increases and decreases. It works instantly and is optimized for speed and accuracy.",
+    "h1": "Online Percentage Calculator – Fast & Accurate",
+    "intro": "Looking to calculate a percentage quickly and easily? On our site, our percentage calculator allows you to determine any percentage in seconds, effortlessly and without risk of error. Whether you want to calculate a percentage on a price, find a discount, or calculate an increase, our tool is made for you.",
+    "howTo": {
+      "title": "How to calculate a percentage easily",
+      "content": "The basic formula for calculating a percentage is very simple:",
+      "formula": "Percentage = (Part / Total) × 100",
+      "example": "Example: if you want to know what 45 out of 180 represents: (45 / 180) × 100 = 25%"
+    },
+    "situations": {
+      "title": "Percentage calculation: common situations",
+      "content": "Percentage calculations are used in many areas of daily life:",
+      "items": [
+        "Commerce and sales: determining discounts, promotions and VAT",
+        "Personal finance: calculation of interest, savings and investments",
+        "Salaries: calculation of increases or decreases",
+        "Statistics and surveys: participation in events or election results"
+      ]
+    },
+    "examples": {
+      "title": "Practical examples of percentage calculation",
+      "items": [
+        {
+          "title": "Example 1: Calculate a percentage on a price",
+          "content": "Net price: $150 | Discount: 15% | Calculation: 150 × 0.15 = $22.50 | Final price: 150 – 22.50 = $127.50"
+        },
+        {
+          "title": "Example 2: Calculate the percentage increase",
+          "content": "Current salary: $2200 | Increase: 10% | Calculation: 2200 × 0.10 = $220 | New salary: 2200 + 220 = $2420"
+        },
+        {
+          "title": "Example 3: Calculate percentage between two numbers",
+          "content": "Total number: 500 | Number of participants: 325 | Calculation: (325 / 500) × 100 = 65 %"
+        }
+      ]
+    },
+    "formulas": {
+      "title": "Formula for calculating a percentage",
+      "content": "If you prefer to do the calculation by hand, here are the formulas:",
+      "items": [
+        {
+          "label": "Percentage",
+          "value": "(Partial value / Total value) × 100"
+        },
+        {
+          "label": "Percentage change",
+          "value": "((New value – Old value) / Old value) × 100"
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Why use our online percentage calculator",
+      "items": [
+        "Fast and reliable: instant and accurate results",
+        "Easy to use: no need for advanced math knowledge",
+        "Educational: learn how to do a percentage calculation yourself",
+        "Free: our free percentage calculation is accessible to everyone"
+      ]
+    },
     "faq": [
       {
-        "question": "How do you calculate percentage?",
-        "answer": "Divide the value by the total and multiply by 100."
+        "question": "How to calculate a percentage?",
+        "answer": "Divide the part by the total, then multiply by 100. Example: 50 out of 200 = (50/200) × 100 = 25%."
       },
       {
-        "question": "How to calculate percentage increase?",
-        "answer": "Subtract old value from new value, divide by old value and multiply by 100."
+        "question": "How to do a percentage calculation quickly?",
+        "answer": "Use our free percentage calculator to get the result in seconds."
+      },
+      {
+        "question": "What is the formula for calculating a percentage?",
+        "answer": "Percentage = (Partial value ÷ Total value) × 100. For increase or decrease, use ((New value – Old value) ÷ Old value) × 100."
+      },
+      {
+        "question": "Can we calculate the percentage between two numbers?",
+        "answer": "Yes, divide the partial number by the total number and multiply by 100."
+      },
+      {
+        "question": "How to calculate a percentage on a price?",
+        "answer": "Multiply the price by the percentage in decimal. Example: $200 × 0.15 = $30."
       }
     ]
   },
   "ui": {
+    "isEqual": "=",
     "calculate": "Calculate",
     "backToTop": "Back to Top",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
     "cardA": {
       "title": "Percent to Number",
       "formula": "X% of Y = ?",
       "formulaDescription": "Our calculator uses the following formula: (p1 * v1) / 100 = result (where p1=percentage and v1=value). Example: (10 * 1000) / 100 = 100",
-      "labelValue": "Value",
-      "labelTotal": "Total",
+      "labelValue": "What is",
+      "labelTotal": "of",
       "labelResult": "Result"
     },
     "cardB": {
       "title": "Number to Percent",
       "formula": "X out of Y = what %?",
       "formulaDescription": "Our calculator uses the following formula: (v1 / v2) * 100 = result (where v1=value and v2=total). Example: (50 / 1000) * 100 = 5%",
-      "labelValue": "Value",
-      "labelTotal": "Total",
+      "labelValue": "",
+      "labelTotal": "is what % of",
       "labelResult": "Result"
     },
     "cardC": {
       "title": "Increase / Decrease",
       "formula": "Base ± X% = ?",
       "formulaDescription": "Our calculator uses the following formula: v1 * (1 ± p1 / 100) = result (where v1=base and p1=percentage). Example: 1000 * (1 + 10 / 100) = 1100",
-      "labelBase": "Base",
-      "labelChange": "Change",
+      "labelBase": "What is the percentage increase/decrease of",
+      "labelChange": "by",
       "labelResult": "Result"
     },
     "cardD": {
       "title": "Percentage Change",
       "formula": "Old vs New = % difference?",
       "formulaDescription": "Our calculator uses the following formula: ((v2 - v1) / v1) * 100 = result (where v1=old and v2=new). Example: ((1200 - 1000) / 1000) * 100 = 20%",
-      "labelOld": "Old",
-      "labelNew": "New",
+      "labelOld": "Change from",
+      "labelNew": "to",
       "labelResult": "Result"
     },
     "hints": {

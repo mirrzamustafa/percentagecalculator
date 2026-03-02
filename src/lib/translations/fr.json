@@ -1,56 +1,126 @@
 {
   "meta": {
     "title": "Calculateur de Pourcentage Gratuit | Calcul Rapide et Précis",
-    "description": "Calculez facilement des pourcentages en ligne. Trouvez le pourcentage d'un nombre, convertissez en pourcentage, et calculez des augmentations ou diminutions."
+    "description": "Calculez facilement des pourcentages en ligne. Trouvez le pourcentage d’un nombre, convertissez en pourcentage et calculez les augmentations ou diminutions."
   },
   "seo": {
-    "h1": "Calculateur Pourcentage Rapide",
-    "intro": "Utilisez notre calculateur de pourcentage gratuit pour résoudre rapidement et avec précision les problèmes courants de pourcentage.",
-    "content": "Ce calculateur de pourcentage vous aide à calculer des valeurs en pourcentage, des variations de pourcentage, des augmentations et des diminutions. Il fonctionne instantanément et est optimisé pour la rapidité et la précision.",
+    "h1": "Calculateur de pourcentage en ligne – Rapide et précis",
+    "intro": "Vous cherchez à calculer un pourcentage rapidement et facilement ? Sur notre site, notre calculateur de pourcentage vous permet de déterminer n’importe quel pourcentage en quelques secondes, sans effort et sans risque d’erreur. Que vous souhaitiez calculer un pourcentage sur un prix, connaître une réduction, ou calculer une augmentation, notre outil est fait pour vous.",
+    "howTo": {
+      "title": "Comment calculer un pourcentage facilement",
+      "content": "La formule de base pour calculer un pourcentage est très simple :",
+      "formula": "Pourcentage = (Partie / Total) × 100",
+      "example": "Exemple : si vous voulez savoir combien représente 45 sur 180 : (45 / 180) × 100 = 25%"
+    },
+    "situations": {
+      "title": "Calcul pourcentage : situations courantes",
+      "content": "Les calculs de pourcentage sont utilisés dans de nombreux domaines de la vie quotidienne :",
+      "items": [
+        "Commerce et ventes : déterminer des remises, promotions et TVA",
+        "Finance personnelle : calcul des intérêts, épargne et investissements",
+        "Salaires : calcul d’augmentations ou réductions",
+        "Statistiques et sondages : participation à des événements ou résultats d’élections"
+      ]
+    },
+    "examples": {
+      "title": "Exemples pratiques de calcul de pourcentage",
+      "items": [
+        {
+          "title": "Exemple 1 : Calculer un pourcentage sur un prix",
+          "content": "Prix net : 150 € | Réduction : 15 % | Calcul : 150 × 0,15 = 22,50 € | Prix final : 150 – 22,50 = 127,50 €"
+        },
+        {
+          "title": "Exemple 2 : Calculer le pourcentage d’augmentation",
+          "content": "Salaire actuel : 2200 € | Augmentation : 10 % | Calcul : 2200 × 0,10 = 220 € | Nouveau salaire : 2200 + 220 = 2420 €"
+        },
+        {
+          "title": "Exemple 3 : Calcul pourcentage entre deux nombres",
+          "content": "Nombre total : 500 | Nombre de participants : 325 | Calcul : (325 / 500) × 100 = 65 %"
+        }
+      ]
+    },
+    "formulas": {
+      "title": "Formule pour calculer un pourcentage",
+      "content": "Si vous préférez faire le calcul à la main, voici les formules :",
+      "items": [
+        {
+          "label": "Pourcentage",
+          "value": "(Valeur partielle / Valeur totale) × 100"
+        },
+        {
+          "label": "Pourcentage de changement",
+          "value": "((Nouvelle valeur – Ancienne valeur) / Ancienne valeur) × 100"
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Pourquoi utiliser notre calculateur de pourcentage en ligne",
+      "items": [
+        "Rapide et fiable : résultats instantanés et exacts",
+        "Facile à utiliser : aucun besoin de connaissances avancées en mathématiques",
+        "Éducatif : apprenez comment faire un calcul de pourcentage par vous-même",
+        "Gratuit : notre calcul pourcentage gratuit est accessible à tous"
+      ]
+    },
     "faq": [
       {
         "question": "Comment calculer un pourcentage ?",
-        "answer": "Divisez la valeur par le total et multipliez par 100."
+        "answer": "Divisez la partie par le total, puis multipliez par 100. Exemple : 50 sur 200 = (50/200) × 100 = 25 %."
       },
       {
-        "question": "Comment calculer une augmentation en pourcentage ?",
-        "answer": "Soustrayez l'ancienne valeur de la nouvelle, divisez par l'ancienne valeur et multipliez par 100."
+        "question": "Comment faire un calcul de pourcentage rapidement ?",
+        "answer": "Utilisez notre calculateur de pourcentage gratuit pour obtenir le résultat en quelques secondes."
+      },
+      {
+        "question": "Quelle est la formule pour calculer un pourcentage ?",
+        "answer": "Pourcentage = (Valeur partielle ÷ Valeur totale) × 100. Pour l’augmentation ou réduction, utilisez ((Nouvelle valeur – Ancienne valeur) ÷ Ancienne valeur) × 100."
+      },
+      {
+        "question": "Peut-on calculer le pourcentage entre deux nombres ?",
+        "answer": "Oui, divisez le nombre partiel par le nombre total et multipliez par 100."
+      },
+      {
+        "question": "Comment calculer un pourcentage sur un prix ?",
+        "answer": "Multipliez le prix par le pourcentage en décimal. Exemple : 200 € × 0,15 = 30 €."
       }
     ]
   },
   "ui": {
+    "isEqual": "=",
     "calculate": "Calculer",
     "backToTop": "Retour en haut",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
     "cardA": {
-      "title": "Pourcentage en Nombre",
-      "formula": "X% de Y = ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante: (p1 * v1) / 100 = le résultat (où p1=le pourcentage et v1=la valeur). Exemple: (10 * 1000) / 100 = 100",
-      "labelValue": "Valeur",
-      "labelTotal": "Total",
+      "title": "Pourcentage vers Nombre",
+      "formula": "X % de Y = ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante : (p1 * v1) / 100 = résultat (où p1 = pourcentage et v1 = valeur). Exemple : (10 * 1000) / 100 = 100",
+      "labelValue": "Combien fait",
+      "labelTotal": "de",
       "labelResult": "Résultat"
     },
     "cardB": {
-      "title": "Nombre en Pourcentage",
-      "formula": "X sur Y = quel % ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante: (v1 / v2) * 100 = le résultat (où v1=la valeur et v2=le total). Exemple: (50 / 1000) * 100 = 5%",
-      "labelValue": "Valeur",
-      "labelTotal": "Total",
+      "title": "Nombre vers Pourcentage",
+      "formula": "X sur Y = combien % ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante : (v1 / v2) * 100 = résultat (où v1 = valeur et v2 = total). Exemple : (50 / 1000) * 100 = 5 %",
+      "labelValue": "",
+      "labelTotal": "est quel % de",
       "labelResult": "Résultat"
     },
     "cardC": {
       "title": "Augmentation / Diminution",
-      "formula": "Base ± X% = ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante: v1 * (1 ± p1 / 100) = le résultat (où v1=la base et p1=le pourcentage). Exemple: 1000 * (1 + 10 / 100) = 1100",
-      "labelBase": "Base",
-      "labelChange": "Variation",
+      "formula": "Base ± X % = ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante : v1 * (1 ± p1 / 100) = résultat (où v1 = base et p1 = pourcentage). Exemple : 1000 * (1 + 10 / 100) = 1100",
+      "labelBase": "Quelle est l'augmentation/diminution en pourcentage de",
+      "labelChange": "par",
       "labelResult": "Résultat"
     },
     "cardD": {
       "title": "Variation en Pourcentage",
-      "formula": "Ancien vs Nouveau = % différence ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante: ((v2 - v1) / v1) * 100 = le résultat (où v1=l'ancien et v2=le nouveau). Exemple: ((1200 - 1000) / 1000) * 100 = 20%",
-      "labelOld": "Ancien",
-      "labelNew": "Nouveau",
+      "formula": "Ancien vs Nouveau = différence % ?",
+      "formulaDescription": "Notre calculateur utilise la formule suivante : ((v2 - v1) / v1) * 100 = résultat (où v1 = ancien et v2 = nouveau). Exemple : ((1200 - 1000) / 1000) * 100 = 20 %",
+      "labelOld": "Passer de",
+      "labelNew": "à",
       "labelResult": "Résultat"
     },
     "hints": {
@@ -64,8 +134,8 @@
       "increase": "Augmentation.",
       "decrease": "Diminution.",
       "noChange": "Aucun changement.",
-      "enterOldAndNew": "Entrez l'ancien et le nouveau.",
-      "oldCannotBeZero": "L'ancien ne peut pas être 0."
+      "enterOldAndNew": "Entrez l’ancienne et la nouvelle valeur.",
+      "oldCannotBeZero": "L’ancienne valeur ne peut pas être 0."
     }
   }
 }

@@ -71,7 +71,7 @@ export default function AdSlot({
     <div
       className={`ad-slot-wrapper transition-all duration-500 ease-in-out ${
         isFilled 
-          ? `my-6 p-2 bg-slate-100/60 ring-1 ring-slate-200 rounded-2xl ${className}` 
+          ? `my-6 p-2 bg-slate-100/60 ring-1 ring-slate-200 rounded-2xl max-w-full overflow-hidden ${className}` 
           : "h-0 opacity-0 overflow-hidden"
       }`}
       aria-label="Advertisement"

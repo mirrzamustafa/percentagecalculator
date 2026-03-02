@@ -1,62 +1,132 @@
 {
   "meta": {
-    "title": "Calcolatore di Percentuale Gratuito | Calcolo Rapido e Preciso",
+    "title": "Calcolatore di Percentuale Gratuito | Calcolo Veloce e Preciso",
     "description": "Calcola facilmente le percentuali online. Trova la percentuale di un numero, converti in percentuale e calcola aumenti o diminuzioni."
   },
   "seo": {
-    "h1": "Calcolatore Percentuale Rapido",
-    "intro": "Usa il nostro calcolatore di percentuale gratuito per risolvere rapidamente e con precisione i problemi percentuali più comuni.",
-    "content": "Questo calcolatore di percentuale ti aiuta a calcolare valori percentuali, variazioni percentuali, aumenti e diminuzioni. Funziona istantaneamente ed è ottimizzato per velocità e precisione.",
+    "h1": "Calcolatore di percentuali online – Rapido e preciso",
+    "intro": "Vuoi calcolare una percentuale in modo rapido e semplice? Sul nostro sito, il nostro calcolatore di percentuali ti permette di determinare qualsiasi percentuale in pochi secondi, senza sforzo e senza rischio di errore. Che tu voglia calcolare una percentuale su un prezzo, trovare uno sconto o calcolare un aumento, il nostro strumento è fatto per te.",
+    "howTo": {
+      "title": "Come calcolare una percentuale facilmente",
+      "content": "La formula base per calcolare una percentuale è molto semplice:",
+      "formula": "Percentuale = (Parte / Totale) × 100",
+      "example": "Esempio: se vuoi sapere quanto rappresenta 45 su 180: (45 / 180) × 100 = 25%"
+    },
+    "situations": {
+      "title": "Calcolo percentuale: situazioni comuni",
+      "content": "I calcoli delle percentuali sono utilizzati in molti ambiti della vita quotidiana:",
+      "items": [
+        "Commercio e vendite: determinazione di sconti, promozioni e IVA",
+        "Finanza personale: calcolo di interessi, risparmi e investimenti",
+        "Stipendi: calcolo di aumenti o riduzioni",
+        "Statistiche e sondaggi: partecipazione a eventi o risultati elettorali"
+      ]
+    },
+    "examples": {
+      "title": "Esempi pratici di calcolo delle percentuali",
+      "items": [
+        {
+          "title": "Esempio 1: Calcolare una percentuale su un prezzo",
+          "content": "Prezzo netto: 150 € | Sconto: 15 % | Calcolo: 150 × 0,15 = 22,50 € | Prezzo finale: 150 – 22,50 = 127,50 €"
+        },
+        {
+          "title": "Esempio 2: Calcolare la percentuale di aumento",
+          "content": "Stipendio attuale: 2200 € | Aumento: 10 % | Calcolo: 2200 × 0,10 = 220 € | Nuovo stipendio: 2200 + 220 = 2420 €"
+        },
+        {
+          "title": "Esempio 3: Calcolare la percentuale tra due numeri",
+          "content": "Numero totale: 500 | Numero di partecipanti: 325 | Calcolo: (325 / 500) × 100 = 65 %"
+        }
+      ]
+    },
+    "formulas": {
+      "title": "Formula per calcolare una percentuale",
+      "content": "Se preferisci fare il calcolo a mano, ecco le formule:",
+      "items": [
+        {
+          "label": "Percentuale",
+          "value": "(Valore parziale / Valore totale) × 100"
+        },
+        {
+          "label": "Variazione percentuale",
+          "value": "((Nuovo valore – Vecchio valore) / Vecchio valore) × 100"
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Perché usare il nostro calcolatore di percentuali online",
+      "items": [
+        "Rapido e affidabile: risultati istantanei ed esatti",
+        "Facile da usare: nessuna necessità di conoscenze matematiche avanzate",
+        "Educativo: impara come eseguire un calcolo percentuale da solo",
+        "Gratuito: il nostro calcolo percentuale gratuito è accessibile a tutti"
+      ]
+    },
     "faq": [
       {
-        "question": "Come si calcola la percentuale?",
-        "answer": "Dividi il valore per il totale e moltiplica per 100."
+        "question": "Come calcolare una percentuale?",
+        "answer": "Dividi la parte per il totale, quindi moltiplica per 100. Esempio: 50 su 200 = (50/200) × 100 = 25 %."
       },
       {
-        "question": "Come si calcola l'aumento percentuale?",
-        "answer": "Sottrai il vecchio valore dal nuovo valore, dividi per il vecchio valore e moltiplica per 100."
+        "question": "Come fare un calcolo percentuale rapidamente?",
+        "answer": "Usa il nostro calcolatore di percentuali gratuito per ottenere il risultato in pochi secondi."
+      },
+      {
+        "question": "Qual è la formula per calcolare una percentuale?",
+        "answer": "Percentuale = (Valore parziale ÷ Valore totale) × 100. Per aumento o riduzione, usa ((Nuovo valore – Vecchio valore) ÷ Vecchio valore) × 100."
+      },
+      {
+        "question": "Si può calcolare la percentuale tra due numeri?",
+        "answer": "Sì, dividi il numero parziale per il numero totale e moltiplica per 100."
+      },
+      {
+        "question": "Come calcolare una percentuale su un prezzo?",
+        "answer": "Moltiplica il prezzo per la percentuale in decimale. Esempio: 200 € × 0,15 = 30 €."
       }
     ]
   },
   "ui": {
+    "isEqual": "=",
     "calculate": "Calcola",
     "backToTop": "Torna su",
+    "privacyPolicy": "Informativa sulla privacy",
+    "termsOfService": "Termini di servizio",
     "cardA": {
       "title": "Percentuale a Numero",
       "formula": "X% di Y = ?",
-      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: (p1 * v1) / 100 = risultato (dove p1=percentuale e v1=valore). Esempio: (10 * 1000) / 100 = 100",
-      "labelValue": "Valore",
-      "labelTotal": "Totale",
+      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: (p1 * v1) / 100 = risultato (dove p1 = percentuale e v1 = valore). Esempio: (10 * 1000) / 100 = 100",
+      "labelValue": "Qual è il",
+      "labelTotal": "di",
       "labelResult": "Risultato"
     },
     "cardB": {
       "title": "Numero a Percentuale",
       "formula": "X su Y = quale %?",
-      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: (v1 / v2) * 100 = risultato (dove v1=valore e v2=totale). Esempio: (50 / 1000) * 100 = 5%",
-      "labelValue": "Valore",
-      "labelTotal": "Totale",
+      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: (v1 / v2) * 100 = risultato (dove v1 = valore e v2 = totale). Esempio: (50 / 1000) * 100 = 5%",
+      "labelValue": "",
+      "labelTotal": "è quale % di",
       "labelResult": "Risultato"
     },
     "cardC": {
       "title": "Aumento / Diminuzione",
       "formula": "Base ± X% = ?",
-      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: v1 * (1 ± p1 / 100) = risultato (dove v1=base e p1=percentuale). Esempio: 1000 * (1 + 10 / 100) = 1100",
-      "labelBase": "Base",
-      "labelChange": "Variazione",
+      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: v1 * (1 ± p1 / 100) = risultato (dove v1 = base e p1 = percentuale). Esempio: 1000 * (1 + 10 / 100) = 1100",
+      "labelBase": "Qual è l'aumento/diminuzione percentuale di",
+      "labelChange": "per",
       "labelResult": "Risultato"
     },
     "cardD": {
       "title": "Variazione Percentuale",
-      "formula": "Vecchio vs Nuovo = % differenza?",
-      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: ((v2 - v1) / v1) * 100 = risultato (dove v1=vecchio e v2=nuovo). Esempio: ((1200 - 1000) / 1000) * 100 = 20%",
-      "labelOld": "Vecchio",
-      "labelNew": "Nuovo",
+      "formula": "Vecchio vs Nuovo = differenza %?",
+      "formulaDescription": "Il nostro calcolatore utilizza la seguente formula: ((v2 - v1) / v1) * 100 = risultato (dove v1 = vecchio e v2 = nuovo). Esempio: ((1200 - 1000) / 1000) * 100 = 20%",
+      "labelOld": "Cambiamento da",
+      "labelNew": "a",
       "labelResult": "Risultato"
     },
     "hints": {
       "nothingToCopy": "Niente da copiare.",
       "copied": "Copiato.",
-      "copyFailed": "Copia fallita.",
+      "copyFailed": "Copia non riuscita.",
       "enterValueAndTotal": "Inserisci valore e totale.",
       "totalCannotBeZero": "Il totale non può essere 0.",
       "done": "Fatto.",
@@ -64,8 +134,8 @@
       "increase": "Aumento.",
       "decrease": "Diminuzione.",
       "noChange": "Nessuna variazione.",
-      "enterOldAndNew": "Inserisci vecchio e nuovo.",
-      "oldCannotBeZero": "Il vecchio non può essere 0."
+      "enterOldAndNew": "Inserisci valore vecchio e nuovo.",
+      "oldCannotBeZero": "Il valore vecchio non può essere 0."
     }
   }
 }
