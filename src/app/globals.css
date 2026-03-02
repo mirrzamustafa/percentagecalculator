@@ -12,6 +12,20 @@
   --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 }
 
+@layer utilities {
+  /* Chrome, Safari, Edge, Opera */
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  .no-spinner {
+    -moz-appearance: textfield;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #f8fafc;
@@ -60,17 +74,17 @@ body {
 }
 
 .input-field {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
+  /* background: rgba(255, 255, 255, 0.05); */
+  /* border: 1px solid var(--glass-border); */
+  /* border-radius: 12px;
   padding: 12px 16px;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease; */
 }
 
 .input-field:focus {
-  outline: none;
+  /* outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2); */
 }
 
 .btn-primary {
