@@ -35,12 +35,15 @@ const THEMES = {
 const ACTIVE_THEME = THEMES.indigo;
 
 // ... (Types remain the same as your original code)
+type CalculatorClientProps = {
+  locale: string;
+  translations: any; // we’ll improve this next
+};
 
 export default function CalculatorClient({
   locale,
   translations,
-}) {
-
+}: CalculatorClientProps) {
   const h = translations.ui.hints;
 
   const [calcA, setCalcA] = useState({ percent: "", total: "", result: "", hint: "", tone: "" });
