@@ -308,7 +308,7 @@ export default function CalculatorClient({
                  <h2 className="text-3xl font-bold text-slate-900 mb-6">{translations.seo.h1}</h2>
                  <p className="text-base text-slate-500 leading-relaxed mb-6">{translations.seo.intro}</p>
                  <div className="space-y-4">
-                    {translations.seo.whyUs.items.slice(0, 3).map((item, i) => (
+                    {translations.seo.whyUs.items.slice(0, 3).map((item:any, i:number) => (
                       <div key={i} className="flex items-center gap-3 text-sm font-semibold text-slate-700">
                         <CheckCircle2 size={16} className="text-indigo-500" /> {item}
                       </div>
