@@ -39,11 +39,7 @@ const ACTIVE_THEME = THEMES.indigo;
 export default function CalculatorClient({
   locale,
   translations,
-  adClient = "ca-pub-XXXXXXXXXXXXXXXX",
-  adSlotTop = "1111111111",
-  adSlotMid = "2222222222",
-  adSlotBottom = "3333333333"
-}: Props) {
+}) {
 
   const h = translations.ui.hints;
 
