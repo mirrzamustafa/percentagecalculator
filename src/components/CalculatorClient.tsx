@@ -48,7 +48,7 @@ const THEMES = {
   }
 };
 
-const ACTIVE_THEME = THEMES.blue; // Universal theme selection point
+const ACTIVE_THEME = THEMES.emerald; // Universal theme selection point
 
 type UiHints = {
   nothingToCopy: string;
@@ -264,136 +264,126 @@ export default function CalculatorClient({
         <div id="calculators" className="mt-2 flex flex-col gap-5 sm:gap-6">
         
           {/* Card A */}
-          <section className={`group mx-auto w-full max-w-3xl rounded-none bg-white p-4 sm:p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden flex flex-col items-start text-left sm:items-center sm:text-center`}>
-
-            {/* Header */}
-            <div className="flex flex-col items-start sm:items-center gap-1 mb-6">
-              <h3 className="text-lg font-semibold text-slate-800 leading-tight">
-                {cardA.title}
-              </h3>
-              <p className={`text-sm font-medium ${ACTIVE_THEME.accentText} italic`}>
-                {cardA.formula}
-              </p>
+          <section className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}>
+            <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h3 className="text-xl font-bold text-slate-900">
+                  {cardA.title}
+                </h3>
+                <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+                  {cardA.formula}
+                </div>
+              </div>
             </div>
 
-            {/* Inline calculator */}
-            <div className="flex flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-3 gap-y-4">
+            <div className="p-4 sm:p-8">
+              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
+                <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+                  {cardA.labelValue}
+                </span>
 
-              <span className="text-sm font-semibold text-slate-700 sm:text-lg">
-                {cardA.labelValue}
-              </span>
+                <input
+                  type="number"
+                  value={calcA.percent}
+                  onChange={(e) => setCalcA({ ...calcA, percent: e.target.value })}
+                  placeholder="10"
+                  className={`w-20 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                            sm:w-28`}
+                />
 
-              <input
-                type="number"
-                value={calcA.percent}
-                onChange={(e) =>
-                  setCalcA({ ...calcA, percent: e.target.value })
-                }
-                placeholder="10"
-                className={`w-20 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
-                          ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                          outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                          sm:w-24 sm:px-3 sm:py-2.5 sm:text-lg`}
-              />
+                <span className={`flex h-10 w-10 items-center justify-center rounded-none ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+                  <Percent size={20} strokeWidth={3} />
+                </span>
 
-              <span className={`h-8 w-8 flex items-center justify-center rounded-xl ${ACTIVE_THEME.text} sm:h-10 sm:w-10`}>
-                <Percent size={18} strokeWidth={2.5} className="sm:hidden" />
-                <Percent size={20} strokeWidth={2.5} className="hidden sm:block" />
-              </span>
+                <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+                  {cardA.labelTotal}
+                </span>
 
-              <span className="text-sm font-semibold text-slate-700 sm:text-lg">
-                {cardA.labelTotal}
-              </span>
+                <input
+                  type="number"
+                  value={calcA.total}
+                  onChange={(e) => setCalcA({ ...calcA, total: e.target.value })}
+                  placeholder="1000"
+                  className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                            sm:w-32`}
+                />
 
-              <input
-                type="number"
-                value={calcA.total}
-                onChange={(e) =>
-                  setCalcA({ ...calcA, total: e.target.value })
-                }
-                placeholder="1000"
-                className={`w-24 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
-                          ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                          outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                          sm:w-28 sm:px-3 sm:py-2.5 sm:text-lg`}
-              />
+                <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
 
-              <span className="text-sm font-bold text-slate-500 sm:text-lg">{translations.ui.isEqual}</span>
-
-              <input
-                readOnly
-                value={calcA.result}
-                placeholder="—"
-                className={`w-28 rounded-none ${ACTIVE_THEME.resultBg} px-2 py-2 text-sm font-bold ${ACTIVE_THEME.resultText}
-                          shadow-sm ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                          border ${ACTIVE_THEME.resultBorder} sm:w-32 sm:px-3 sm:py-2.5 sm:text-lg`}
-              />
+                <input
+                  readOnly
+                  value={calcA.result}
+                  placeholder="—"
+                  className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
+                            shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
+                            border ${ACTIVE_THEME.resultBorder} sm:w-40`}
+                />
+              </div>
             </div>
           </section>
 
 
           {/* Card B */}
-          <section className={`group mx-auto w-full max-w-3xl rounded-none bg-white p-4 sm:p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden flex flex-col items-start text-left sm:items-center sm:text-center`}>
-
-            {/* Header */}
-            <div className="flex flex-col items-start sm:items-center gap-1 mb-6">
-              <h3 className="text-lg font-semibold text-slate-800 leading-tight">
-                {cardB.title}
-              </h3>
-              <p className={`text-sm font-medium ${ACTIVE_THEME.accentText} italic`}>
-                {cardB.formula}
-              </p>
-            </div>
-            
-            {/* Inline calculator */}
-            <div className="flex flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-3 gap-y-4">
-
-              <input
-                type="number"
-                value={calcB.value}
-                onChange={(e) =>
-                  setCalcB({ ...calcB, value: e.target.value })
-                }
-                placeholder="50"
-                className={`w-20 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
-                          ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                          outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                          sm:w-24 sm:px-3 sm:py-2.5 sm:text-lg`}
-              />
-
-              <span className="text-sm font-semibold text-slate-700 sm:text-lg">
-                {cardB.labelTotal}
-              </span>
-
-              <input
-                type="number"
-                value={calcB.total}
-                onChange={(e) =>
-                  setCalcB({ ...calcB, total: e.target.value })
-                }
-                placeholder="1000"
-                className={`w-24 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
-                          ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                          outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                          sm:w-28 sm:px-3 sm:py-2.5 sm:text-lg`}
-              />
-
-              <span className="text-sm font-bold text-slate-500 sm:text-lg">{translations.ui.isEqual}</span>
-
-              <div className="relative">
-                <input
-                  readOnly
-                  value={calcB.result}
-                  placeholder="—"
-                  className={`w-28 rounded-none ${ACTIVE_THEME.resultBg} px-2 py-2 text-sm font-bold ${ACTIVE_THEME.resultText}
-                            shadow-sm ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                            border ${ACTIVE_THEME.resultBorder} sm:w-32 sm:px-3 sm:py-2.5 sm:text-lg`}
-                />
-                <span className={`absolute right-2 top-1/2 -translate-y-1/2 text-sm font-bold ${ACTIVE_THEME.percentText} sm:right-3 sm:text-lg`}>
-                  %
-                </span>
+          <section className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}>
+            <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h3 className="text-xl font-bold text-slate-900">
+                  {cardB.title}
+                </h3>
+                <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+                  {cardB.formula}
+                </div>
               </div>
+            </div>
 
+            <div className="p-4 sm:p-8">
+              <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
+                <input
+                  type="number"
+                  value={calcB.value}
+                  onChange={(e) => setCalcB({ ...calcB, value: e.target.value })}
+                  placeholder="50"
+                  className={`w-20 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                            sm:w-28`}
+                />
+
+                <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+                  {cardB.labelTotal}
+                </span>
+
+                <input
+                  type="number"
+                  value={calcB.total}
+                  onChange={(e) => setCalcB({ ...calcB, total: e.target.value })}
+                  placeholder="1000"
+                  className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                            sm:w-32`}
+                />
+
+                <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
+
+                <div className="relative">
+                  <input
+                    readOnly
+                    value={calcB.result}
+                    placeholder="—"
+                    className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
+                              shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
+                              border ${ACTIVE_THEME.resultBorder} sm:w-40`}
+                  />
+                  <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-lg font-black ${ACTIVE_THEME.percentText}`}>
+                    %
+                  </span>
+                </div>
+              </div>
             </div>
           </section>
           {/* Ad 2 */}
@@ -409,133 +399,133 @@ export default function CalculatorClient({
 {/* Card D */}
 <section
   id="calc-d"
-  className={`group mx-auto w-full max-w-3xl rounded-none bg-white p-4 sm:p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden flex flex-col items-start text-left sm:items-center sm:text-center`}
+  className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}
 >
-  {/* Header (STACKED) */}
-  <div className="flex flex-col items-start sm:items-center gap-1 mb-6">
-    <h3 className="text-lg font-semibold text-slate-800 leading-tight">
-      {cardD.title}
-    </h3>
-    <p className={`text-sm font-medium ${ACTIVE_THEME.accentText} italic`}>
-      {cardD.formula}
-    </p>
+  <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <h3 className="text-xl font-bold text-slate-900">
+        {cardD.title}
+      </h3>
+      <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+        {cardD.formula}
+      </div>
+    </div>
   </div>
 
-  {/* Inline Calculator (MATCHES CARD A) */}
-  <div className="flex flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-3 gap-y-4">
-
-    <span className="text-sm font-semibold text-slate-700 sm:text-lg">
-      {cardD.labelOld}
-    </span>
-
-    <input
-      type="number"
-      value={calcD.old}
-      onChange={(e) => setCalcD({ ...calcD, old: e.target.value })}
-      placeholder="1000"
-      className={`w-24 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
-                 ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                 outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                 sm:w-28 sm:px-3 sm:py-2.5 sm:text-lg`}
-    />
-
-    <span className="text-sm font-semibold text-slate-700 sm:text-lg">
-      {cardD.labelNew}
-    </span>
-
-    <input
-      type="number"
-      value={calcD.new}
-      onChange={(e) => setCalcD({ ...calcD, new: e.target.value })}
-      placeholder="1200"
-      className={`w-24 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
-                 ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                 outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                 sm:w-28 sm:px-3 sm:py-2.5 sm:text-lg`}
-    />
-
-    <span className="text-sm font-bold text-slate-500 sm:text-lg">{translations.ui.isEqual}</span>
-
-    <div className="relative">
-      <input
-        readOnly
-        value={calcD.result}
-        placeholder="—"
-        className={`w-28 rounded-none ${ACTIVE_THEME.resultBg} px-2 py-2 text-sm font-bold ${ACTIVE_THEME.resultText}
-                   shadow-sm ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                   border ${ACTIVE_THEME.resultBorder} sm:w-32 sm:px-3 sm:py-2.5 sm:text-lg`}
-      />
-      <span className={`absolute right-2 top-1/2 -translate-y-1/2 text-sm font-bold ${ACTIVE_THEME.percentText} sm:right-3 sm:text-lg`}>
-        %
+  <div className="p-4 sm:p-8">
+    <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
+      <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+        {cardD.labelOld}
       </span>
-    </div>
 
+      <input
+        type="number"
+        value={calcD.old}
+        onChange={(e) => setCalcD({ ...calcD, old: e.target.value })}
+        placeholder="1000"
+        className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                  ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                  outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                  sm:w-32`}
+      />
+
+      <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+        {cardD.labelNew}
+      </span>
+
+      <input
+        type="number"
+        value={calcD.new}
+        onChange={(e) => setCalcD({ ...calcD, new: e.target.value })}
+        placeholder="1200"
+        className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                  ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                  outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                  sm:w-32`}
+      />
+
+      <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
+
+      <div className="relative">
+        <input
+          readOnly
+          value={calcD.result}
+          placeholder="—"
+          className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
+                    shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
+                    border ${ACTIVE_THEME.resultBorder} sm:w-40`}
+        />
+        <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-lg font-black ${ACTIVE_THEME.percentText}`}>
+          %
+        </span>
+      </div>
+    </div>
   </div>
 </section>
         {/* Card C */}
         <section
           id="calc-c"
-          className={`group mx-auto w-full max-w-3xl rounded-none bg-white p-4 sm:p-6 shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden flex flex-col items-start text-left sm:items-center sm:text-center`}
+          className={`group mx-auto w-full max-w-3xl rounded-none bg-white shadow-lg shadow-slate-200/40 ring-1 ring-slate-200 transition-all hover:shadow-xl ${ACTIVE_THEME.hoverShadow} overflow-hidden`}
         >
-          {/* Header (STACKED like Card A system) */}
-          <div className="flex flex-col items-start sm:items-center gap-1 mb-6">
-            <h3 className="text-lg font-semibold text-slate-800 leading-tight">
-              {cardC.title}
-            </h3>
-            <p className={`text-sm font-medium ${ACTIVE_THEME.accentText} italic`}>
-              {cardC.formula}
-            </p>
+          <div className={`border-l-4 border-${ACTIVE_THEME.primary}-500 bg-slate-50/50 p-4 sm:p-6`}>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="text-xl font-bold text-slate-900">
+                {cardC.title}
+              </h3>
+              <div className={`inline-flex items-center rounded-none ${ACTIVE_THEME.bg} px-3 py-1 font-mono text-sm font-bold ${ACTIVE_THEME.text} ring-1 ${ACTIVE_THEME.ring}`}>
+                {cardC.formula}
+              </div>
+            </div>
           </div>
 
-          {/* Inline Calculator (MATCHES CARD A STYLE) */}
-          <div className="flex flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-3 gap-y-4">
+          <div className="p-4 sm:p-8">
+            <div className="flex flex-wrap items-center justify-start sm:justify-center gap-3 gap-y-6">
+              <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+                {cardC.labelBase}
+              </span>
 
-            <span className="text-sm font-semibold text-slate-700 sm:text-lg">
-              {cardC.labelBase}
-            </span>
-
-            <input
-              type="number"
-              value={calcC.base}
-              onChange={(e) => setCalcC({ ...calcC, base: e.target.value })}
-              placeholder="1000"
-              className={`w-24 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
-                        ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
-                        outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                        sm:w-28 sm:px-3 sm:py-2.5 sm:text-lg`}
-            />
-
-            <span className="text-sm font-semibold text-slate-700 sm:text-lg">
-              {cardC.labelChange}
-            </span>
-
-            <div className="relative">
               <input
                 type="number"
-                value={calcC.percent}
-                onChange={(e) => setCalcC({ ...calcC, percent: e.target.value })}
-                placeholder="10"
-                className={`w-20 rounded-none bg-white px-2 py-2 text-sm font-semibold text-slate-800
+                value={calcC.base}
+                onChange={(e) => setCalcC({ ...calcC, base: e.target.value })}
+                placeholder="1000"
+                className={`w-24 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
                           ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
                           outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
-                          sm:w-24 sm:px-3 sm:py-2.5 sm:text-lg`}
+                          sm:w-32`}
               />
-              <span className={`absolute right-2 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-300 sm:right-3 sm:text-lg`}>
-                %
+
+              <span className="text-sm font-bold uppercase tracking-wider text-slate-500 sm:text-base">
+                {cardC.labelChange}
               </span>
+
+              <div className="relative">
+                <input
+                  type="number"
+                  value={calcC.percent}
+                  onChange={(e) => setCalcC({ ...calcC, percent: e.target.value })}
+                  placeholder="10"
+                  className={`w-20 rounded-none bg-white px-3 py-2.5 text-lg font-bold text-slate-800
+                            ring-2 ring-slate-100 ${ACTIVE_THEME.focus}
+                            outline-none transition-all border border-slate-200/60 placeholder:text-slate-300
+                            sm:w-28`}
+                />
+                <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-lg font-bold text-slate-300`}>
+                  %
+                </span>
+              </div>
+
+              <span className="text-2xl font-black text-slate-300">{translations.ui.isEqual}</span>
+
+              <input
+                readOnly
+                value={calcC.result}
+                placeholder="—"
+                className={`w-32 rounded-none ${ACTIVE_THEME.resultBg} px-3 py-2.5 text-xl font-black ${ACTIVE_THEME.resultText}
+                          shadow-inner ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
+                          border ${ACTIVE_THEME.resultBorder} sm:w-40`}
+              />
             </div>
-
-            <span className="text-sm font-bold text-slate-500 sm:text-lg">{translations.ui.isEqual}</span>
-
-            <input
-              readOnly
-              value={calcC.result}
-              placeholder="—"
-              className={`w-28 rounded-none ${ACTIVE_THEME.resultBg} px-2 py-2 text-sm font-bold ${ACTIVE_THEME.resultText}
-                        shadow-sm ring-2 ${ACTIVE_THEME.resultRing} focus:outline-none
-                        border ${ACTIVE_THEME.resultBorder} sm:w-32 sm:px-3 sm:py-2.5 sm:text-lg`}
-            />
-
           </div>
         </section>
         </div>
