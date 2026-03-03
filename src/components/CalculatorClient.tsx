@@ -86,20 +86,36 @@ export default function CalculatorClient({
   return (
     <div className="min-h-screen bg-[#f3f4f6] text-slate-900 antialiased font-sans pb-20 selection:bg-blue-100">
       
-      <header className="border-b-4 border-blue-500 bg-white py-5 shadow-md sticky top-0 z-50">
-        <div className="mx-auto flex h-14 w-full max-w-5xl items-center gap-4 px-4 sm:px-6">
+    {/* Header with French Branding & Logo */}
+    <header className="border-b-4 border-blue-500 bg-white py-4 shadow-md sticky top-0 z-50">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6">
+        <div className="flex items-center gap-3">
           <div className="bg-blue-500 p-2 rounded shadow-lg">
             <Percent size={24} className="text-white" strokeWidth={3} />
           </div>
-          <h1 className="text-xl sm:text-2xl font-black tracking-tighter text-slate-900 uppercase">
-            {seo.h1.split(' ')[0]} <span className="text-blue-500">CALCULATEUR</span>
-          </h1>
+          <div className="flex flex-col">
+            <h1 className="text-lg sm:text-xl font-black tracking-tight text-slate-900 uppercase leading-none">
+              {locale === 'fr' ? "Calculer Le Pourcentage" : "Calculate Percentage"}
+            </h1>
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
+              {locale === 'fr' ? "calculer un pourcentage" : "percent math tool"}
+            </span>
+          </div>
         </div>
-      </header>
+      </div>
+    </header>
+      
+      <AdSlot adClient={adClient} adSlot={adSlotTop} />
 
       <main className="mx-auto mt-10 w-full max-w-5xl px-4 space-y-10">
-        
-        <AdSlot adClient={adClient} adSlot={adSlotTop} />
+        {/* Striking, Sharp Keyword-Rich Headline */}
+        <div className="border-l-8 border-blue-500 bg-white p-6 sm:p-8 rounded shadow-sm">
+           <h2 className=" text-slate-900 leading-[1.1] tracking-tight capitalize">
+              {locale === 'fr' 
+                ? "Le calculateur de pourcentage est un outil en ligne gratuit pour calculer un pourcentage." 
+                : "Percentage Calculator is a free online tool to calculate percentages."}
+           </h2>
+        </div>
 
 {/* Card A: Percent to Number */}
 <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-5 sm:p-10 shadow-lg relative">
