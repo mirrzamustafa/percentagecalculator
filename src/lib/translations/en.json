@@ -118,7 +118,7 @@
       "title": "Increase / Decrease",
       "formula": "Base ± X% = ?",
       "formulaDescription": "Our calculator uses the following formula: v1 * (1 ± p1 / 100) = result (where v1=base and p1=percentage). Example: 1000 * (1 + 10 / 100) = 1100",
-      "labelBase": "What is the percentage increase/decrease of",
+      "labelBase": "What is the percentage change of",
       "labelChange": "by",
       "labelResult": "Result"
     },
