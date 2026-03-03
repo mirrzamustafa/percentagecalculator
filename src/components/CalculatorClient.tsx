@@ -80,19 +80,19 @@ export default function CalculatorClient({
     setCalcD({ ...calcD, result: (((n - o) / o) * 100).toFixed(2), hint: "" });
   };
 
-  const inputClass = "w-full border-2 border-slate-400 bg-white p-3 text-xl font-bold text-slate-900 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none rounded shadow-sm no-spinner transition-all";
+  const inputClass = "w-full border-2 border-slate-400 bg-white p-3 text-xl font-bold text-slate-900 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none rounded shadow-sm no-spinner transition-all";
   const labelClass = "mb-2 text-base sm:text-lg font-bold text-slate-800 ";
 
   return (
     <div className="min-h-screen bg-[#f3f4f6] text-slate-900 antialiased font-sans pb-20 selection:bg-blue-100">
       
-      <header className="border-b-4 border-blue-600 bg-white py-5 shadow-md sticky top-0 z-50">
+      <header className="border-b-4 border-blue-500 bg-white py-5 shadow-md sticky top-0 z-50">
         <div className="mx-auto flex h-14 w-full max-w-5xl items-center gap-4 px-4 sm:px-6">
-          <div className="bg-blue-600 p-2 rounded shadow-lg">
+          <div className="bg-blue-500 p-2 rounded shadow-lg">
             <Percent size={24} className="text-white" strokeWidth={3} />
           </div>
           <h1 className="text-xl sm:text-2xl font-black tracking-tighter text-slate-900 uppercase">
-            {seo.h1.split(' ')[0]} <span className="text-blue-600">CALCULATEUR</span>
+            {seo.h1.split(' ')[0]} <span className="text-blue-500">CALCULATEUR</span>
           </h1>
         </div>
       </header>
@@ -144,11 +144,11 @@ export default function CalculatorClient({
       )}
       <button 
         onClick={runCalcA} 
-        className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-700 py-4 text-lg font-black uppercase text-white shadow-xl active:scale-95 transition-all"
+        className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-500 py-4 text-lg font-black uppercase text-white shadow-xl active:scale-95 transition-all"
       >
         {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
       </button>
-      <div className="w-full lg:w-48 bg-white border-2 border-blue-600 py-3 text-2xl font-black text-blue-700 text-center rounded shadow-inner">
+      <div className="w-full lg:w-48 bg-white border-2 border-blue-500 py-3 text-2xl font-black text-blue-500 text-center rounded shadow-inner">
         {calcA.result || "---"}
       </div>
     </div>
@@ -175,10 +175,10 @@ export default function CalculatorClient({
                   {calcB.hint}
                 </span>
               )}
-              <button onClick={runCalcB} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-700 py-4 text-lg font-black uppercase text-white shadow-xl active:scale-95 transition-all">
+              <button onClick={runCalcB} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-500 py-4 text-lg font-black uppercase text-white shadow-xl active:scale-95 transition-all">
                 {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
               </button>
-              <div className="w-full lg:w-48 bg-white border-2 border-blue-600 py-3 text-2xl font-black text-blue-700 text-center rounded shadow-inner flex items-center justify-center gap-1">
+              <div className="w-full lg:w-48 bg-white border-2 border-blue-500 py-3 text-2xl font-black text-blue-500 text-center rounded shadow-inner flex items-center justify-center gap-1">
                 {calcB.result || "---"} <span className="text-blue-400 text-lg font-black">%</span>
               </div>
             </div>
@@ -208,10 +208,10 @@ export default function CalculatorClient({
                   {calcD.hint}
                 </span>
               )}
-              <button onClick={runCalcD} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-700 py-4 text-lg font-black uppercase text-white shadow-xl transition-all">
+              <button onClick={runCalcD} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-500 py-4 text-lg font-black uppercase text-white shadow-xl transition-all">
                 {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
               </button>
-              <div className="w-full lg:w-48 bg-white border-2 border-blue-600 py-3 text-2xl font-black text-blue-700 text-center rounded shadow-inner flex items-center justify-center gap-1">
+              <div className="w-full lg:w-48 bg-white border-2 border-blue-500 py-3 text-2xl font-black text-blue-500 text-center rounded shadow-inner flex items-center justify-center gap-1">
                 {calcD.result || "---"} <span className="text-blue-400 text-lg font-black">%</span>
               </div>
             </div>
@@ -239,10 +239,10 @@ export default function CalculatorClient({
 
     <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
       {calcC.hint && <span className="absolute -top-5 left-0 text-[10px] font-black uppercase text-red-600 leading-none">{calcC.hint}</span>}
-      <button onClick={runCalcC} className="w-full lg:w-48 flex items-center justify-center gap-3 rounded bg-blue-700 py-4 text-lg font-black uppercase tracking-tighter text-white shadow-xl hover:bg-blue-800 active:scale-95 transition-all">
+      <button onClick={runCalcC} className="w-full lg:w-48 flex items-center justify-center gap-3 rounded bg-blue-500 py-4 text-lg font-black uppercase tracking-tighter text-white shadow-xl hover:bg-blue-800 active:scale-95 transition-all">
         {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
       </button>
-      <div className="w-full lg:w-48 bg-white border-2 border-blue-600 p-3.5 text-2xl font-black text-blue-700 text-center rounded shadow-inner">
+      <div className="w-full lg:w-48 bg-white border-2 border-blue-500 p-3.5 text-2xl font-black text-blue-500 text-center rounded shadow-inner">
         {calcC.result || "---"}
       </div>
     </div>
@@ -254,7 +254,7 @@ export default function CalculatorClient({
             <h2 className="text-4xl font-black text-slate-900 leading-[1.1] mb-8 uppercase tracking-tight">
               {seo.h1}
             </h2>
-            <p className="text-xl font-bold text-slate-700 leading-relaxed italic border-l-8 border-blue-600 pl-6">
+            <p className="text-xl font-bold text-slate-700 leading-relaxed italic border-l-8 border-blue-500 pl-6">
               {seo.intro}
             </p>
           </div>
@@ -276,7 +276,7 @@ export default function CalculatorClient({
               <ul className="space-y-4">
                 {seo.situations.items.map((item: string, idx: number) => (
                   <li key={idx} className="flex gap-4 text-slate-800 font-bold text-lg items-start">
-                    <Zap size={24} className="text-blue-600 shrink-0 mt-1" fill="currentColor" />
+                    <Zap size={24} className="text-blue-500 shrink-0 mt-1" fill="currentColor" />
                     {item}
                   </li>
                 ))}
@@ -292,7 +292,7 @@ export default function CalculatorClient({
             <div className="grid gap-6 md:grid-cols-3">
               {seo.examples.items.map((item: any, idx: number) => (
                 <div key={idx} className="bg-white p-6 rounded-xl border-2 border-slate-200 shadow-sm transition-all hover:border-blue-300">
-                  <h5 className="font-black text-blue-700 mb-3 text-lg">{item.title}</h5>
+                  <h5 className="font-black text-blue-500 mb-3 text-lg">{item.title}</h5>
                   <p className="text-sm text-slate-700 font-bold leading-relaxed">{item.content}</p>
                 </div>
               ))}
@@ -306,7 +306,7 @@ export default function CalculatorClient({
               {seo.faq.map((item: any, idx: number) => (
                 <div key={idx} className="p-8 bg-white rounded-xl border-2 border-slate-100 shadow-sm hover:border-blue-200 transition-all">
                   <p className="font-black text-slate-900 text-xl mb-4 flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white text-sm">?</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white text-sm">?</span>
                     {item.question}
                   </p>
                   <p className="text-slate-700 font-semibold leading-relaxed pl-11">{item.answer}</p>
@@ -329,7 +329,7 @@ export default function CalculatorClient({
         </div>
       </footer>
 
-      <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-10 right-10 h-16 w-16 flex items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl hover:scale-110 active:scale-95 transition-all z-50">
+      <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-10 right-10 h-16 w-16 flex items-center justify-center rounded-full bg-blue-500 text-white shadow-2xl hover:scale-110 active:scale-95 transition-all z-50">
         <ArrowUp size={28} strokeWidth={4} />
       </button>
 
