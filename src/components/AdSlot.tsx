@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 interface AdSlotProps {
-  adClient: string;   // e.g. "ca-pub-XXXXXXXXXXXXXXXX"
-  adSlot: string;     // e.g. "1234567890"
+  adClient: string;
+  adSlot: string;
   adFormat?: "auto" | "rectangle" | "horizontal" | "vertical";
   fullWidthResponsive?: boolean;
   className?: string;
@@ -12,7 +12,7 @@ interface AdSlotProps {
 
 declare global {
   interface Window {
-    adsbygoogle: unknown[];
+    adsbygoogle: any[];
   }
 }
 
@@ -28,30 +28,22 @@ export default function AdSlot({
   const pushed = useRef(false);
 
   useEffect(() => {
-    if (pushed.current) return;
-    
-    // Initialize AdSense
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      pushed.current = true;
-    } catch (e) {
-      console.error("AdSense push error", e);
+    // Only push if the ref is available and we haven't pushed yet
+    if (adRef.current && !pushed.current) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        pushed.current = true;
+      } catch (e) {
+        console.error("AdSense push error", e);
+      }
     }
 
-    // Observe the 'ins' tag for status changes
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === "attributes" && mutation.attributeName === "data-ad-status") {
           const status = adRef.current?.getAttribute("data-ad-status");
           if (status === "filled") {
-            // Delay showing the ad by 3 seconds even if filled
-            timeoutId = setTimeout(() => {
-              setIsFilled(true);
-            }, 3000);
-          } else if (status === "unfilled") {
-            if (timeoutId) clearTimeout(timeoutId);
-            setIsFilled(false);
+            setIsFilled(true);
           }
         }
       });
@@ -61,25 +53,22 @@ export default function AdSlot({
       observer.observe(adRef.current, { attributes: true });
     }
 
-    return () => {
-      observer.disconnect();
-      if (timeoutId) clearTimeout(timeoutId);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
+    /* 1. We remove h-0. We use min-h to reserve space for SEO/CLS */
     <div
-      className={`ad-slot-wrapper transition-all duration-500 ease-in-out ${
-        isFilled 
-          ? `my-6 p-2 bg-slate-100/60 ring-1 ring-slate-200 rounded-2xl max-w-full overflow-hidden ${className}` 
-          : "h-0 opacity-0 overflow-hidden"
-      }`}
+      className={`ad-slot-wrapper w-full mx-auto transition-opacity duration-500 ${
+        isFilled ? "opacity-100" : "opacity-0"
+      } ${className}`}
+      style={{ minHeight: isFilled ? "auto" : "280px" }} 
       aria-label="Advertisement"
     >
       <ins
         ref={adRef}
-        className="adsbygoogle block w-full"
-        style={{ display: "block" }}
+        className="adsbygoogle"
+        style={{ display: "block", minWidth: "250px", minHeight: "250px" }}
         data-ad-client={adClient}
         data-ad-slot={adSlot}
         data-ad-format={adFormat}

@@ -107,16 +107,17 @@ export default function CalculatorClient({
       </a>
     </header>
       
-      <AdSlot adClient={adClient} adSlot={adSlotTop} />
-
+      {/* <div className="flex justify-center">
+        <AdSlot adClient={adClient} adSlot={adSlotTop} />
+      </div> */}
       <main className="mx-auto mt-10 w-full max-w-5xl px-4 space-y-10">
         {/* Striking, Sharp Keyword-Rich Headline */}
         <div className="border-l-3 border-blue-400 bg-white p-6 sm:p-8 rounded shadow-sm">
-           <h2 className="font-medium text-md  leading-[1.1] tracking-tight">
+           <p className="font-medium text-md  leading-[1.1] tracking-tight">
               {locale === 'fr' 
                 ? "Le calculateur de pourcentage est un outil en ligne gratuit pour calculer un pourcentage." 
                 : "Percentage Calculator is a free online tool to calculate percentages."}
-           </h2>
+           </p>
         </div>
 
       {/* Card A: Percent to Number */}
@@ -203,8 +204,9 @@ export default function CalculatorClient({
           </div>
         </section>
 
-        <AdSlot adClient={adClient} adSlot={adSlotMid} />
-
+        {/* <div className="flex justify-center">
+          <AdSlot adClient={adClient} adSlot={adSlotTop} />
+        </div> */}
         {/* Card D: Percentage Change */}
         <section className="rounded-xl border-2 border-slate-300 bg-white p-6 sm:p-10 shadow-lg relative">
           <h2 className="mb-6 text-md  lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize">{cardD.title}</h2>
@@ -271,10 +273,10 @@ export default function CalculatorClient({
         {/* SEO CONTENT SECTION */}
         <div className="mt-24 space-y-16 border-t-4 border-slate-300 pt-20 pb-12">
           <div className="max-w-3xl">
-            <h2 className="text-4xl font-medium text-slate-900 leading-[1.1] mb-8 capitalize tracking-tight">
+            <h2 className="text-2xl font-medium text-slate-900 leading-[1.1] mb-8 capitalize tracking-tight">
               {seo.h1}
             </h2>
-            <p className="text-md font-medium text-slate-900 leading-relaxed italic border-l-3 border-blue-400 pl-6">
+            <p className=" font-medium text-slate-600 leading-relaxed border-l-3 border-blue-400 pl-6">
               {seo.intro}
             </p>
           </div>
@@ -312,7 +314,7 @@ export default function CalculatorClient({
             <div className="grid gap-6 md:grid-cols-3">
               {seo.examples.items.map((item: any, idx: number) => (
                 <div key={idx} className="bg-white p-6 rounded-xl border-2 border-slate-200 shadow-sm transition-all hover:border-blue-300">
-                  <h5 className="font-bold text-blue-400 mb-3 text-lg">{item.title}</h5>
+                  <h3 className="font-bold text-blue-400 mb-3 text-lg">{item.title}</h3>
                   <p className="text-sm text-slate-900 font-medium leading-relaxed">{item.content}</p>
                 </div>
               ))}
@@ -320,7 +322,7 @@ export default function CalculatorClient({
           </div>
 {/* FAQ Section */}
 <div id="faq" className="max-w-4xl mx-auto space-y-12">
-  <h3 className="text-3xl font-medium text-slate-900 text-center uppercase tracking-tight">FAQ</h3>
+  <h2 className="text-3xl font-medium text-slate-900 text-center uppercase tracking-tight">FAQ</h2>
   <div className="space-y-6">
     {seo.faq.map((item: any, idx: number) => (
       <div key={idx} className="p-6 sm:p-8 bg-white rounded-xl border-2 border-slate-100 shadow-sm hover:border-blue-200 transition-all">
@@ -344,7 +346,9 @@ export default function CalculatorClient({
 </div>
         </div>
 
-        <AdSlot adClient={adClient} adSlot={adSlotBottom} />
+{/* <div className=" flex justify-center">
+  <AdSlot adClient={adClient} adSlot={adSlotTop} />
+</div> */}
       </main>
 
       <footer className="bg-slate-900 text-slate-300 py-16">
@@ -360,7 +364,23 @@ export default function CalculatorClient({
       <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-10 right-10 h-16 w-16 flex items-center justify-center rounded-full bg-blue-400 text-white shadow-2xl hover:scale-110 active:scale-95 transition-all z-50">
         <ArrowUp size={28} strokeWidth={4} />
       </button>
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": seo.faq.map((item: any) => ({
+              "@type": "Question",
+              "name": item.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+              }
+            }))
+          })
+        }}
+      />
     </div>
   );
 }
