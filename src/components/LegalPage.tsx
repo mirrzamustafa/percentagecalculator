@@ -39,23 +39,24 @@ export default function LegalPage({ locale, title, content, translations }: Prop
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 antialiased font-sans overflow-x-hidden">
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-8 sm:px-6">
-          <div className="flex items-center gap-4 mb-2">
-            <a href={`/${locale}`} className="flex items-center gap-4">
-              <span className={`relative inline-flex h-9 w-9 items-center justify-center rounded-xl ${ACTIVE_THEME.bg} ${ACTIVE_THEME.text} shadow-sm ring-1 ${ACTIVE_THEME.ring}`}>
-                <Zap size={20} strokeWidth={2.5} fill="currentColor" className="opacity-20" />
-                <Zap size={20} strokeWidth={2.5} className="absolute drop-shadow-sm" />
-              </span>
-              <h1 className="text-xl font-bold uppercase tracking-[0.2em] text-slate-900 sm:text-2xl">
-                {translations.seo.h1}
+      <header className="border-b-4 border-blue-500 bg-white py-4 shadow-md sticky top-0 z-50 -mx-4 sm:-mx-6 mb-10">
+        <a href={`/${locale}`}>
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6">
+          <div className="flex items-center gap-3">
+            <div className="bg-blue-500 p-2 rounded shadow-lg shrink-0">
+              <Percent size={24} className="text-white" strokeWidth={3} />
+            </div>
+            <div className="flex flex-col min-w-0">
+              <h1 className="text-lg sm:text-xl font-black tracking-tight text-slate-900 uppercase leading-none">
+                {locale === 'fr' ? "Calculer Le Pourcentage" : translations.ui?.headerTitle || "Calculate Percentage"}
               </h1>
-            </a>
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-tight mt-1 leading-tight">
+                {translations.seo?.headline || "Percentage Calculator is a free online tool to calculate percentages."}
+              </span>
+            </div>
           </div>
-          <p className="mt-2 max-w-4xl text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-600 sm:text-xs">
-            {translations.meta.description}
-          </p>
         </div>
+        </a>
       </header>
 
       <main className="mx-auto w-full max-w-4xl px-4 py-12 sm:py-16 sm:px-6">
@@ -67,26 +68,14 @@ export default function LegalPage({ locale, title, content, translations }: Prop
         </div>
       </main>
 
-      <footer className="mt-10 border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <span className={`h-8 w-8 flex items-center justify-center rounded-lg ${ACTIVE_THEME.footerBg} ${ACTIVE_THEME.footerText} shadow-sm ring-1 ${ACTIVE_THEME.footerRing}`}><Percent size={16} strokeWidth={3} /></span>
-            <div>
-              <div className="text-base font-bold text-slate-900">{translations.seo.h1}</div>
-              <div className="text-xs font-medium text-slate-500">© {currentYear}</div>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-6">
-            <a href={`/${locale}/privacy`} className={`text-sm font-bold text-slate-600 ${ACTIVE_THEME.linkHover} transition-colors`}>
-              {translations.ui.privacyPolicy}
-            </a>
-            <a href={`/${locale}/terms`} className={`text-sm font-bold text-slate-600 ${ACTIVE_THEME.linkHover} transition-colors`}>
-              {translations.ui.termsOfService}
-            </a>
-            <a href="#" className={`inline-flex items-center gap-2 text-sm font-bold text-slate-600 ${ACTIVE_THEME.linkHover} transition-colors`}>
-              <ArrowUp size={16} /> {translations.ui.backToTop}
-            </a>
-          </div>
+
+      <footer className="bg-slate-900 text-slate-300 py-16">
+        <div className="mx-auto max-w-7xl px-4 text-center">
+           <p className="text-sm font-bold uppercase tracking-widest mb-6">&copy; {currentYear} {translations.seo.h1.split(' ')[0]} Calc</p>
+           <div className="flex justify-center gap-10 text-xs font-bold uppercase">
+              <a href={`/${locale}/privacy`} className="hover:text-white transition-colors">{translations.ui.privacyPolicy}</a>
+              <a href={`/${locale}/terms`} className="hover:text-white transition-colors">{translations.ui.termsOfService}</a>
+           </div>
         </div>
       </footer>
     </div>

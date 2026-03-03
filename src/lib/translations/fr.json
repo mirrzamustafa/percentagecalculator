@@ -1,148 +1,81 @@
 {
   "meta": {
-    "title": "Calculateur de Pourcentage Gratuit | Calcul Rapide et Précis",
-    "description": "Calculez facilement des pourcentages en ligne. Trouvez le pourcentage d’un nombre, convertissez en pourcentage et calculez les augmentations ou diminutions."
+    "title": "Free Percentage Calculator | Fast & Accurate Calculation",
+    "description": "Easily calculate percentages online. Find the percentage of a number, convert to percentage, and calculate increases or decreases."
   },
   "seo": {
-    "h1": "Calculateur de pourcentage en ligne – Rapide et précis",
-    "intro": "Vous cherchez à calculer un pourcentage rapidement et facilement ? Sur notre site, notre calculateur de pourcentage vous permet de déterminer n’importe quel pourcentage en quelques secondes, sans effort et sans risque d’erreur. Que vous souhaitiez calculer un pourcentage sur un prix, connaître une réduction, ou calculer une augmentation, notre outil est fait pour vous.",
+    "h1": "Online Percentage Calculator – Fast & Accurate",
+    "intro": "Looking to calculate a percentage quickly and easily? On our site, our percentage calculator allows you to determine any percentage in seconds, effortlessly and without risk of error. Whether you want to calculate a percentage on a price, find a discount, or calculate an increase, our tool is made for you.",
+    "headline": "The percentage calculator is a free online tool to calculate a percentage.",
     "howTo": {
-      "title": "Comment calculer un pourcentage facilement",
-      "content": "La formule de base pour calculer un pourcentage est très simple :",
-      "formula": "Pourcentage = (Partie / Total) × 100",
-      "example": "Exemple : si vous voulez savoir combien représente 45 sur 180 : (45 / 180) × 100 = 25%"
+      "title": "How to calculate a percentage easily",
+      "content": "The basic formula for calculating a percentage is very simple:",
+      "formula": "Percentage = (Part / Total) × 100",
+      "example": "Example: if you want to know how much 45 out of 180 represents: (45 / 180) × 100 = 25%"
     },
     "situations": {
-      "title": "Calcul pourcentage : situations courantes",
-      "content": "Les calculs de pourcentage sont utilisés dans de nombreux domaines de la vie quotidienne :",
+      "title": "Percentage calculation: common situations",
       "items": [
-        "Commerce et ventes : déterminer des remises, promotions et TVA",
-        "Finance personnelle : calcul des intérêts, épargne et investissements",
-        "Salaires : calcul d’augmentations ou réductions",
-        "Statistiques et sondages : participation à des événements ou résultats d’élections"
+        "Commerce and sales: determining discounts, promotions, and VAT",
+        "Personal finance: calculation of interest, savings, and investments",
+        "Salaries: calculation of increases or decreases",
+        "Statistics and surveys: participation in events or election results"
       ]
     },
     "examples": {
-      "title": "Exemples pratiques de calcul de pourcentage",
+      "title": "Practical examples of percentage calculation",
       "items": [
-        {
-          "title": "Exemple 1 : Calculer un pourcentage sur un prix",
-          "content": "Prix net : 150 € | Réduction : 15 % | Calcul : 150 × 0,15 = 22,50 € | Prix final : 150 – 22,50 = 127,50 €"
-        },
-        {
-          "title": "Exemple 2 : Calculer le pourcentage d’augmentation",
-          "content": "Salaire actuel : 2200 € | Augmentation : 10 % | Calcul : 2200 × 0,10 = 220 € | Nouveau salaire : 2200 + 220 = 2420 €"
-        },
-        {
-          "title": "Exemple 3 : Calcul pourcentage entre deux nombres",
-          "content": "Nombre total : 500 | Nombre de participants : 325 | Calcul : (325 / 500) × 100 = 65 %"
-        }
-      ]
-    },
-    "formulas": {
-      "title": "Formule pour calculer un pourcentage",
-      "content": "Si vous préférez faire le calcul à la main, voici les formules :",
-      "items": [
-        {
-          "label": "Pourcentage",
-          "value": "(Valeur partielle / Valeur totale) × 100"
-        },
-        {
-          "label": "Pourcentage de changement",
-          "value": "((Nouvelle valeur – Ancienne valeur) / Ancienne valeur) × 100"
-        }
+        { "title": "Example 1: Calculate a percentage on a price", "content": "Net price: $150 | Discount: 15% | Calculation: 150 × 0.15 = $22.50 | Final price: 150 – 22.50 = $127.50" },
+        { "title": "Example 2: Calculate the percentage increase", "content": "Current salary: $2200 | Increase: 10% | Calculation: 2200 × 0.10 = $220 | New salary: 2200 + 220 = $2420" },
+        { "title": "Example 3: Calculate percentage between two numbers", "content": "Total number: 500 | Number of participants: 325 | Calculation: (325 / 500) × 100 = 65%" }
       ]
     },
     "whyUs": {
-      "title": "Pourquoi utiliser notre calculateur de pourcentage en ligne",
+      "title": "Why use our online percentage calculator",
       "items": [
-        "Rapide et fiable : résultats instantanés et exacts",
-        "Facile à utiliser : aucun besoin de connaissances avancées en mathématiques",
-        "Éducatif : apprenez comment faire un calcul de pourcentage par vous-même",
-        "Gratuit : notre calcul pourcentage gratuit est accessible à tous"
+        "Fast and reliable: instant and accurate results",
+        "Easy to use: no need for advanced math knowledge",
+        "Educational: learn how to do a percentage calculation yourself",
+        "Free: our free percentage calculation is accessible to everyone"
       ]
     },
     "faq": [
-      {
-        "question": "Comment calculer un pourcentage ?",
-        "answer": "Divisez la partie par le total, puis multipliez par 100. Exemple : 50 sur 200 = (50/200) × 100 = 25 %."
-      },
-      {
-        "question": "Comment faire un calcul de pourcentage rapidement ?",
-        "answer": "Utilisez notre calculateur de pourcentage gratuit pour obtenir le résultat en quelques secondes."
-      },
-      {
-        "question": "Quelle est la formule pour calculer un pourcentage ?",
-        "answer": "Pourcentage = (Valeur partielle ÷ Valeur totale) × 100. Pour l’augmentation ou réduction, utilisez ((Nouvelle valeur – Ancienne valeur) ÷ Ancienne valeur) × 100."
-      },
-      {
-        "question": "Peut-on calculer le pourcentage entre deux nombres ?",
-        "answer": "Oui, divisez le nombre partiel par le nombre total et multipliez par 100."
-      },
-      {
-        "question": "Comment calculer un pourcentage sur un prix ?",
-        "answer": "Multipliez le prix par le pourcentage en décimal. Exemple : 200 € × 0,15 = 30 €."
-      }
-    ]
+      { "question": "How to calculate a percentage?", "answer": "Divide the part by the total, then multiply by 100. Example: 50 out of 200 = (50/200) × 100 = 25%." },
+      { "question": "What is the formula for calculating a percentage?", "answer": "Percentage = (Partial value ÷ Total value) × 100." }
+    ],
+    "privacy": {
+      "sections": [
+        { "title": "1. Collected Information", "content": "We do not collect any personal information. Our tool processes data locally in your browser." },
+        { "title": "2. Cookies and Advertising", "content": "We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits." },
+        { "title": "3. Data Security", "content": "Since we do not store any data, your calculations remain private and secure on your device." },
+        { "title": "4. Third-Party Links", "content": "Our site may contain links to third-party sites whose privacy policies we do not control." },
+        { "title": "5. Contact Us", "content": "If you have any questions, please contact us via our website." }
+      ]
+    },
+    "terms": {
+      "sections": [
+        { "title": "1. Acceptance of Terms", "content": "By using our calculator, you agree to these terms of use. If you do not agree, please do not use the site." },
+        { "title": "2. Use of Service", "content": "This calculator is provided for informational purposes. While we aim for accuracy, we do not guarantee the absence of errors." },
+        { "title": "3. Intellectual Property", "content": "The design, code, and content are protected by copyright. Any reproduction is prohibited without authorization." },
+        { "title": "4. Limitation of Liability", "content": "We are not responsible for losses resulting from the use of this tool or its results." },
+        { "title": "5. Modifications", "content": "We reserve the right to update these terms at any time." }
+      ]
+    }
   },
   "ui": {
-    "isEqual": "=",
-    "calculate": "Calculer",
-    "backToTop": "Retour en haut",
-    "privacyPolicy": "Politique de confidentialité",
-    "termsOfService": "Conditions d'utilisation",
-    "hero": {
-      "title": "Résolvez n'importe quel problème de pourcentage instantanément",
-      "subtitle": "Le calculateur de pourcentage en ligne le plus rapide et le plus précis pour la finance, le commerce et les mathématiques quotidiennes.",
-      "ctaPrimary": "Commencer le calcul",
-      "ctaSecondary": "Apprendre les formules",
-      "trustText": "Approuvé par des milliers d'utilisateurs dans le monde"
-    },
-    "cardA": {
-      "title": "Pourcentage vers Nombre",
-      "formula": "X % de Y = ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante : (p1 * v1) / 100 = résultat (où p1 = pourcentage et v1 = valeur). Exemple : (10 * 1000) / 100 = 100",
-      "labelValue": "Combien fait",
-      "labelTotal": "de",
-      "labelResult": "Résultat"
-    },
-    "cardB": {
-      "title": "Nombre vers Pourcentage",
-      "formula": "X sur Y = combien % ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante : (v1 / v2) * 100 = résultat (où v1 = valeur et v2 = total). Exemple : (50 / 1000) * 100 = 5 %",
-      "labelValue": "",
-      "labelTotal": "est quel % de",
-      "labelResult": "Résultat"
-    },
-    "cardC": {
-      "title": "Augmentation / Diminution",
-      "formula": "Base ± X % = ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante : v1 * (1 ± p1 / 100) = résultat (où v1 = base et p1 = pourcentage). Exemple : 1000 * (1 + 10 / 100) = 1100",
-      "labelBase": "Quelle est l'augmentation/diminution en pourcentage de",
-      "labelChange": "par",
-      "labelResult": "Résultat"
-    },
-    "cardD": {
-      "title": "Variation en Pourcentage",
-      "formula": "Ancien vs Nouveau = différence % ?",
-      "formulaDescription": "Notre calculateur utilise la formule suivante : ((v2 - v1) / v1) * 100 = résultat (où v1 = ancien et v2 = nouveau). Exemple : ((1200 - 1000) / 1000) * 100 = 20 %",
-      "labelOld": "Passer de",
-      "labelNew": "à",
-      "labelResult": "Résultat"
-    },
+    "calculate": "Calculate",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Use",
+    "cardA": { "title": "Percent to Number", "labelValue": "How much is", "labelTotal": "of" },
+    "cardB": { "title": "Number to Percent", "labelTotal": "is what % of" },
+    "cardC": { "title": "Increase / Decrease", "labelBase": "What is the percentage increase/decrease of", "labelChange": "by" },
+    "cardD": { "title": "Percentage Change", "labelOld": "Go from", "labelNew": "to" },
     "hints": {
-      "nothingToCopy": "Rien à copier.",
-      "copied": "Copié.",
-      "copyFailed": "Échec de la copie.",
-      "enterValueAndTotal": "Entrez la valeur et le total.",
-      "totalCannotBeZero": "Le total ne peut pas être 0.",
-      "done": "Terminé.",
-      "enterBaseAndChange": "Entrez la base et la variation.",
-      "increase": "Augmentation.",
-      "decrease": "Diminution.",
-      "noChange": "Aucun changement.",
-      "enterOldAndNew": "Entrez l’ancienne et la nouvelle valeur.",
-      "oldCannotBeZero": "L’ancienne valeur ne peut pas être 0."
+      "enterValueAndTotal": "Enter the value and the total.",
+      "totalCannotBeZero": "The total cannot be 0.",
+      "enterBaseAndChange": "Enter the base and the variation.",
+      "enterOldAndNew": "Enter the old and new value.",
+      "oldCannotBeZero": "The old value cannot be 0."
     }
   }
 }
