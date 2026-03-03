@@ -80,14 +80,14 @@ export default function CalculatorClient({
     setCalcD({ ...calcD, result: (((n - o) / o) * 100).toFixed(2), hint: "" });
   };
 
-  const inputClass = "w-full border-2 border-slate-400 bg-white p-3 text-md font-medium focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none rounded shadow-sm no-spinner transition-all";
+  const inputClass = "outline-none w-full border-1 bg-white p-3 text-md font-medium focus:border-blue-400 focus:ring-4 focus:ring-blue-100  rounded shadow-sm no-spinner transition-all";
   const labelClass = "mb-2 text-base md:text-lg sm:text-md font-medium text-slate-800 ";
 
   return (
-    <div className="min-h-screen bg-[#f3f4f6] text-slate-900 antialiased font-sans pb-20 selection:bg-blue-100">
+    <div className="min-h-screen bg-white text-slate-900 antialiased font-sans pb-20 selection:bg-blue-100">
       
     {/* Header with French Branding & Logo */}
-    <header className="border-b-3 border-blue-400 bg-white py-4 shadow-md sticky top-0 z-50">
+    <header className="border-b-3 border-blue-400 bg-[#f3f4f6] py-4 shadow-md sticky top-0 z-50">
       <a href={`/${locale}`}>
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-3">
@@ -121,7 +121,7 @@ export default function CalculatorClient({
         </div>
 
       {/* Card A: Percent to Number */}
-      <section className="rounded-xl border-2 border-slate-300 bg-white p-5 sm:p-10 shadow-lg relative">
+      <section className="rounded-xl border-2 border-slate-300 bg-white p-5 sm:p-10 shadow-md relative">
         <h2 className="mb-6 text-md lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize">{cardA.title}</h2>
         
         <div className="flex flex-col lg:flex-row lg:items-center gap-6">
@@ -174,7 +174,7 @@ export default function CalculatorClient({
         </div>
       </section>
         {/* Card B: Number to Percent */}
-        <section className="rounded-xl border-2 border-slate-300 bg-white p-6 sm:p-10 shadow-lg relative">
+        <section className="rounded-xl border-2 border-slate-300 bg-white p-6 sm:p-10 relative">
           <h2 className="mb-6 text-md lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize">{cardB.title}</h2>
           
           <div className="flex flex-col lg:flex-row lg:items-center gap-6">
@@ -208,7 +208,7 @@ export default function CalculatorClient({
           <AdSlot adClient={adClient} adSlot={adSlotTop} />
         </div> */}
         {/* Card D: Percentage Change */}
-        <section className="rounded-xl border-2 border-slate-300 bg-white p-6 sm:p-10 shadow-lg relative">
+        <section className="rounded-xl border-2 border-slate-300 bg-white p-6 sm:p-10 relative shadom-lg">
           <h2 className="mb-6 text-md  lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize">{cardD.title}</h2>
           <div className="flex flex-col lg:flex-row lg:items-center gap-6">
             <div className="flex flex-row items-center gap-3 flex-1">
@@ -238,7 +238,7 @@ export default function CalculatorClient({
           </div>
         </section>
         {/* Card C: Increase / Decrease */}
-        <section className="rounded-xl border-2 border-slate-300 bg-white  p-5 sm:p-10 shadow-lg relative">
+        <section className="rounded-xl border-2 border-slate-300 bg-white  p-5 sm:p-10 shadow-md relative">
           <h2 className="mb-4 text-md lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize tracking-tight">
             {cardC.title}
           </h2>
@@ -345,8 +345,8 @@ export default function CalculatorClient({
   </div>
 </div>
         </div>
-
-{/* <div className=" flex justify-center">
+{/* 
+<div className=" flex justify-center">
   <AdSlot adClient={adClient} adSlot={adSlotTop} />
 </div> */}
       </main>
