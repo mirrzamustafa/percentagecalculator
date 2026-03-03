@@ -80,8 +80,8 @@ export default function CalculatorClient({
     setCalcD({ ...calcD, result: (((n - o) / o) * 100).toFixed(2), hint: "" });
   };
 
-  const inputClass = "w-full border-2 border-slate-400 bg-white p-3 text-xl font-semibold text-slate-900 focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none rounded shadow-sm no-spinner transition-all";
-  const labelClass = "mb-2 text-base sm:text-lg font-semibold text-slate-800 ";
+  const inputClass = "w-full border-2 border-slate-400 bg-white p-3 text-md font-medium focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none rounded shadow-sm no-spinner transition-all";
+  const labelClass = "mb-2 text-base md:text-lg sm:text-md font-medium text-slate-800 ";
 
   return (
     <div className="min-h-screen bg-[#f3f4f6] text-slate-900 antialiased font-sans pb-20 selection:bg-blue-100">
@@ -112,7 +112,7 @@ export default function CalculatorClient({
       <main className="mx-auto mt-10 w-full max-w-5xl px-4 space-y-10">
         {/* Striking, Sharp Keyword-Rich Headline */}
         <div className="border-l-3 border-blue-400 bg-white p-6 sm:p-8 rounded shadow-sm">
-           <h2 className=" text-slate-900 leading-[1.1] tracking-tight capitalize">
+           <h2 className="font-medium text-md  leading-[1.1] tracking-tight">
               {locale === 'fr' 
                 ? "Le calculateur de pourcentage est un outil en ligne gratuit pour calculer un pourcentage." 
                 : "Percentage Calculator is a free online tool to calculate percentages."}
@@ -120,8 +120,8 @@ export default function CalculatorClient({
         </div>
 
       {/* Card A: Percent to Number */}
-      <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-5 sm:p-10 shadow-lg relative">
-        <h2 className="mb-6 text-xl font-medium text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase">{cardA.title}</h2>
+      <section className="rounded-xl border-2 border-slate-300 bg-white p-5 sm:p-10 shadow-lg relative">
+        <h2 className="mb-6 text-md lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize">{cardA.title}</h2>
         
         <div className="flex flex-col lg:flex-row lg:items-center gap-6">
           {/* Input Row: Balanced for French labels and larger boxes */}
@@ -156,9 +156,9 @@ export default function CalculatorClient({
           {/* Action & Result Row */}
           <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
             {calcA.hint && (
-              <span className="absolute -top-5 left-0 text-[10px] font-medium uppercase text-red-600 leading-none">
-                {calcA.hint}
-              </span>
+                 <span className="absolute -top-6 left-0 text-xs font-medium uppercase text-red-600 tracking-tight">
+                  {calcA.hint}
+                </span>
             )}
             <button 
               onClick={runCalcA} 
@@ -173,8 +173,8 @@ export default function CalculatorClient({
         </div>
       </section>
         {/* Card B: Number to Percent */}
-        <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-6 sm:p-10 shadow-lg relative">
-          <h2 className="mb-6 text-xl font-medium text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase">{cardB.title}</h2>
+        <section className="rounded-xl border-2 border-slate-300 bg-white p-6 sm:p-10 shadow-lg relative">
+          <h2 className="mb-6 text-md lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize">{cardB.title}</h2>
           
           <div className="flex flex-col lg:flex-row lg:items-center gap-6">
             <div className="flex flex-row items-center gap-3 flex-1">
@@ -206,8 +206,8 @@ export default function CalculatorClient({
         <AdSlot adClient={adClient} adSlot={adSlotMid} />
 
         {/* Card D: Percentage Change */}
-        <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-6 sm:p-10 shadow-lg relative">
-          <h2 className="mb-6 text-xl font-medium text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase">{cardD.title}</h2>
+        <section className="rounded-xl border-2 border-slate-300 bg-white p-6 sm:p-10 shadow-lg relative">
+          <h2 className="mb-6 text-md  lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize">{cardD.title}</h2>
           <div className="flex flex-col lg:flex-row lg:items-center gap-6">
             <div className="flex flex-row items-center gap-3 flex-1">
                 <span className={labelClass}>{cardD.labelOld}</span>
@@ -236,8 +236,8 @@ export default function CalculatorClient({
           </div>
         </section>
         {/* Card C: Increase / Decrease */}
-        <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-5 sm:p-10 shadow-lg relative">
-          <h2 className="mb-4 text-xl font-medium text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase tracking-tight">
+        <section className="rounded-xl border-2 border-slate-300 bg-white  p-5 sm:p-10 shadow-lg relative">
+          <h2 className="mb-4 text-md lg:text-xl font-semibold text-[#1a365d] border-b-2 border-slate-200 pb-2 capitalize tracking-tight">
             {cardC.title}
           </h2>
           {/* Label kept above to prevent horizontal crowding on mobile */}
@@ -274,7 +274,7 @@ export default function CalculatorClient({
             <h2 className="text-4xl font-medium text-slate-900 leading-[1.1] mb-8 capitalize tracking-tight">
               {seo.h1}
             </h2>
-            <p className="text-md font-medium text-slate-900 leading-relaxed italic border-l-8 border-blue-400 pl-6">
+            <p className="text-md font-medium text-slate-900 leading-relaxed italic border-l-3 border-blue-400 pl-6">
               {seo.intro}
             </p>
           </div>
