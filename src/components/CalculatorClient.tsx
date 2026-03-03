@@ -81,7 +81,7 @@ export default function CalculatorClient({
   };
 
   const inputClass = "w-full border-2 border-slate-400 bg-white p-3 text-xl font-bold text-slate-900 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none rounded shadow-sm no-spinner transition-all";
-  const labelClass = "text-base sm:text-lg font-bold text-slate-800 whitespace-nowrap";
+  const labelClass = "mb-2 text-base sm:text-lg font-bold text-slate-800 ";
 
   return (
     <div className="min-h-screen bg-[#f3f4f6] text-slate-900 antialiased font-sans pb-20 selection:bg-blue-100">
@@ -101,40 +101,59 @@ export default function CalculatorClient({
         
         <AdSlot adClient={adClient} adSlot={adSlotTop} />
 
-        {/* Card A: Percent to Number */}
-        <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-6 sm:p-10 shadow-lg relative">
-          <h2 className="mb-6 text-xl font-black text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase">{cardA.title}</h2>
-          
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-            {/* Inline Row for Mobile and Desktop */}
-            <div className="flex flex-row items-center gap-3 flex-1">
-              <span className={labelClass}>{cardA.labelValue}</span>
-              <div className="w-24 sm:w-32">
-                <input type="number" value={calcA.percent} onChange={(e) => setCalcA({ ...calcA, percent: e.target.value })} className={inputClass} />
-              </div>
-              <span className={labelClass}>% {cardA.labelTotal}</span>
-              <div className="flex-1 lg:flex-initial lg:w-48">
-                <input type="number" value={calcA.total} onChange={(e) => setCalcA({ ...calcA, total: e.target.value })} className={inputClass} />
-              </div>
-            </div>
+{/* Card A: Percent to Number */}
+<section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-5 sm:p-10 shadow-lg relative">
+  <h2 className="mb-6 text-xl font-black text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase">{cardA.title}</h2>
+  
+  <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+    {/* Input Row: Balanced for French labels and larger boxes */}
+    <div className="flex flex-row items-center gap-2 flex-1 min-w-0">
+      <span className={labelClass}>{cardA.labelValue}</span>
+      
+      {/* Input with internal % symbol */}
+      <div className="w-[35%] sm:w-32 shrink-0 relative">
+        <input 
+          type="number" 
+          value={calcA.percent} 
+          onChange={(e) => setCalcA({ ...calcA, percent: e.target.value })} 
+          className={`${inputClass} pr-7 sm:pr-8`} // Padding added to avoid text overlapping the %
+        />
+        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-600 font-black text-sm sm:text-base pointer-events-none">
+          %
+        </span>
+      </div>
 
-            <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
-              {/* Sharp On-Card Error Message */}
-              {calcA.hint && (
-                <span className="absolute -top-6 left-0 text-xs font-black uppercase text-red-600 tracking-tight">
-                  {calcA.hint}
-                </span>
-              )}
-              <button onClick={runCalcA} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-700 py-4 text-lg font-black uppercase text-white shadow-xl active:scale-95 transition-all">
-                {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
-              </button>
-              <div className="w-full lg:w-48 bg-white border-2 border-blue-600 py-3 text-2xl font-black text-blue-700 text-center rounded shadow-inner">
-                {calcA.result || "---"}
-              </div>
-            </div>
-          </div>
-        </section>
+      <span className={labelClass}>{cardA.labelTotal}</span>
+      
+      <div className="w-[30%] sm:w-48 shrink-0">
+        <input 
+          type="number" 
+          value={calcA.total} 
+          onChange={(e) => setCalcA({ ...calcA, total: e.target.value })} 
+          className={inputClass} 
+        />
+      </div>
+    </div>
 
+    {/* Action & Result Row */}
+    <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
+      {calcA.hint && (
+        <span className="absolute -top-5 left-0 text-[10px] font-black uppercase text-red-600 leading-none">
+          {calcA.hint}
+        </span>
+      )}
+      <button 
+        onClick={runCalcA} 
+        className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-700 py-4 text-lg font-black uppercase text-white shadow-xl active:scale-95 transition-all"
+      >
+        {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
+      </button>
+      <div className="w-full lg:w-48 bg-white border-2 border-blue-600 py-3 text-2xl font-black text-blue-700 text-center rounded shadow-inner">
+        {calcA.result || "---"}
+      </div>
+    </div>
+  </div>
+</section>
         {/* Card B: Number to Percent */}
         <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-6 sm:p-10 shadow-lg relative">
           <h2 className="mb-6 text-xl font-black text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase">{cardB.title}</h2>
@@ -198,39 +217,37 @@ export default function CalculatorClient({
             </div>
           </div>
         </section>
+{/* Card C: Increase / Decrease */}
+<section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-5 sm:p-10 shadow-lg relative">
+  <h2 className="mb-4 text-xl font-black text-[#1a365d] border-b-2 border-slate-300 pb-2 uppercase tracking-tight">
+    {cardC.title}
+  </h2>
+  {/* Label kept above to prevent horizontal crowding on mobile */}
+  <p className={labelClass}>{cardC.labelBase}</p>
+  
+  <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+    <div className="flex flex-row items-center gap-3 flex-1 min-w-0">
+      <div className="w-[50%] sm:w-44 shrink-0">
+        <input type="number" value={calcC.base} onChange={(e) => setCalcC({ ...calcC, base: e.target.value })} className={inputClass} />
+      </div>
+      <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase shrink-0">{cardC.labelChange}</span>
+      <div className="w-[35%] sm:w-32 shrink-0 relative">
+        <input type="number" value={calcC.percent} onChange={(e) => setCalcC({ ...calcC, percent: e.target.value })} className={inputClass} />
+        <span className="absolute right-2 top-3 text-slate-400 font-black text-xs sm:text-sm">%</span>
+      </div>
+    </div>
 
-        {/* Card C: Increase / Decrease */}
-        <section className="rounded-xl border-2 border-slate-300 bg-[#ebedef] p-6 sm:p-10 shadow-lg relative">
-          <h2 className="mb-8 text-2xl font-black text-[#1a365d] border-b-2 border-slate-300 pb-3 uppercase tracking-tight">
-            {cardC.title}
-          </h2>
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-            <div className="flex flex-wrap flex-1 items-center gap-4">
-              <span className={labelClass}>{cardC.labelBase}</span>
-              <div className="w-32 sm:w-44">
-                <input type="number" value={calcC.base} onChange={(e) => setCalcC({ ...calcC, base: e.target.value })} className={inputClass} />
-              </div>
-              <span className={labelClass}>{cardC.labelChange}</span>
-              <div className="w-24 sm:w-32 relative">
-                <input type="number" value={calcC.percent} onChange={(e) => setCalcC({ ...calcC, percent: e.target.value })} className={inputClass} />
-                <span className="absolute right-3 top-3 text-slate-400 font-bold text-sm">%</span>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:w-full lg:w-auto relative">
-              {calcC.hint && (
-                <span className="absolute -top-6 left-0 text-xs font-black uppercase text-red-600 tracking-tight">
-                  {calcC.hint}
-                </span>
-              )}
-              <button onClick={runCalcC} className="w-full sm:w-auto flex items-center justify-center gap-3 rounded bg-blue-700 px-8 py-4 text-lg font-black uppercase tracking-tighter text-white shadow-xl hover:bg-blue-800 active:scale-95 transition-all">
-                {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
-              </button>
-              <div className="w-full sm:w-48 bg-white border-2 border-blue-600 p-3.5 text-2xl font-black text-blue-700 text-center rounded shadow-inner">
-                {calcC.result || "---"}
-              </div>
-            </div>
-          </div>
-        </section>
+    <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
+      {calcC.hint && <span className="absolute -top-5 left-0 text-[10px] font-black uppercase text-red-600 leading-none">{calcC.hint}</span>}
+      <button onClick={runCalcC} className="w-full lg:w-48 flex items-center justify-center gap-3 rounded bg-blue-700 py-4 text-lg font-black uppercase tracking-tighter text-white shadow-xl hover:bg-blue-800 active:scale-95 transition-all">
+        {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
+      </button>
+      <div className="w-full lg:w-48 bg-white border-2 border-blue-600 p-3.5 text-2xl font-black text-blue-700 text-center rounded shadow-inner">
+        {calcC.result || "---"}
+      </div>
+    </div>
+  </div>
+</section>
         {/* SEO CONTENT SECTION */}
         <div className="mt-24 space-y-16 border-t-4 border-slate-300 pt-20 pb-12">
           <div className="max-w-3xl">
