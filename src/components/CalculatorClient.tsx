@@ -88,7 +88,7 @@ export default function CalculatorClient({
       
     {/* Header with French Branding & Logo */}
     <header className="border-b-4 border-blue-500 bg-white py-4 shadow-md sticky top-0 z-50">
-      <a href={`/${locale}`} className="flex items-center gap-3 transition-opacity hover:opacity-80 active:scale-95">
+      <a href={`/${locale}`}>
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-3">
           <div className="bg-blue-500 p-2 rounded shadow-lg">
