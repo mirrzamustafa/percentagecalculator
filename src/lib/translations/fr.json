@@ -1,81 +1,81 @@
 {
   "meta": {
-    "title": "Free Percentage Calculator | Fast & Accurate Calculation",
-    "description": "Easily calculate percentages online. Find the percentage of a number, convert to percentage, and calculate increases or decreases."
+    "title": "Calculateur de Pourcentage Gratuit | Calcul Rapide et Précis",
+    "description": "Calculez facilement des pourcentages en ligne. Trouvez le pourcentage d’un nombre, convertissez en pourcentage et calculez les augmentations ou diminutions."
   },
   "seo": {
-    "h1": "Online Percentage Calculator – Fast & Accurate",
-    "intro": "Looking to calculate a percentage quickly and easily? On our site, our percentage calculator allows you to determine any percentage in seconds, effortlessly and without risk of error. Whether you want to calculate a percentage on a price, find a discount, or calculate an increase, our tool is made for you.",
-    "headline": "The percentage calculator is a free online tool to calculate a percentage.",
+    "h1": "Calculateur de pourcentage en ligne – Rapide et précis",
+    "intro": "Vous cherchez à calculer un pourcentage rapidement et facilement ? Sur notre site, notre calculateur de pourcentage vous permet de déterminer n’importe quel pourcentage en quelques secondes, sans effort et sans risque d’erreur. Que vous souhaitiez calculer un pourcentage sur un prix, connaître une réduction, ou calculer une augmentation, notre outil est fait pour vous.",
+    "headline": "Le calculateur de pourcentage est un outil en ligne gratuit pour calculer un pourcentage.",
     "howTo": {
-      "title": "How to calculate a percentage easily",
-      "content": "The basic formula for calculating a percentage is very simple:",
-      "formula": "Percentage = (Part / Total) × 100",
-      "example": "Example: if you want to know how much 45 out of 180 represents: (45 / 180) × 100 = 25%"
+      "title": "Comment calculer un pourcentage facilement",
+      "content": "La formule de base pour calculer un pourcentage est très simple :",
+      "formula": "Pourcentage = (Partie / Total) × 100",
+      "example": "Exemple : si vous voulez savoir combien représente 45 sur 180 : (45 / 180) × 100 = 25%"
     },
     "situations": {
-      "title": "Percentage calculation: common situations",
+      "title": "Calcul pourcentage : situations courantes",
       "items": [
-        "Commerce and sales: determining discounts, promotions, and VAT",
-        "Personal finance: calculation of interest, savings, and investments",
-        "Salaries: calculation of increases or decreases",
-        "Statistics and surveys: participation in events or election results"
+        "Commerce et ventes : déterminer des remises, promotions et TVA",
+        "Finance personnelle : calcul des intérêts, épargne et investissements",
+        "Salaires : calcul d’augmentations ou réductions",
+        "Statistiques et sondages : participation à des événements ou résultats d’élections"
       ]
     },
     "examples": {
-      "title": "Practical examples of percentage calculation",
+      "title": "Exemples pratiques de calcul de pourcentage",
       "items": [
-        { "title": "Example 1: Calculate a percentage on a price", "content": "Net price: $150 | Discount: 15% | Calculation: 150 × 0.15 = $22.50 | Final price: 150 – 22.50 = $127.50" },
-        { "title": "Example 2: Calculate the percentage increase", "content": "Current salary: $2200 | Increase: 10% | Calculation: 2200 × 0.10 = $220 | New salary: 2200 + 220 = $2420" },
-        { "title": "Example 3: Calculate percentage between two numbers", "content": "Total number: 500 | Number of participants: 325 | Calculation: (325 / 500) × 100 = 65%" }
+        { "title": "Exemple 1 : Calculer un pourcentage sur un prix", "content": "Prix net : 150 € | Réduction : 15 % | Calcul : 150 × 0,15 = 22,50 € | Prix final : 150 – 22,50 = 127,50 €" },
+        { "title": "Exemple 2 : Calculer le pourcentage d’augmentation", "content": "Salaire actuel : 2200 € | Augmentation : 10 % | Calcul : 2200 × 0,10 = 220 € | Nouveau salaire : 2200 + 220 = 2420 €" },
+        { "title": "Exemple 3 : Calcul pourcentage entre deux nombres", "content": "Nombre total : 500 | Nombre de participants : 325 | Calcul : (325 / 500) × 100 = 65 %" }
       ]
     },
     "whyUs": {
-      "title": "Why use our online percentage calculator",
+      "title": "Pourquoi utiliser notre calculateur de pourcentage en ligne",
       "items": [
-        "Fast and reliable: instant and accurate results",
-        "Easy to use: no need for advanced math knowledge",
-        "Educational: learn how to do a percentage calculation yourself",
-        "Free: our free percentage calculation is accessible to everyone"
+        "Rapide et fiable : résultats instantanés et exacts",
+        "Facile à utiliser : aucun besoin de connaissances avancées en mathématiques",
+        "Éducatif : apprenez comment faire un calcul de pourcentage par vous-même",
+        "Gratuit : notre calcul pourcentage gratuit est accessible à tous"
       ]
     },
     "faq": [
-      { "question": "How to calculate a percentage?", "answer": "Divide the part by the total, then multiply by 100. Example: 50 out of 200 = (50/200) × 100 = 25%." },
-      { "question": "What is the formula for calculating a percentage?", "answer": "Percentage = (Partial value ÷ Total value) × 100." }
+      { "question": "Comment calculer un pourcentage ?", "answer": "Divisez la partie par le total, puis multipliez par 100. Exemple : 50 sur 200 = (50/200) × 100 = 25 %." },
+      { "question": "Quelle est la formule pour calculer un pourcentage ?", "answer": "Pourcentage = (Valeur partielle ÷ Valeur totale) × 100." }
     ],
     "privacy": {
       "sections": [
-        { "title": "1. Collected Information", "content": "We do not collect any personal information. Our tool processes data locally in your browser." },
-        { "title": "2. Cookies and Advertising", "content": "We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits." },
-        { "title": "3. Data Security", "content": "Since we do not store any data, your calculations remain private and secure on your device." },
-        { "title": "4. Third-Party Links", "content": "Our site may contain links to third-party sites whose privacy policies we do not control." },
-        { "title": "5. Contact Us", "content": "If you have any questions, please contact us via our website." }
+        { "title": "1. Informations collectées", "content": "Nous ne collectons aucune information personnelle. Notre outil traite les données localement dans votre navigateur." },
+        { "title": "2. Cookies et publicité", "content": "Nous utilisons Google AdSense pour afficher des publicités. Google peut utiliser des cookies pour diffuser des annonces basées sur vos visites." },
+        { "title": "3. Sécurité des données", "content": "Puisque nous ne stockons aucune donnée, vos calculs restent privés et sécurisés sur votre appareil." },
+        { "title": "4. Liens tiers", "content": "Notre site peut contenir des liens vers des sites tiers dont nous ne contrôlons pas les politiques de confidentialité." },
+        { "title": "5. Nous contacter", "content": "Si vous avez des questions, veuillez nous contacter via notre site web." }
       ]
     },
     "terms": {
       "sections": [
-        { "title": "1. Acceptance of Terms", "content": "By using our calculator, you agree to these terms of use. If you do not agree, please do not use the site." },
-        { "title": "2. Use of Service", "content": "This calculator is provided for informational purposes. While we aim for accuracy, we do not guarantee the absence of errors." },
-        { "title": "3. Intellectual Property", "content": "The design, code, and content are protected by copyright. Any reproduction is prohibited without authorization." },
-        { "title": "4. Limitation of Liability", "content": "We are not responsible for losses resulting from the use of this tool or its results." },
-        { "title": "5. Modifications", "content": "We reserve the right to update these terms at any time." }
+        { "title": "1. Acceptation des conditions", "content": "En utilisant notre calculateur, vous acceptez ces conditions d'utilisation. Si vous n'êtes pas d'accord, veuillez ne pas utiliser le site." },
+        { "title": "2. Utilisation du service", "content": "Ce calculateur est fourni à titre informatif. Bien que nous visions la précision, nous ne garantissons pas l'absence d'erreurs." },
+        { "title": "3. Propriété intellectuelle", "content": "Le design, le code et le contenu sont protégés par le droit d'auteur. Toute reproduction est interdite sans autorisation." },
+        { "title": "4. Limitation de responsabilité", "content": "Nous ne sommes pas responsables des pertes résultant de l'utilisation de cet outil ou de ses résultats." },
+        { "title": "5. Modifications", "content": "Nous nous réservons le droit de mettre à jour ces conditions à tout moment." }
       ]
     }
   },
   "ui": {
-    "calculate": "Calculate",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Use",
-    "cardA": { "title": "Percent to Number", "labelValue": "How much is", "labelTotal": "of" },
-    "cardB": { "title": "Number to Percent", "labelTotal": "is what % of" },
-    "cardC": { "title": "Increase / Decrease", "labelBase": "What is the percentage increase/decrease of", "labelChange": "by" },
-    "cardD": { "title": "Percentage Change", "labelOld": "Go from", "labelNew": "to" },
+    "calculate": "Calculer",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "cardA": { "title": "Pourcentage vers Nombre", "labelValue": "Combien fait", "labelTotal": "de" },
+    "cardB": { "title": "Nombre vers Pourcentage", "labelTotal": "est quel % de" },
+    "cardC": { "title": "Augmentation / Diminution", "labelBase": "Quelle est l'augmentation/diminution en pourcentage de", "labelChange": "par" },
+    "cardD": { "title": "Variation en Pourcentage", "labelOld": "Passer de", "labelNew": "à" },
     "hints": {
-      "enterValueAndTotal": "Enter the value and the total.",
-      "totalCannotBeZero": "The total cannot be 0.",
-      "enterBaseAndChange": "Enter the base and the variation.",
-      "enterOldAndNew": "Enter the old and new value.",
-      "oldCannotBeZero": "The old value cannot be 0."
+      "enterValueAndTotal": "Entrez la valeur et le total.",
+      "totalCannotBeZero": "Le total ne peut pas être 0.",
+      "enterBaseAndChange": "Entrez la base et la variation.",
+      "enterOldAndNew": "Entrez l’ancienne et la nouvelle valeur.",
+      "oldCannotBeZero": "L’ancienne valeur ne peut pas être 0."
     }
   }
 }

@@ -88,7 +88,7 @@ export default function CalculatorClient({
       
     {/* Header with French Branding & Logo */}
     <header className="border-b-4 border-blue-500 bg-white py-4 shadow-md sticky top-0 z-50">
-      <a href={`/${locale}`}>
+      <a href={`/${locale}`} className="flex items-center gap-3 transition-opacity hover:opacity-80 active:scale-95">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-3">
           <div className="bg-blue-500 p-2 rounded shadow-lg">
@@ -316,22 +316,30 @@ export default function CalculatorClient({
               ))}
             </div>
           </div>
-
-          {/* FAQ Section */}
-          <div id="faq" className="max-w-4xl mx-auto space-y-12">
-            <h3 className="text-3xl font-black text-slate-900 text-center uppercase tracking-tight">FAQ</h3>
-            <div className="space-y-6">
-              {seo.faq.map((item: any, idx: number) => (
-                <div key={idx} className="p-8 bg-white rounded-xl border-2 border-slate-100 shadow-sm hover:border-blue-200 transition-all">
-                  <p className="font-black text-slate-900 text-xl mb-4 flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white text-sm">?</span>
-                    {item.question}
-                  </p>
-                  <p className="text-slate-700 font-semibold leading-relaxed pl-11">{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+{/* FAQ Section */}
+<div id="faq" className="max-w-4xl mx-auto space-y-12">
+  <h3 className="text-3xl font-black text-slate-900 text-center uppercase tracking-tight">FAQ</h3>
+  <div className="space-y-6">
+    {seo.faq.map((item: any, idx: number) => (
+      <div key={idx} className="p-6 sm:p-8 bg-white rounded-xl border-2 border-slate-100 shadow-sm hover:border-blue-200 transition-all">
+        {/* Changed items-center to items-start for better mobile wrapping */}
+        <div className="flex items-start gap-4 mb-4">
+          {/* Added shrink-0 and fixed dimensions for a perfect sharp circle */}
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-500 text-white text-sm font-black shadow-md">
+            ?
+          </span>
+          <p className="font-black text-slate-900 text-lg sm:text-xl leading-tight pt-1">
+            {item.question}
+          </p>
+        </div>
+        {/* Adjusted padding-left to align perfectly with the text above */}
+        <p className="text-slate-700 font-semibold leading-relaxed pl-14">
+          {item.answer}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
         </div>
 
         <AdSlot adClient={adClient} adSlot={adSlotBottom} />
