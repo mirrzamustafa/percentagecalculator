@@ -14,11 +14,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations(locale);
+
   const content = (
     <div className="space-y-8">
       {t.seo.privacy.sections.map((section: any, index: number) => (
         <section key={index}>
-          <h3 className=" text-slate-900 mb-3 uppercase tracking-tight">
+          <h3 className="mb-3 uppercase tracking-tight">
             {section.title}
           </h3>
           <p className="leading-relaxed">

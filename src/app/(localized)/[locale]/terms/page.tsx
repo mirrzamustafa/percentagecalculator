@@ -19,10 +19,10 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
     <div className="space-y-8">
       {t.seo.terms.sections.map((section: any, index: number) => (
         <section key={index}>
-          <h3 className=" text-slate-900 mb-3 uppercase tracking-tight">
+          <h3 className="mb-3 uppercase tracking-tight">
             {section.title}
           </h3>
-          <p className=" font-medium leading-relaxed">
+          <p className="font-medium leading-relaxed">
             {section.content}
           </p>
         </section>
