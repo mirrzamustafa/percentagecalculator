@@ -20,16 +20,18 @@ export default function CalculatorClient({
   adSlotBottom?: string
 }) {
   const { ui, seo } = translations;
-  const { cardA, cardB, cardC, cardD, hints } = ui;
+  const { cardA, cardB, cardC, cardD } = ui;
 
-  const [calcA, setCalcA] = useState({ percent: "", total: "", result: "", hint: "" });
-  const [calcB, setCalcB] = useState({ value: "", total: "", result: "", hint: "" });
-  const [calcC, setCalcC] = useState({ base: "", percent: "", result: "", hint: "" });
-  const [calcD, setCalcD] = useState({ old: "", new: "", result: "", hint: "" });
+  const [calcA, setCalcA] = useState({ percent: "", total: "", result: "" });
+  const [calcB, setCalcB] = useState({ value: "", total: "", result: "" });
+  const [calcC, setCalcC] = useState({ base: "", percent: "", result: "" });
+  const [calcD, setCalcD] = useState({ old: "", new: "", result: "" });
 
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
@@ -71,32 +73,38 @@ export default function CalculatorClient({
   const runCalcA = () => {
     const p = parseFloat(calcA.percent);
     const t = parseFloat(calcA.total);
-    if (isNaN(p) || isNaN(t)) { setCalcA({ ...calcA, result: "", hint: hints.enterValueAndTotal }); return; }
-    setCalcA({ ...calcA, result: ((p / 100) * t).toLocaleString(), hint: "" });
+    if (isNaN(p) || isNaN(t)) { setCalcA({ ...calcA, result: "" }); return; }
+    setCalcA({ ...calcA, result: ((p / 100) * t).toLocaleString() });
   };
 
   const runCalcB = () => {
     const v = parseFloat(calcB.value);
     const t = parseFloat(calcB.total);
-    if (isNaN(v) || isNaN(t)) { setCalcB({ ...calcB, result: "", hint: hints.enterValueAndTotal }); return; }
-    if (t === 0) { setCalcB({ ...calcB, result: "", hint: hints.totalCannotBeZero }); return; }
-    setCalcB({ ...calcB, result: ((v / t) * 100).toFixed(2), hint: "" });
+    if (isNaN(v) || isNaN(t)) { setCalcB({ ...calcB, result: "" }); return; }
+    if (t === 0) { setCalcB({ ...calcB, result: "" }); return; }
+    setCalcB({ ...calcB, result: ((v / t) * 100).toFixed(2) });
   };
 
   const runCalcC = () => {
     const b = parseFloat(calcC.base);
     const p = parseFloat(calcC.percent);
-    if (isNaN(b) || isNaN(p)) { setCalcC({ ...calcC, result: "", hint: hints.enterBaseAndChange }); return; }
-    setCalcC({ ...calcC, result: (b * (1 + p / 100)).toLocaleString(), hint: "" });
+    if (isNaN(b) || isNaN(p)) { setCalcC({ ...calcC, result: "" }); return; }
+    setCalcC({ ...calcC, result: (b * (1 + p / 100)).toLocaleString() });
   };
 
   const runCalcD = () => {
     const o = parseFloat(calcD.old);
     const n = parseFloat(calcD.new);
-    if (isNaN(o) || isNaN(n)) { setCalcD({ ...calcD, result: "", hint: hints.enterOldAndNew }); return; }
-    if (o === 0) { setCalcD({ ...calcD, result: "", hint: hints.oldCannotBeZero }); return; }
-    setCalcD({ ...calcD, result: (((n - o) / o) * 100).toFixed(2), hint: "" });
+    if (isNaN(o) || isNaN(n)) { setCalcD({ ...calcD, result: "" }); return; }
+    if (o === 0) { setCalcD({ ...calcD, result: "" }); return; }
+    setCalcD({ ...calcD, result: (((n - o) / o) * 100).toFixed(2) });
   };
+
+  // Auto-calculation hooks
+  useEffect(() => { runCalcA(); }, [calcA.percent, calcA.total]);
+  useEffect(() => { runCalcB(); }, [calcB.value, calcB.total]);
+  useEffect(() => { runCalcC(); }, [calcC.base, calcC.percent]);
+  useEffect(() => { runCalcD(); }, [calcD.old, calcD.new]);
 
   if (!mounted) return null;
 
@@ -174,7 +182,6 @@ export default function CalculatorClient({
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
-                {calcA.hint && <span className="absolute -top-6 left-0 text-xs font-semibold uppercase text-red-500 tracking-tight">{calcA.hint}</span>}
                 <button onClick={runCalcA} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-400 py-4 text-lg font-bold uppercase text-white shadow-xl active:scale-95 hover:bg-blue-500 transition-all">
                   {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
                 </button>
@@ -207,7 +214,6 @@ export default function CalculatorClient({
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
-                {calcB.hint && <span className="absolute -top-6 left-0 text-xs font-semibold uppercase text-red-500 tracking-tight">{calcB.hint}</span>}
                 <button onClick={runCalcB} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-400 py-4 text-lg font-bold uppercase text-white shadow-xl active:scale-95 hover:bg-blue-500 transition-all">
                   {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
                 </button>
@@ -241,7 +247,6 @@ export default function CalculatorClient({
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
-                {calcD.hint && <span className="absolute -top-6 left-0 text-xs font-semibold uppercase text-red-500 tracking-tight">{calcD.hint}</span>}
                 <button onClick={runCalcD} className="w-full lg:w-48 flex items-center justify-center gap-2 rounded bg-blue-400 py-4 text-lg font-bold uppercase text-white shadow-xl transition-all hover:bg-blue-500">
                   {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
                 </button>
@@ -276,7 +281,6 @@ export default function CalculatorClient({
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-auto relative">
-                {calcC.hint && <span className="absolute -top-5 left-0 text-[10px] font-semibold uppercase text-red-500 leading-none">{calcC.hint}</span>}
                 <button onClick={runCalcC} className="w-full lg:w-48 flex items-center justify-center gap-3 rounded bg-blue-400 py-4 text-lg font-bold uppercase tracking-tighter text-white shadow-xl hover:bg-blue-500 active:scale-95 transition-all">
                   {ui.calculate} <ChevronRight size={22} strokeWidth={4} />
                 </button>
@@ -350,9 +354,9 @@ export default function CalculatorClient({
             <a href={`/${locale}/privacy`} className="hover:text-white transition-colors">{ui.privacyPolicy}</a>
             <a href={`/${locale}/terms`} className="hover:text-white transition-colors">{ui.termsOfService}</a>
           </div>
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center gap-6 mb-10">
             <a 
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=https://percentagecalculator.fr`} 
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=https://calculerlepourcentage.fr`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-blue-600 text-white transition-all shadow-lg"
@@ -361,7 +365,7 @@ export default function CalculatorClient({
               <Linkedin size={20} />
             </a>
             <a 
-              href={`https://twitter.com/intent/tweet?url=https://percentagecalculator.fr&text=${encodeURIComponent(seo.h1)}`} 
+              href={`https://twitter.com/intent/tweet?url=https://calculerlepourcentage.fr&text=${encodeURIComponent(seo.h1)}`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-sky-500 text-white transition-all shadow-lg"
@@ -370,7 +374,7 @@ export default function CalculatorClient({
               <Twitter size={20} />
             </a>
             <a 
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://percentagecalculator.fr`} 
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://calculerlepourcentage.fr`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-blue-700 text-white transition-all shadow-lg"
@@ -378,6 +382,40 @@ export default function CalculatorClient({
             >
               <Facebook size={20} />
             </a>
+          </div>
+
+          <div className="border-t border-slate-800 pt-8 max-w-md mx-auto">
+            <p className="text-xs font-bold uppercase tracking-widest mb-4 text-slate-400">Contact & Feedback</p>
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                window.location.href = `mailto:emailmirzamustafa@gmail.com?subject=Feedback from Percentage Calculator&body=From: ${contactEmail}%0D%0A%0D%0AMessage: ${contactMessage}`;
+              }}
+              className="space-y-3"
+            >
+              <input 
+                type="email" 
+                placeholder="Your Email" 
+                required
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
+                className="w-full p-2.5 text-sm rounded bg-slate-800 border border-slate-700 text-white focus:border-blue-400 outline-none transition-all"
+              />
+              <textarea 
+                placeholder="Your Message" 
+                required
+                rows={3}
+                value={contactMessage}
+                onChange={(e) => setContactMessage(e.target.value)}
+                className="w-full p-2.5 text-sm rounded bg-slate-800 border border-slate-700 text-white focus:border-blue-400 outline-none transition-all resize-none"
+              />
+              <button 
+                type="submit"
+                className="w-full py-2.5 rounded bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </footer>

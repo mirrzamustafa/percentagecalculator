@@ -5,8 +5,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = supportedLocales.map((locale) => {
     const domain =
       locale === "en"
-        ? "https://percentagecalculator.us"
-        : `https://percentagecalculator.${locale}`;
+        ? "https://calculerlepourcentage.fr"
+        : locale === "fr"
+        ? "https://calculerlepourcentage.fr"
+        : `https://calculerlepourcentage.fr`;
 
     const baseUrl = `${domain}/${locale}`;
     return [

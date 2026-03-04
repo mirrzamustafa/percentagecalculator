@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowUp, Percent, Sun, Moon, Linkedin, Twitter, Facebook } from "lucide-react";
+import { ArrowUp, Percent, Sun, Moon, Linkedin, Twitter, Facebook, ChevronRight } from "lucide-react";
 import "@/app/calculator.css";
 
 interface Props {
@@ -15,6 +15,8 @@ export default function LegalPage({ locale, title, content, translations }: Prop
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
@@ -98,9 +100,9 @@ export default function LegalPage({ locale, title, content, translations }: Prop
             <a href={`/${locale}/privacy`} className="transition-colors">{translations.ui.privacyPolicy}</a>
             <a href={`/${locale}/terms`} className="transition-colors">{translations.ui.termsOfService}</a>
           </div>
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center gap-6 mb-10">
             <a 
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=https://percentagecalculator.fr`} 
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=https://calculerlepourcentage.fr`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-blue-600 text-white transition-all shadow-lg"
@@ -109,7 +111,7 @@ export default function LegalPage({ locale, title, content, translations }: Prop
               <Linkedin size={20} />
             </a>
             <a 
-              href={`https://twitter.com/intent/tweet?url=https://percentagecalculator.fr&text=${encodeURIComponent(translations.seo.h1)}`} 
+              href={`https://twitter.com/intent/tweet?url=https://calculerlepourcentage.fr&text=${encodeURIComponent(translations.seo.h1)}`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-sky-500 text-white transition-all shadow-lg"
@@ -118,7 +120,7 @@ export default function LegalPage({ locale, title, content, translations }: Prop
               <Twitter size={20} />
             </a>
             <a 
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://percentagecalculator.fr`} 
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://calculerlepourcentage.fr`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-blue-700 text-white transition-all shadow-lg"
@@ -126,6 +128,40 @@ export default function LegalPage({ locale, title, content, translations }: Prop
             >
               <Facebook size={20} />
             </a>
+          </div>
+
+          <div className="border-t border-slate-800 pt-8 max-w-md mx-auto">
+            <p className="text-xs font-bold uppercase tracking-widest mb-4 text-slate-400">Contact & Feedback</p>
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                window.location.href = `mailto:emailmirzamustafa@gmail.com?subject=Feedback from Percentage Calculator&body=From: ${contactEmail}%0D%0A%0D%0AMessage: ${contactMessage}`;
+              }}
+              className="space-y-3"
+            >
+              <input 
+                type="email" 
+                placeholder="Your Email" 
+                required
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
+                className="w-full p-2.5 text-sm rounded bg-slate-800 border border-slate-700 text-white focus:border-blue-400 outline-none transition-all"
+              />
+              <textarea 
+                placeholder="Your Message" 
+                required
+                rows={3}
+                value={contactMessage}
+                onChange={(e) => setContactMessage(e.target.value)}
+                className="w-full p-2.5 text-sm rounded bg-slate-800 border border-slate-700 text-white focus:border-blue-400 outline-none transition-all resize-none"
+              />
+              <button 
+                type="submit"
+                className="w-full py-2.5 rounded bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </footer>

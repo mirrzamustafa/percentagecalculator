@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const locale = "fr";
   const t = await getTranslations(locale);
-  const baseUrl = "https://percentagecalculator.fr";
+  const baseUrl = "https://calculerlepourcentage.fr";
 
   return {
     title: t.meta.title,
@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: baseUrl,
       languages: {
         en: "https://percentagecalculator.us/en",
-        fr: "https://percentagecalculator.fr/fr",
+        fr: "https://calculerlepourcentage.fr/fr",
         it: "https://percentagecalculator.it/it",
         de: "https://percentagecalculator.de/de",
         es: "https://percentagecalculator.es/es",

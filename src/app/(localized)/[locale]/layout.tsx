@@ -14,7 +14,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations(locale);
 
-  const baseUrl = `https://percentagecalculator.${locale === "en" ? "us" : locale}`;
+  const baseUrl = locale === "fr" 
+    ? "https://calculerlepourcentage.fr" 
+    : `https://calculerlepourcentage.${locale === "en" ? "us" : locale}`;
 
   return {
     title: t.meta.title,
@@ -23,7 +25,7 @@ export async function generateMetadata({
       canonical: baseUrl,
       languages: {
         en: "https://percentagecalculator.us/en",
-        fr: "https://percentagecalculator.fr/fr",
+        fr: "https://calculerlepourcentage.fr/fr",
         it: "https://percentagecalculator.it/it",
         de: "https://percentagecalculator.de/de",
         es: "https://percentagecalculator.es/es",
