@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowUp, ChevronRight, Percent, Sun, Moon } from "lucide-react";
+import { ArrowUp, ChevronRight, Percent, Sun, Moon, Linkedin, Twitter, Facebook } from "lucide-react";
 import "@/app/calculator.css";
 
 export default function CalculatorClient({
@@ -346,9 +346,38 @@ export default function CalculatorClient({
       <footer className="cr-footer">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <p className="text-sm font-bold uppercase tracking-widest mb-6">&copy; {currentYear} {seo.h1.split(" ")[0]} Calc</p>
-          <div className="flex justify-center gap-10 text-xs font-bold uppercase">
+          <div className="flex justify-center gap-10 text-xs font-bold uppercase mb-8">
             <a href={`/${locale}/privacy`} className="hover:text-white transition-colors">{ui.privacyPolicy}</a>
             <a href={`/${locale}/terms`} className="hover:text-white transition-colors">{ui.termsOfService}</a>
+          </div>
+          <div className="flex justify-center gap-6">
+            <a 
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=https://percentagecalculator.fr`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-slate-800 hover:bg-blue-600 text-white transition-all shadow-lg"
+              aria-label="Share on LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a 
+              href={`https://twitter.com/intent/tweet?url=https://percentagecalculator.fr&text=${encodeURIComponent(seo.h1)}`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-slate-800 hover:bg-sky-500 text-white transition-all shadow-lg"
+              aria-label="Share on Twitter"
+            >
+              <Twitter size={20} />
+            </a>
+            <a 
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://percentagecalculator.fr`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-slate-800 hover:bg-blue-700 text-white transition-all shadow-lg"
+              aria-label="Share on Facebook"
+            >
+              <Facebook size={20} />
+            </a>
           </div>
         </div>
       </footer>

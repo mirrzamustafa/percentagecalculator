@@ -28,15 +28,28 @@ export async function generateMetadata(): Promise<Metadata> {
       title: t.meta.title,
       description: t.meta.description,
       url: baseUrl,
-      type: "website"
-    },
-    icons: {
-      icon: [
-        { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/icon.png", type: "image/png" },
+      siteName: "Percentage Calculator",
+      images: [
+        {
+          url: `${baseUrl}/icon.png`,
+          width: 512,
+          height: 512,
+          alt: t.meta.title,
+        },
       ],
-      apple: "/icon.png",
-    }
+      locale: locale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.meta.title,
+      description: t.meta.description,
+      images: [`${baseUrl}/icon.png`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
