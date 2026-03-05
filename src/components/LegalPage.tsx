@@ -35,6 +35,16 @@ export default function LegalPage({ locale, title, content, translations }: Prop
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setTheme(isNightTime || prefersDark ? "dark" : "light");
     setMounted(true);
+
+    // Live check every minute to switch theme if time passes thresholds
+    const interval = setInterval(() => {
+      if (localStorage.getItem("calc-theme")) return; // Don't override manual choice
+      const h = new Date().getHours();
+      const night = h >= 19 || h < 7;
+      setTheme(night ? "dark" : "light");
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { ArrowUp, ChevronRight, Percent, Sun, Moon, Linkedin, Twitter, Facebook } from "lucide-react";
+import AdSlot from "./AdSlot";
 import "@/app/calculator.css";
 
 export default function CalculatorClient({
@@ -55,6 +56,16 @@ export default function CalculatorClient({
 
     setTheme(isNightTime || prefersDark ? "dark" : "light");
     setMounted(true);
+
+    // 4. Live check every minute to switch theme if time passes thresholds
+    const interval = setInterval(() => {
+      if (localStorage.getItem("calc-theme")) return; // Don't override manual choice
+      const h = new Date().getHours();
+      const night = h >= 19 || h < 7;
+      setTheme(night ? "dark" : "light");
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -158,6 +169,7 @@ export default function CalculatorClient({
             </p>
           </div>
 
+
           {/* ─── Card A: Percent → Number ─── */}
           <section className="cr-card rounded-xl border-2 p-5 sm:p-10 shadow-md relative">
             <h2 className="mb-6 text-md lg:text-xl border-b-2 pb-2 capitalize">{cardA.title}</h2>
@@ -191,6 +203,8 @@ export default function CalculatorClient({
               </div>
             </div>
           </section>
+          {/* Top Ad Slot */}
+          <AdSlot adClient={adClient} adSlot={adSlotTop} />
 
           {/* ─── Card B: Number → Percent ─── */}
           <section className="cr-card rounded-xl border-2 p-6 sm:p-10 relative">
@@ -292,6 +306,11 @@ export default function CalculatorClient({
           </section>
 
         </div>{/* end calc cards */}
+
+        {/* Mid Ad Slot */}
+        <div className="max-w-5xl mx-auto">
+          <AdSlot adClient={adClient} adSlot={adSlotMid} />
+        </div>
 
         {/* ═══ SEO CONTENT ═══ */}
         <div className="cr-seo mt-20 border-t-4 pt-16 pb-12 px-4">
