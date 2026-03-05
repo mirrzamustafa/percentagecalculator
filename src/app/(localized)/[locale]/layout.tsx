@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getTranslations } from "@/lib/i18n";
 import { supportedLocales } from "@/lib/domainConfig";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "@/app/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -91,6 +92,18 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
+        </Script>
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
